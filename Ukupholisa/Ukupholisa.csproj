@@ -52,6 +52,15 @@
     <Compile Include="CallForm.Designer.cs">
       <DependentUpon>CallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Medical_Department\DataAccess_Layer\MedicalHandler.cs" />
+    <Compile Include="Medical_Department\Logic_Layer\MedCondition.cs" />
+    <Compile Include="Medical_Department\Logic_Layer\MedProvider.cs" />
+    <Compile Include="Medical_Department\Presentation_Layer\Medical_Dept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Medical_Department\Presentation_Layer\Medical_Dept.Designer.cs">
+      <DependentUpon>Medical_Dept.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CallForm.resx">
@@ -79,5 +88,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
