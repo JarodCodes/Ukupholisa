@@ -1,6 +1,6 @@
-﻿namespace Ukupholisa
+﻿namespace Ukupholisa.CallCentre.Presentation_Layer
 {
-    partial class CallForm
+    partial class CallCentre
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // CallForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "CallForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.CallForm_Load);
-            this.ResumeLayout(false);
-
+            this.Text = "CallCentre";
         }
 
         #endregion
     }
 }
-

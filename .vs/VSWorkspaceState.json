@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Ukupholisa",
-    "\\Ukupholisa\\Medical_Department"
+    "\\Ukupholisa\\CallCenter",
+    "\\Ukupholisa\\Medical_Department",
+    "\\Ukupholisa\\Medical_Department\\Presentation_Layer"
   ],
-  "SelectedNode": "\\Ukupholisa.sln",
+  "SelectedNode": "\\Ukupholisa\\Medical_Department\\Presentation_Layer\\Medical_Dept.Designer.cs",
   "PreviewInSolutionExplorer": false
 }

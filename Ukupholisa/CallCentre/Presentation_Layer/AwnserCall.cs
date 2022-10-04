@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ukupholisa
+namespace Ukupholisa.CallCentre.Presentation_Layer
 {
-    public partial class CallForm : Form
+    public partial class AwnserCall : Form
     {
-        public CallForm()
+        public AwnserCall()
         {
             InitializeComponent();
-        }
-
-        private void CallForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

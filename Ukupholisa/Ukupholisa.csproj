@@ -46,15 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallForm.cs">
+    <Compile Include="CallCentre\DataAccess_Layer\Client.cs" />
+    <Compile Include="CallCentre\DataAccess_Layer\Family.cs" />
+    <Compile Include="CallCentre\Logic_Layer\ClientHandler.cs" />
+    <Compile Include="CallCentre\Presentation_Layer\AwnserCall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CallForm.Designer.cs">
-      <DependentUpon>CallForm.cs</DependentUpon>
+    <Compile Include="CallCentre\Presentation_Layer\AwnserCall.Designer.cs">
+      <DependentUpon>AwnserCall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Medical_Department\DataAccess_Layer\MedicalHandler.cs" />
-    <Compile Include="Medical_Department\Logic_Layer\MedCondition.cs" />
-    <Compile Include="Medical_Department\Logic_Layer\MedProvider.cs" />
+    <Compile Include="CallCentre\Presentation_Layer\CallCentre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallCentre\Presentation_Layer\CallCentre.Designer.cs">
+      <DependentUpon>CallCentre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CallCentre\Presentation_Layer\CleintAndPolicy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallCentre\Presentation_Layer\CleintAndPolicy.Designer.cs">
+      <DependentUpon>CleintAndPolicy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Medical_Department\Logic_Layer\MedicalHandler.cs" />
+    <Compile Include="Medical_Department\DataAccess_Layer\MedCondition.cs" />
+    <Compile Include="Medical_Department\DataAccess_Layer\MedProvider.cs" />
     <Compile Include="Medical_Department\Presentation_Layer\Medical_Dept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,9 +87,6 @@
     <Compile Include="Provider_Management\Presentation_Layer\ProviderManagement.Designer.cs">
       <DependentUpon>ProviderManagement.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CallForm.resx">
-      <DependentUpon>CallForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
