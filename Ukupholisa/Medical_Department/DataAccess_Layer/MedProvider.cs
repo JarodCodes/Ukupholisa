@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ukupholisa.Medical_Department.Logic_Layer
+namespace Ukupholisa.Medical_Department.DataAccess_Layer
 {
     public class MedProvider
     {

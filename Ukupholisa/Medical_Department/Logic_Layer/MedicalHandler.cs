@@ -41,7 +41,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
 
             return table;
         }
-        public void addMedCon(Logic_Layer.MedCondition medcon)
+        public void addMedCon(DataAccess_Layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -56,7 +56,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updateMedCon(Logic_Layer.MedCondition medcon)
+        public void updateMedCon(DataAccess_Layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -71,7 +71,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deleteMedCon(Logic_Layer.MedCondition medcon)
+        public void deleteMedCon(DataAccess_Layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -83,7 +83,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public DataTable searchMedCon(Logic_Layer.MedCondition medcon)
+        public DataTable searchMedCon(DataAccess_Layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
