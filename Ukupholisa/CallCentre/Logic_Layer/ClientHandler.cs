@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Ukupholisa.CallCentre.Logic_Layer
 {
-    public class ClientHandler
+    internal class ClientHandler
     {
         string con = "Server=(local); Initial Catalog=Ukupholisa_Healthcare; Integrated Security= SSPI";
         public SqlConnection Connect()
@@ -70,7 +70,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                 }
             }
 
-            public void addMedCon(DataAccess_Layer.Client client)
+            /*public void addMedCon(DataAccess_Layer.Client client)
             {
                 using (SqlConnection connect = new SqlConnection(con))
                 {
@@ -111,7 +111,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     connect.Open();
                     cmd.ExecuteNonQuery();
                 }
-            }
+            }*/
         }
     }
 }

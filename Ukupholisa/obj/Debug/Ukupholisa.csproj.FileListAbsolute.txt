@@ -1,0 +1,5 @@
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.AssemblyReference.cache
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.CallCentre.Presentation_Layer.OperatorUI.resources
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Properties.Resources.resources
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.GenerateResource.cache
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.CoreCompileInputs.cache
