@@ -67,6 +67,12 @@
     <Compile Include="CallCentre\Presentation_Layer\CleintAndPolicy.Designer.cs">
       <DependentUpon>CleintAndPolicy.cs</DependentUpon>
     </Compile>
+    <Compile Include="CallCentre\Presentation_Layer\OperatorUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CallCentre\Presentation_Layer\OperatorUI.Designer.cs">
+      <DependentUpon>OperatorUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Medical_Department\Logic_Layer\MedicalHandler.cs" />
     <Compile Include="Medical_Department\DataAccess_Layer\MedCondition.cs" />
     <Compile Include="Medical_Department\DataAccess_Layer\MedProvider.cs" />
@@ -87,6 +93,9 @@
     <Compile Include="Provider_Management\Presentation_Layer\ProviderManagement.Designer.cs">
       <DependentUpon>ProviderManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CallCentre\Presentation_Layer\OperatorUI.resx">
+      <DependentUpon>OperatorUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Medical_Department\Presentation_Layer\Medical_Dept.resx">
       <DependentUpon>Medical_Dept.cs</DependentUpon>
     </EmbeddedResource>
