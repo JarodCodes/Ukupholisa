@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ukupholisa.CallCentre.DataAccess_Layer
 {
-    internal class Client
+    public class Client
     {
         string name, surname, phone, clientID;
 
