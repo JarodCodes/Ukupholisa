@@ -102,6 +102,9 @@
     <EmbeddedResource Include="CallCentre\Presentation_Layer\OperatorUI.resx">
       <DependentUpon>OperatorUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Medical_Department\Presentation_Layer\Medical_Dept.resx">
+      <DependentUpon>Medical_Dept.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +117,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Provider_Management\Presentation_Layer\ProviderManagement.resx">
+      <DependentUpon>ProviderManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
