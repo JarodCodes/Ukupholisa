@@ -8,18 +8,24 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
 {
     class PolicyPackage
     {
-        List<Policy> policies;
-
+        int packageId, cost, providerId;
+        string name;
         public PolicyPackage()
         {
 
         }
 
-        public PolicyPackage(List<Policy> policies)
+        public PolicyPackage(int packageId, int cost, string name, int providerId)
         {
-            this.Policies = policies;
+            this.PackageId = packageId;
+            this.Cost = cost;
+            this.Name = name;
+            this.ProviderId = providerId;
         }
 
-        internal List<Policy> Policies { get => policies; set => policies = value; }
+        public int PackageId { get => packageId; set => packageId = value; }
+        public int Cost { get => cost; set => cost = value; }
+        public string Name { get => name; set => name = value; }
+        public int ProviderId { get => providerId; set => providerId = value; }
     }
 }
