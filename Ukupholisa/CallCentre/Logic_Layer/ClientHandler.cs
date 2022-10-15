@@ -14,12 +14,11 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         string con = "Server=(local); Initial Catalog=Ukupholisa_Healthcare; Integrated Security= SSPI";
         public SqlConnection Connect()
         {
-            //will connect to db
-            SqlConnection cn = new SqlConnection(con);
+            SqlConnection sqlCon = new SqlConnection(con);
 
             try
             {
-                cn.Open();
+                sqlCon.Open();
                 MessageBox.Show("Connection successful");
             }
             catch (Exception)
@@ -27,7 +26,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
                 MessageBox.Show("Connection error");
             }
-            return cn;
+            return sqlCon;
         }
 
         public DataTable PopulateClient()
@@ -43,7 +42,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
             return table;
         }
-        //check this
         public DataTable searchClient(DataAccess_Layer.Client client)
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -60,11 +58,11 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     dt.Load(dr);
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("No policy found");
+                        MessageBox.Show("No Client found!");
                     }
                     else
                     {
-                        MessageBox.Show("Policy found");
+                        MessageBox.Show("Client found!");
                     }
                     return dt;
                 }
@@ -83,22 +81,80 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
         }
 
-        public void updateMedCon(DataAccess_Layer.Client client)
+        public void saveClient(string Name, string Surname, string Phone, string Address, string Family_Id)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("clientSave", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Name", Name);
+                    cmd.Parameters.AddWithValue("@Client_Surname", Surname);
+                    cmd.Parameters.AddWithValue("@Client_Phone", Phone);
+                    cmd.Parameters.AddWithValue("@Client_Address", Address);
+                    cmd.Parameters.AddWithValue("@Client_FamilyId", Name);
+                    cmd.Parameters.AddWithValue("@Client_Name", Name);
+                    int num = cmd.ExecuteNonQuery();
+                    if (num > 0)
+                    {
+                        MessageBox.Show("Record added successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Oops! Something went wrong!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
+            }
+        }
+        //Searching whether a medical condition exists
+        public DataTable searchMedicalCondition(Medical_Department.DataAccess_Layer.MedCondition medCondition)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("mcUpdate", connect);
+                SqlCommand cmd = new SqlCommand("medicalConditionSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client.ClientID);
-                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
-                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
-                cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
-                cmd.Parameters.AddWithValue("@Family_Id", client.Phone);//still need to add family Id to the Client Class
-                cmd.Parameters.AddWithValue("@Client_Address", client.Phone);
-
+                cmd.Parameters.AddWithValue("@Condition_Id", medCondition.MedConID);
 
                 connect.Open();
-                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Condition was not found!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Condition found!");
+                    }
+                    return dt;
+                }
+            }
+        }
+
+        public void updateClientDetails(string clientID)
+        {
+            DataAccess_Layer.Client client = new DataAccess_Layer.Client();
+
+            DataTable dtData = searchClient(new DataAccess_Layer.Client(clientID));
+            if (dtData.Rows.Count > 0)
+            {
+                client.FamilyID = dtData.Rows[0][1].ToString();
+                client.Name = dtData.Rows[0][2].ToString();
+                client.Surname = dtData.Rows[0][3].ToString();
+                client.Phone = dtData.Rows[0][4].ToString();    
+                client.Address = dtData.Rows[0][5].ToString();
+            }
+            else
+            {
+                //ClearAllData(); // For clear all control and refresh DataGridView data.  
             }
         }
     }

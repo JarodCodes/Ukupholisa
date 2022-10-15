@@ -16,5 +16,10 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             InitializeComponent();
         }
+
+        private void btnProvSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

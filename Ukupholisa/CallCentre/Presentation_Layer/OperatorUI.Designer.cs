@@ -31,20 +31,33 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CallReceiver = new System.Windows.Forms.TabPage();
+            this.btnEndCall = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnSearchClient = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtClientIDSearch = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnSaveClient = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtFamilyId = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,37 +70,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMedConditionSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.btnEndCall = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.CallReceiver.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -117,6 +117,25 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.CallReceiver.Size = new System.Drawing.Size(837, 530);
             this.CallReceiver.TabIndex = 0;
             this.CallReceiver.Text = "Call Receiver";
+            // 
+            // btnEndCall
+            // 
+            this.btnEndCall.Location = new System.Drawing.Point(734, 479);
+            this.btnEndCall.Name = "btnEndCall";
+            this.btnEndCall.Size = new System.Drawing.Size(97, 43);
+            this.btnEndCall.TabIndex = 4;
+            this.btnEndCall.Text = "End Call";
+            this.btnEndCall.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(312, 485);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(144, 26);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Ongoing Call:";
             // 
             // label1
             // 
@@ -164,6 +183,25 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Client Check";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.richTextBox1);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(557, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(272, 445);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Client Summary";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(6, 18);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(260, 421);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(762, 488);
@@ -172,11 +210,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button2.TabIndex = 7;
             this.button2.Text = "Refresh Database";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.btnSearchClient);
-            this.groupBox5.Controls.Add(this.textBox7);
+            this.groupBox5.Controls.Add(this.txtClientIDSearch);
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(8, 117);
@@ -195,13 +234,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.btnSearchClient.TabIndex = 2;
             this.btnSearchClient.Text = "Search Client";
             this.btnSearchClient.UseVisualStyleBackColor = true;
+            this.btnSearchClient.Click += new System.EventHandler(this.btnSearchClient_Click);
             // 
-            // textBox7
+            // txtClientIDSearch
             // 
-            this.textBox7.Location = new System.Drawing.Point(217, 41);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(225, 20);
-            this.textBox7.TabIndex = 1;
+            this.txtClientIDSearch.Location = new System.Drawing.Point(217, 41);
+            this.txtClientIDSearch.Name = "txtClientIDSearch";
+            this.txtClientIDSearch.Size = new System.Drawing.Size(225, 20);
+            this.txtClientIDSearch.TabIndex = 1;
             // 
             // label8
             // 
@@ -216,14 +256,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.textBox8);
+            this.groupBox3.Controls.Add(this.btnSaveClient);
+            this.groupBox3.Controls.Add(this.txtAddress);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.groupBox7);
             this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.txtPhone);
+            this.groupBox3.Controls.Add(this.txtSurname);
+            this.groupBox3.Controls.Add(this.txtName);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
@@ -236,39 +276,130 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Client Details";
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(134, 241);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(67, 36);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Update Client";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnSaveClient
+            // 
+            this.btnSaveClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveClient.Location = new System.Drawing.Point(308, 241);
+            this.btnSaveClient.Name = "btnSaveClient";
+            this.btnSaveClient.Size = new System.Drawing.Size(67, 36);
+            this.btnSaveClient.TabIndex = 13;
+            this.btnSaveClient.Text = "Add Client";
+            this.btnSaveClient.UseVisualStyleBackColor = true;
+            this.btnSaveClient.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(203, 129);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(154, 20);
+            this.txtAddress.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(146, 132);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Address";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtFamilyId);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.radioButton2);
+            this.groupBox7.Controls.Add(this.radioButton1);
+            this.groupBox7.Location = new System.Drawing.Point(134, 154);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(241, 81);
+            this.groupBox7.TabIndex = 8;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Family Member?";
+            // 
+            // txtFamilyId
+            // 
+            this.txtFamilyId.Location = new System.Drawing.Point(69, 47);
+            this.txtFamilyId.Name = "txtFamilyId";
+            this.txtFamilyId.Size = new System.Drawing.Size(154, 20);
+            this.txtFamilyId.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(5, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Family ID";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(161, 19);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(41, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "No";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(83, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(46, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Yes";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(203, 13);
+            this.textBox6.Location = new System.Drawing.Point(203, 25);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(154, 20);
             this.textBox6.TabIndex = 7;
             // 
-            // textBox5
+            // txtPhone
             // 
-            this.textBox5.Location = new System.Drawing.Point(203, 91);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(154, 20);
-            this.textBox5.TabIndex = 6;
+            this.txtPhone.Location = new System.Drawing.Point(203, 103);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(154, 20);
+            this.txtPhone.TabIndex = 6;
             // 
-            // textBox4
+            // txtSurname
             // 
-            this.textBox4.Location = new System.Drawing.Point(203, 65);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(154, 20);
-            this.textBox4.TabIndex = 5;
+            this.txtSurname.Location = new System.Drawing.Point(203, 77);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(154, 20);
+            this.txtSurname.TabIndex = 5;
             // 
-            // textBox3
+            // txtName
             // 
-            this.textBox3.Location = new System.Drawing.Point(203, 39);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(154, 20);
-            this.textBox3.TabIndex = 4;
+            this.txtName.Location = new System.Drawing.Point(203, 51);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(154, 20);
+            this.txtName.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(131, 16);
+            this.label7.Location = new System.Drawing.Point(131, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 3;
@@ -278,7 +409,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(155, 95);
+            this.label6.Location = new System.Drawing.Point(155, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 2;
@@ -288,7 +419,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(145, 68);
+            this.label5.Location = new System.Drawing.Point(145, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 1;
@@ -298,7 +429,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(159, 42);
+            this.label4.Location = new System.Drawing.Point(159, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 0;
@@ -326,6 +457,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button1.TabIndex = 2;
             this.button1.Text = "Search Condition";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -370,7 +502,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtMedConditionSearch);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(175, 6);
@@ -390,13 +522,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button6.TabIndex = 2;
             this.button6.Text = "Search";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // textBox2
+            // txtMedConditionSearch
             // 
-            this.textBox2.Location = new System.Drawing.Point(159, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(252, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtMedConditionSearch.Location = new System.Drawing.Point(159, 44);
+            this.txtMedConditionSearch.Name = "txtMedConditionSearch";
+            this.txtMedConditionSearch.Size = new System.Drawing.Size(252, 20);
+            this.txtMedConditionSearch.TabIndex = 1;
             // 
             // label2
             // 
@@ -450,133 +583,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridView2.Size = new System.Drawing.Size(474, 277);
             this.dataGridView2.TabIndex = 0;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.richTextBox1);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(557, 6);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(272, 445);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Client Summary";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.textBox9);
-            this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.radioButton2);
-            this.groupBox7.Controls.Add(this.radioButton1);
-            this.groupBox7.Location = new System.Drawing.Point(134, 142);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(241, 81);
-            this.groupBox7.TabIndex = 8;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Family Member?";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(83, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(46, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(161, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(41, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(203, 117);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(154, 20);
-            this.textBox8.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(146, 120);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Address";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(312, 485);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(144, 26);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Ongoing Call:";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 18);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(260, 421);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(308, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 36);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Add Client";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(69, 47);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(154, 20);
-            this.textBox9.TabIndex = 14;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 50);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Family ID";
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(134, 229);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 36);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Update Client";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // btnEndCall
-            // 
-            this.btnEndCall.Location = new System.Drawing.Point(734, 479);
-            this.btnEndCall.Name = "btnEndCall";
-            this.btnEndCall.Size = new System.Drawing.Size(97, 43);
-            this.btnEndCall.TabIndex = 4;
-            this.btnEndCall.Text = "End Call";
-            this.btnEndCall.UseVisualStyleBackColor = true;
-            // 
             // OperatorUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,14 +591,18 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.Controls.Add(this.tabControl1);
             this.Name = "OperatorUI";
             this.Text = "OperatorUI";
+            this.Load += new System.EventHandler(this.OperatorUI_Load);
             this.tabControl1.ResumeLayout(false);
             this.CallReceiver.ResumeLayout(false);
             this.CallReceiver.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -600,9 +610,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -619,7 +626,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMedConditionSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button7;
@@ -632,12 +639,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnSearchClient;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtClientIDSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -645,15 +652,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button btnSaveClient;
+        private System.Windows.Forms.TextBox txtFamilyId;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnEndCall;
     }

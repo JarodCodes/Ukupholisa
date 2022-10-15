@@ -30,7 +30,7 @@ namespace Ukupholisa
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMedicalDept = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -39,44 +39,46 @@ namespace Ukupholisa
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(70, 104);
+            this.button1.Location = new System.Drawing.Point(59, 67);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(95, 35);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Call Center";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnMedicalDept
             // 
-            this.button2.Location = new System.Drawing.Point(70, 133);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnMedicalDept.Location = new System.Drawing.Point(59, 108);
+            this.btnMedicalDept.Name = "btnMedicalDept";
+            this.btnMedicalDept.Size = new System.Drawing.Size(95, 35);
+            this.btnMedicalDept.TabIndex = 1;
+            this.btnMedicalDept.Text = "Medical Department";
+            this.btnMedicalDept.UseVisualStyleBackColor = true;
+            this.btnMedicalDept.Click += new System.EventHandler(this.btnMedicalDept_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(70, 162);
+            this.button3.Location = new System.Drawing.Point(59, 149);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(95, 35);
             this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
+            this.button3.Text = "Provider Management\r\n";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(70, 191);
+            this.button4.Location = new System.Drawing.Point(59, 190);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(95, 35);
             this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
+            this.button4.Text = "General Management";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(70, 220);
+            this.btnExit.Location = new System.Drawing.Point(69, 238);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 4;
@@ -88,7 +90,7 @@ namespace Ukupholisa
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(45, 28);
+            this.label1.Location = new System.Drawing.Point(45, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 52);
             this.label1.TabIndex = 5;
@@ -103,7 +105,7 @@ namespace Ukupholisa
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnMedicalDept);
             this.Controls.Add(this.button1);
             this.Name = "mainMenu";
             this.Text = "mainMenu";
@@ -116,7 +118,7 @@ namespace Ukupholisa
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnMedicalDept;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnExit;

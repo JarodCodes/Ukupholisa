@@ -10,6 +10,17 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
     {
         string name, surname, phone, clientID, familyID, address;
 
+
+        public Client()
+        {
+
+        }
+
+        public Client(string clientID)
+        {
+            this.clientID = clientID;
+        }
+
         public Client(string name, string surname, string phone, string clientID, string familyID, string address)
         {
             this.name = name;

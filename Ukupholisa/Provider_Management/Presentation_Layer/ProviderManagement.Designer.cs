@@ -34,6 +34,8 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             this.txtProvSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxProvOperations = new System.Windows.Forms.GroupBox();
+            this.listbStatus = new System.Windows.Forms.ListBox();
+            this.txtProvLocation = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.dataGridViewProv = new System.Windows.Forms.DataGridView();
-            this.txtProvLocation = new System.Windows.Forms.TextBox();
-            this.listbStatus = new System.Windows.Forms.ListBox();
             this.groupBoxProvSearch.SuspendLayout();
             this.groupBoxProvOperations.SuspendLayout();
             this.groupBoxProvData.SuspendLayout();
@@ -75,6 +75,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             this.btnProvSearch.TabIndex = 19;
             this.btnProvSearch.Text = "Search";
             this.btnProvSearch.UseVisualStyleBackColor = true;
+            this.btnProvSearch.Click += new System.EventHandler(this.btnProvSearch_Click);
             // 
             // txtProvSearch
             // 
@@ -111,6 +112,21 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             this.groupBoxProvOperations.TabIndex = 7;
             this.groupBoxProvOperations.TabStop = false;
             this.groupBoxProvOperations.Text = "Operations";
+            // 
+            // listbStatus
+            // 
+            this.listbStatus.FormattingEnabled = true;
+            this.listbStatus.Location = new System.Drawing.Point(90, 129);
+            this.listbStatus.Name = "listbStatus";
+            this.listbStatus.Size = new System.Drawing.Size(183, 30);
+            this.listbStatus.TabIndex = 20;
+            // 
+            // txtProvLocation
+            // 
+            this.txtProvLocation.Location = new System.Drawing.Point(90, 97);
+            this.txtProvLocation.Name = "txtProvLocation";
+            this.txtProvLocation.Size = new System.Drawing.Size(183, 20);
+            this.txtProvLocation.TabIndex = 19;
             // 
             // btnDelete
             // 
@@ -226,21 +242,6 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             this.dataGridViewProv.Name = "dataGridViewProv";
             this.dataGridViewProv.Size = new System.Drawing.Size(478, 401);
             this.dataGridViewProv.TabIndex = 0;
-            // 
-            // txtProvLocation
-            // 
-            this.txtProvLocation.Location = new System.Drawing.Point(90, 97);
-            this.txtProvLocation.Name = "txtProvLocation";
-            this.txtProvLocation.Size = new System.Drawing.Size(183, 20);
-            this.txtProvLocation.TabIndex = 19;
-            // 
-            // listbStatus
-            // 
-            this.listbStatus.FormattingEnabled = true;
-            this.listbStatus.Location = new System.Drawing.Point(90, 129);
-            this.listbStatus.Name = "listbStatus";
-            this.listbStatus.Size = new System.Drawing.Size(183, 30);
-            this.listbStatus.TabIndex = 20;
             // 
             // ProviderManagement
             // 
