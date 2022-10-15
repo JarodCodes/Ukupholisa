@@ -69,49 +69,39 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     return dt;
                 }
             }
-
-            /*public void addMedCon(DataAccess_Layer.Client client)
+        }
+        public void deleteClient(DataAccess_Layer.Client client)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("mcAdd", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Id", client.ClientID);
-                    cmd.Parameters.AddWithValue("@Client_Name", client.Name);
-                    cmd.Parameters.AddWithValue("@Client_Description", client.Description);
-                    cmd.Parameters.AddWithValue("@Client_Id", client.PolicyID);
+                SqlCommand cmd = new SqlCommand("clientDelete", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Condition_Id", client.ClientID);    
 
-                    connect.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                connect.Open();
+                cmd.ExecuteNonQuery();    
             }
-            public void updateMedCon(Logic_Layer.MedCondition medcon)
-            {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("mcUpdate", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
-                    cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
-                    cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
-                    cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
+        }
 
-                    connect.Open();
-                    cmd.ExecuteNonQuery();
-                }
+        public void updateMedCon(DataAccess_Layer.Client client)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("mcUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", client.ClientID);
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                cmd.Parameters.AddWithValue("@Family_Id", client.Phone);//still need to add family Id to the Client Class
+                cmd.Parameters.AddWithValue("@Client_Address", client.Phone);
+
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
             }
-            public void deleteMedCon(Logic_Layer.MedCondition medcon)
-            {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("mcDelete", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
-
-                    connect.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }*/
         }
     }
+
+
 }
