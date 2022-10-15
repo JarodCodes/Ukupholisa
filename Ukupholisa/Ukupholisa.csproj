@@ -49,18 +49,6 @@
     <Compile Include="CallCentre\DataAccess_Layer\Client.cs" />
     <Compile Include="CallCentre\DataAccess_Layer\Family.cs" />
     <Compile Include="CallCentre\Logic_Layer\ClientHandler.cs" />
-    <Compile Include="CallCentre\Presentation_Layer\AwnserCall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CallCentre\Presentation_Layer\AwnserCall.Designer.cs">
-      <DependentUpon>AwnserCall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CallCentre\Presentation_Layer\CallCentre.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CallCentre\Presentation_Layer\CallCentre.Designer.cs">
-      <DependentUpon>CallCentre.cs</DependentUpon>
-    </Compile>
     <Compile Include="CallCentre\Presentation_Layer\CleintAndPolicy.cs">
       <SubType>Form</SubType>
     </Compile>
