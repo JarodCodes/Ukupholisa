@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider_Management\DataAccess_Layer\Policy.cs" />
     <Compile Include="Provider_Management\DataAccess_Layer\PolicyPackage.cs" />
+    <Compile Include="Provider_Management\DataAccess_Layer\Provider.cs" />
     <Compile Include="Provider_Management\Logic_Layer\PolicyHandler.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>

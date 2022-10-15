@@ -53,6 +53,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
 
             return table;
         }
+
         public DataTable PopulateMedProv()
         {
             string query = @"SELECT * FROM Medical_Provider";
@@ -95,13 +96,13 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deletePolicy(DataAccess_Layer.Policy policy)
+        public void deletePolicy(int polID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("polDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();
@@ -133,55 +134,55 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 }
             }
         }
-        public void addPackage(DataAccess_Layer.PolicyPackage package)
+        public void createPackage(DataAccess_Layer.PolicyPackage package)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("packCreate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Package_Id", package.PackageId);
+                cmd.Parameters.AddWithValue("@Package_Name", package.Name);
+                cmd.Parameters.AddWithValue("@Policy_Cost", package.Cost);
+                cmd.Parameters.AddWithValue("@Provider_Id", package.ProviderId);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void updatePackage(DataAccess_Layer.PolicyPackage package)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("packUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", package.);
-                cmd.Parameters.AddWithValue("@Policy_Name", package.Name);
-                cmd.Parameters.AddWithValue("@Policy_CoverLevel", package.CoverLevel);
+                cmd.Parameters.AddWithValue("@Package_Id", package.PackageId);
+                cmd.Parameters.AddWithValue("@Package_Name", package.Name);
                 cmd.Parameters.AddWithValue("@Policy_Cost", package.Cost);
+                cmd.Parameters.AddWithValue("@Provider_Id", package.ProviderId);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updatePolicy(DataAccess_Layer.Policy policy)
+        public void deletePackage(int packID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("polUpdate", connect);
+                SqlCommand cmd = new SqlCommand("packDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
-                cmd.Parameters.AddWithValue("@Policy_Name", policy.Name);
-                cmd.Parameters.AddWithValue("@Policy_CoverLevel", policy.CoverLevel);
-                cmd.Parameters.AddWithValue("@Policy_Cost", policy.Cost);
+                cmd.Parameters.AddWithValue("@Package_Id", packID);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deletePolicy(DataAccess_Layer.Policy policy)
+        public DataTable searchPackage(int packId)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("polDelete", connect);
+                SqlCommand cmd = new SqlCommand("packSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
-
-                connect.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-        public DataTable searchPolicy(DataAccess_Layer.Policy policy)
-        {
-            using (SqlConnection connect = new SqlConnection(con))
-            {
-                SqlCommand cmd = new SqlCommand("polSearch", connect);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
+                cmd.Parameters.AddWithValue("@Package_Id", packId);
 
                 connect.Open();
                 DataTable dt = new DataTable();
@@ -191,14 +192,134 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                     dt.Load(dr);
                     if (dt.Rows.Count == 0)
                     {
-                        MessageBox.Show("No policy found");
+                        MessageBox.Show("No package found");
                     }
                     else
                     {
-                        MessageBox.Show("Policy found");
+                        MessageBox.Show("Package found");
                     }
                     return dt;
                 }
+            }
+        }
+        public void addProvider(DataAccess_Layer.Provider provider)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("provUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Provider_Id", provider.ProviderId);
+                cmd.Parameters.AddWithValue("@Provider_Name", provider.Name);
+                cmd.Parameters.AddWithValue("@Provider_Location", provider.Location);
+                cmd.Parameters.AddWithValue("@Provider_Status", provider.Status);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void updateProvider(DataAccess_Layer.Provider provider)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("polUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Provider_Id", provider.ProviderId);
+                cmd.Parameters.AddWithValue("@Provider_Name", provider.Name);
+                cmd.Parameters.AddWithValue("@Provider_Location", provider.Location);
+                cmd.Parameters.AddWithValue("@Provider_Status", provider.Status);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void deleteProvider(int provID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("provDelete", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Provider_Id", provID);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable searchProvider(int provID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("polSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", provID);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No provider found");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Provider found");
+                    }
+                    return dt;
+                }
+            }
+        }
+        public void addPackPolicy(int polID, int packID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("packAdd", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
+                cmd.Parameters.AddWithValue("@Package_Id", packID);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable populateCurPackPolicy(int packId)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("packPolSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Package_Id", packId);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No policies found, please create a pack");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Policies found, this package already exists");
+                    }
+                    return dt;
+                }
+            }
+        }
+        public void removePackPol(int polID, int packID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("packPolRemove", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
+                cmd.Parameters.AddWithValue("@Package_Id", packID);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
             }
         }
     }

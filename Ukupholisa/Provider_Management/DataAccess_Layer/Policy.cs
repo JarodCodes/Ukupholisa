@@ -13,20 +13,23 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
         bool status;
         int policyId;
         int cost;
+        int providerId;
 
         public string Name { get => name; set => name = value; }
         public string CoverLevel { get => coverLevel; set => coverLevel = value; }
         public bool Status { get => status; set => status = value; }
         public int PolicyId { get => policyId; set => policyId = value; }
         public int Cost { get => cost; set => cost = value; }
+        public int ProviderId { get => providerId; set => providerId = value; }
 
-        public Policy(string name, string coverLevel, bool status, int policyId, int cost)
+        public Policy(string name, string coverLevel, bool status, int policyId, int cost, int providerId)
         {
             this.Name = name;
             this.CoverLevel = coverLevel;
             this.Status = status;
             this.PolicyId = policyId;
             this.Cost = cost;
+            this.ProviderId = providerId;
         }
         public Policy()
         {
