@@ -11,6 +11,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         string name, description, treatment;
         int medConID, policyID;
 
+        public MedCondition() { }
         public MedCondition(string name, string description, string treatment, int medConID, int policyID)
         {
             this.Name = name;

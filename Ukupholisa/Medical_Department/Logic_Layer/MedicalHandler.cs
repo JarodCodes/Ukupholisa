@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace Ukupholisa.Medical_Department.DataAccess_Layer
+namespace Ukupholisa.Medical_Department.Logic_Layer
 {
     public class MedicalHandler
     {
@@ -71,25 +71,25 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deleteMedCon(DataAccess_Layer.MedCondition medcon)
+        public void deleteMedCon(int conID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
+                cmd.Parameters.AddWithValue("@Condition_Id", conID);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();
             }
         }
-        public DataTable searchMedCon(DataAccess_Layer.MedCondition medcon)
+        public DataTable searchMedCon(int conID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
+                cmd.Parameters.AddWithValue("@Condition_Id", conID);
 
                 connect.Open();
                 DataTable dt = new DataTable();

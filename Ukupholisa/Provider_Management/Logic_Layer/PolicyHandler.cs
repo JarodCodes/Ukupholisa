@@ -107,13 +107,13 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public DataTable searchPolicy(DataAccess_Layer.Policy policy)
+        public DataTable searchPolicy(int polID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("polSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
 
                 connect.Open();
                 DataTable dt = new DataTable();
