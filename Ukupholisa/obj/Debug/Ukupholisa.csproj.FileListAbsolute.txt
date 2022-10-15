@@ -12,3 +12,11 @@ F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Properties.Resources.r
 F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Provider_Management.Presentation_Layer.ProviderManagement.resources
 F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.GenerateResource.cache
 F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.CoreCompileInputs.cache
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.mainMenu.resources
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Medical_Department.Medical_Dept.resources
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Provider_Management.Presentation_Layer.ProviderManagement.resources
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.exe
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.pdb
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.exe.config
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.exe
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.pdb

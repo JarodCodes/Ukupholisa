@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ukupholisa.Provider_Management
 {
-    public partial class Menu : Form
+    public partial class mainHub : Form
     {
-        public Menu()
+        public mainHub()
         {
             InitializeComponent();
         }
@@ -20,6 +20,11 @@ namespace Ukupholisa.Provider_Management
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
