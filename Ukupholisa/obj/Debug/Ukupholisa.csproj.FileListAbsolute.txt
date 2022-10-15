@@ -3,3 +3,12 @@ C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Properties.Resources.resources
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.GenerateResource.cache
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.CoreCompileInputs.cache
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.AssemblyReference.cache
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.SuggestedBindingRedirects.cache
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.CallCentre.Presentation_Layer.OperatorUI.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Medical_Department.Medical_Dept.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Provider_Management.Menu.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Properties.Resources.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.Provider_Management.Presentation_Layer.ProviderManagement.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.GenerateResource.cache
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.csproj.CoreCompileInputs.cache
