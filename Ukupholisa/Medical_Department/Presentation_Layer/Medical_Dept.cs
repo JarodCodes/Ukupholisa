@@ -21,7 +21,7 @@ namespace Ukupholisa.Medical_Department
         private void Medical_Dept_Load(object sender, EventArgs e)
         {
             dataGridViewMedCon.DataSource = medhandler.PopulateMedCon();
-            dataGridViewMedCon.DataSource = policyhandler.PopulatePolicy();
+            dataGridViewMedPolicies.DataSource = policyhandler.PopulatePolicy();
         }
 
         private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
