@@ -345,9 +345,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             }
         }
 
-        private void btnProvSearch_Click(object sender, EventArgs e)
-        {
+        //private void btnProvSearch_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }
