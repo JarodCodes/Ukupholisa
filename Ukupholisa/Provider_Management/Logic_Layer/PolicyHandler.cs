@@ -70,7 +70,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("polUpdate", connect);
+                SqlCommand cmd = new SqlCommand("polAdd", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
                 cmd.Parameters.AddWithValue("@Policy_Name", policy.Name);
@@ -140,9 +140,9 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             {
                 SqlCommand cmd = new SqlCommand("packCreate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Package_Id", package.PackageId);
+                cmd.Parameters.AddWithValue("@Package_Id", package.Name);
                 cmd.Parameters.AddWithValue("@Package_Name", package.Name);
-                cmd.Parameters.AddWithValue("@Policy_Cost", package.Cost);
+                cmd.Parameters.AddWithValue("@Package_Cost", package.Cost);
                 cmd.Parameters.AddWithValue("@Provider_Id", package.ProviderId);
 
                 connect.Open();
@@ -206,9 +206,8 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("provUpdate", connect);
+                SqlCommand cmd = new SqlCommand("provAdd", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Provider_Id", provider.ProviderId);
                 cmd.Parameters.AddWithValue("@Provider_Name", provider.Name);
                 cmd.Parameters.AddWithValue("@Provider_Location", provider.Location);
                 cmd.Parameters.AddWithValue("@Provider_Status", provider.Status);
@@ -221,9 +220,8 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("polUpdate", connect);
+                SqlCommand cmd = new SqlCommand("provUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Provider_Id", provider.ProviderId);
                 cmd.Parameters.AddWithValue("@Provider_Name", provider.Name);
                 cmd.Parameters.AddWithValue("@Provider_Location", provider.Location);
                 cmd.Parameters.AddWithValue("@Provider_Status", provider.Status);
@@ -248,9 +246,9 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("polSearch", connect);
+                SqlCommand cmd = new SqlCommand("provSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", provID);
+                cmd.Parameters.AddWithValue("@Provider_Id", provID);
 
                 connect.Open();
                 DataTable dt = new DataTable();

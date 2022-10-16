@@ -33,6 +33,7 @@ namespace Ukupholisa.Medical_Department
                 txtMedID.Text = rows.Cells["Condition_Id"].Value.ToString();
                 txtMedName.Text = rows.Cells["Condition_Name"].Value.ToString();
                 rtxtMedDesc.Text = rows.Cells["Condition_Description"].Value.ToString();
+                txtTreatment.Text = rows.Cells["Condition_Treatment"].Value.ToString();
                 txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
             }
         }

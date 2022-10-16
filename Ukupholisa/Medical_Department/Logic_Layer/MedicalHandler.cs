@@ -47,7 +47,6 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
             {
                 SqlCommand cmd = new SqlCommand("mcAdd", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
@@ -62,7 +61,6 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
             {
                 SqlCommand cmd = new SqlCommand("mcUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
