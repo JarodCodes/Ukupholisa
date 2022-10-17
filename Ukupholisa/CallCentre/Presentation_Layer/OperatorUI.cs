@@ -75,6 +75,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 MessageBox.Show("Enter Client Address!");
                 txtAddress.Select();
             }
+            else if (radiobtnNo.Checked == true)
+            {
+                txtFamilyId.Text = "0";
+            }
             else
             {
                 clientHandler.saveClient(txtName.Text, txtSurname.Text, txtPhone.Text, txtAddress.Text, int.Parse(txtFamilyId.Text));
@@ -83,7 +87,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void OperatorUI_Load(object sender, EventArgs e)
         {
-            radioButton1.Checked = true;
+            radiobtnYes.Checked = true;
             dataGridView2.DataSource = policy.PopulatePolicy();
         }
 
@@ -128,7 +132,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//refresh button
         {
             //need to refresh the database so that the changes may reflect without needing to close and open the program.
         }
@@ -156,6 +160,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             else
             {
                 medhandler.searchMedCon(int.Parse(txtMedConditionSearch.Text));
+            }
+        }
+
+        private void radiobtnNo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radiobtnYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radiobtnYes.Checked)
+            {
+                txtFamilyId.Enabled = true;
+            }
+            else
+            {
+                txtFamilyId.Enabled = false;
+                txtFamilyId.Text = "0";
             }
         }
     }

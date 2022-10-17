@@ -167,9 +167,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policyhandler.updatePolicy(policy);
                 MessageBox.Show("Policy was updated");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Policy was not updated");
+                MessageBox.Show("Policy was not updated" + ex.Message);
             }
         }
 
@@ -212,7 +212,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow rows = this.dataGridViewPol.Rows[e.RowIndex];
+                DataGridViewRow rows = this.dataGridViewPackage.Rows[e.RowIndex];
 
                 txtPackID.Text = rows.Cells["Package_Id"].Value.ToString();
                 txtPackName.Text = rows.Cells["Package_Name"].Value.ToString();
@@ -236,7 +236,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             try
             {
                 DataAccess_Layer.PolicyPackage package = new DataAccess_Layer.PolicyPackage();
-                package.PackageId = int.Parse(txtPackID.Text);
+                //package.PackageId = int.Parse(txtPackID.Text);
                 package.Name = txtPackName.Text;
                 package.Cost = int.Parse(txtPackCost.Text);
                 package.ProviderId = int.Parse(txtPackProvID.Text);
@@ -244,9 +244,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policyhandler.createPackage(package);
                 MessageBox.Show("Package was created");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Package was not created");
+                MessageBox.Show("Package was not created" + ex.Message);
             }
         }
 
@@ -261,11 +261,11 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.ProviderId = int.Parse(txtPackProvID.Text);
 
                 policyhandler.updatePackage(package);
-                MessageBox.Show("Package was created");
+                MessageBox.Show("Package was updated");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Package was not created");
+                MessageBox.Show("Package was not updated" + ex.Message);
             }
         }
 
@@ -278,20 +278,20 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policyhandler.deletePackage(packID);
                 MessageBox.Show("Package was deleted");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Package was not deleted");
+                MessageBox.Show("Package was not deleted" + ex.Message);
             }
         }
 
         private void btnPackProvSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewPolProv.DataSource = policyhandler.searchProvider(int.Parse(txtPolProvID.Text));
+            dataGridViewPolProv.DataSource = policyhandler.searchProvider(int.Parse(txtPackProvSearch.Text));
         }
 
         private void btnPackSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewPackage.DataSource = policyhandler.searchPackage(int.Parse(txtPackID.Text));
+            dataGridViewPackage.DataSource = policyhandler.searchPackage(int.Parse(txtPackSearch.Text));
         }
 
         private void dataGridViewPackPol_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -327,7 +327,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
 
         private void txtPackID_TextChanged(object sender, EventArgs e)
         {
-            dataGridViewCurPackPol.DataSource = policyhandler.populateCurPackPolicy(int.Parse(txtPackID.Text));
+            //dataGridViewCurPackPol.DataSource = policyhandler.populateCurPackPolicy(int.Parse(txtPackID.Text));
         }
 
         private void btnPackPolRemove_Click(object sender, EventArgs e)

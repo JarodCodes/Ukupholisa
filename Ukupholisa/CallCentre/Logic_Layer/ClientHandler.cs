@@ -94,10 +94,10 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     cmd.Parameters.AddWithValue("@Client_Phone", Phone);
                     cmd.Parameters.AddWithValue("@Client_Address", Address);
 
-                    //if (Family_Id == 0) //this is for insert into client and see whether they have a family or not
-                    //{
-                    cmd.Parameters.AddWithValue("@Client_FamilyId", Family_Id);
-                    //}
+                    if (Family_Id == 0) //this is for insert into client and see whether they have a family or not
+                    {
+                        cmd.Parameters.AddWithValue("@Client_FamilyId", Family_Id);
+                    }
 
 
                     int num = cmd.ExecuteNonQuery();
@@ -146,7 +146,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
         public void updateClientDetails(int clientID)
         {
-            //nie seker oor die nie
+            //
         }
     }
 

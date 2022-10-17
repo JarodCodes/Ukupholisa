@@ -53,7 +53,7 @@ namespace Ukupholisa.Medical_Department
             try
             {
                 DataAccess_Layer.MedCondition medcon = new DataAccess_Layer.MedCondition();
-                medcon.MedConID = int.Parse(txtMedID.Text);
+                //medcon.MedConID = int.Parse(txtMedID.Text);
                 medcon.Name = txtMedName.Text;
                 medcon.Description = rtxtMedDesc.Text;
                 medcon.Treatment = txtTreatment.Text;
@@ -62,9 +62,9 @@ namespace Ukupholisa.Medical_Department
                 medhandler.addMedCon(medcon);
                 MessageBox.Show("Condition was added");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Condition was not added");
+                MessageBox.Show("Condition was not added" + ex.Message);
             }
         }
 
@@ -82,9 +82,9 @@ namespace Ukupholisa.Medical_Department
                 medhandler.updateMedCon(medcon);
                 MessageBox.Show("Condition was updated");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Condition was not updated");
+                MessageBox.Show("Condition was not updated" + ex.Message);
             }
         }
 
@@ -97,9 +97,9 @@ namespace Ukupholisa.Medical_Department
                 medhandler.deleteMedCon(medID);
                 MessageBox.Show("Condition was deleted");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Condition was not deleted");
+                MessageBox.Show("Condition was not deleted" + ex.Message);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Ukupholisa.Medical_Department
 
         private void btnMedPolicySearch_Click(object sender, EventArgs e)
         {
-            dataGridViewMedPolicies.DataSource = policyhandler.searchPolicy(int.Parse(txtMedPolicyID.Text));
+            dataGridViewMedPolicies.DataSource = policyhandler.searchPolicy(int.Parse(txtMedPolicySearch.Text));
         }
     }
 }

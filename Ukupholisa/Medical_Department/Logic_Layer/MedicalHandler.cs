@@ -49,7 +49,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
-                //ADD treatment please
+                cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();
@@ -62,9 +62,10 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
             {
                 SqlCommand cmd = new SqlCommand("mcUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                //ons gan n ID param nodig he om te filter vir die update
+                cmd.Parameters.AddWithValue("@Condition_Id", medcon.MedConID);
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
+                cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();

@@ -43,7 +43,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         }
         public DataTable PopulatePackage()
         {
-            string query = @"SELECT * FROM Policy_Package";
+            string query = @"SELECT pp.Package_Id, p.Provider_Id, pp.Package_Name, pp.Package_Cost FROM Policy_Package pp, Provider_Package p WHERE pp.Package_Id = p.Package_Id";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
 
@@ -98,15 +98,24 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         }
         public void deletePolicy(int polID)
         {
-            using (SqlConnection connect = new SqlConnection(con))
+            try
             {
-                SqlCommand cmd = new SqlCommand("polDelete", connect);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", polID);
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("polDelete", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Policy_Id", polID);
 
-                connect.Open();
-                cmd.ExecuteNonQuery();
+                    connect.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
         }
         public DataTable searchPolicy(int polID)
         {
@@ -138,9 +147,9 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("packCreate", connect);
+                SqlCommand cmd = new SqlCommand("packCreateTest", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Package_Id", package.Name);//verander die
+                //cmd.Parameters.AddWithValue("@Package_Id", package.PackageId);
                 cmd.Parameters.AddWithValue("@Package_Name", package.Name);
                 cmd.Parameters.AddWithValue("@Package_Cost", package.Cost);
                 cmd.Parameters.AddWithValue("@Provider_Id", package.ProviderId);
@@ -157,7 +166,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Package_Id", package.PackageId);
                 cmd.Parameters.AddWithValue("@Package_Name", package.Name);
-                cmd.Parameters.AddWithValue("@Policy_Cost", package.Cost);
+                cmd.Parameters.AddWithValue("@Package_Cost", package.Cost);
                 cmd.Parameters.AddWithValue("@Provider_Id", package.ProviderId);
 
                 connect.Open();
