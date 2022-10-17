@@ -41,7 +41,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
 
             return table;
         }
-        public void addMedCon(DataAccess_Layer.MedCondition medcon)
+        public void addMedCon(DataAccess_Layer.MedCondition medcon)//wil net seker maak oor die...
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -49,6 +49,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
+                //ADD treatment please
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();
@@ -61,6 +62,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
             {
                 SqlCommand cmd = new SqlCommand("mcUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
+                //ons gan n ID param nodig he om te filter vir die update
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
@@ -69,7 +71,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deleteMedCon(int conID)
+        public void deleteMedCon(int conID)//seker maak oor die
         {
             using (SqlConnection connect = new SqlConnection(con))
             {

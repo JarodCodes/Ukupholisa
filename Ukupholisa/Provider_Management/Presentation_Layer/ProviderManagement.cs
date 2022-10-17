@@ -52,16 +52,16 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             try
             {
                 DataAccess_Layer.Provider provider = new DataAccess_Layer.Provider();
-                provider.ProviderId = int.Parse(txtProvID.Text);
+                //provider.ProviderId = int.Parse(txtProvID.Text);
                 provider.Name = txtProvName.Text;
                 provider.Location = txtProvLocation.Text;
                 if (radioBtnTrue.Checked)
                 {
-                    provider.Status = true;
+                    provider.Status = 1;
                 }
                 else 
                 {
-                    provider.Status = false;
+                    provider.Status = 0;
                 }
 
                 policyhandler.addProvider(provider);
@@ -83,19 +83,19 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 provider.Location = txtProvLocation.Text;
                 if (radioBtnTrue.Checked)
                 {
-                    provider.Status = true;
+                    provider.Status = 1;
                 }
                 else
                 {
-                    provider.Status = false;
+                    provider.Status = 0;
                 }
 
                 policyhandler.updateProvider(provider);
                 MessageBox.Show("Provider was updated");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Provider was not updated");
+                MessageBox.Show("Provider was not updated" + ex.Message);
             }
         }
 
@@ -116,7 +116,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
 
         private void btnProvSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewProv.DataSource = policyhandler.searchProvider(int.Parse(txtProvID.Text));
+            dataGridViewProv.DataSource = policyhandler.searchProvider(int.Parse(txtProvSearch.Text));
         }
 
         private void dataGridViewPol_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -138,7 +138,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             try
             {
                 DataAccess_Layer.Policy policy = new DataAccess_Layer.Policy();
-                policy.PolicyId = int.Parse(txtPolID.Text);
+                //policy.PolicyId = int.Parse(txtPolID.Text);
                 policy.Name = txtPolName.Text;
                 policy.CoverLevel = cmbCoverLevel.Text;
                 policy.Cost = int.Parse(txtPolCost.Text);
@@ -147,9 +147,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policyhandler.addPolicy(policy);
                 MessageBox.Show("Policy was added");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Policy was not added");
+                MessageBox.Show("Policy was not added" + ex.Message);
             }
         }
 
@@ -190,12 +190,12 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
 
         private void btnPolProvSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewPolProv.DataSource = policyhandler.searchProvider(int.Parse(txtPolProvID.Text));
+            dataGridViewPolProv.DataSource = policyhandler.searchProvider(int.Parse(txtPolProvSearch.Text));
         }
 
         private void btnPolSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewPolProv.DataSource = policyhandler.searchPolicy(int.Parse(txtPolID.Text));
+            dataGridViewPol.DataSource = policyhandler.searchPolicy(int.Parse(txtPolSearch.Text));
         }
 
         private void dataGridViewPolProv_CellContentClick(object sender, DataGridViewCellEventArgs e)

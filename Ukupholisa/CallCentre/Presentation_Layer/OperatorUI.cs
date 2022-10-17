@@ -77,7 +77,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                clientHandler.saveClient(txtName.Text, txtSurname.Text, txtPhone.Text, txtAddress.Text, txtFamilyId.Text);
+                clientHandler.saveClient(txtName.Text, txtSurname.Text, txtPhone.Text, txtAddress.Text, int.Parse(txtFamilyId.Text));
             }
         }
 
@@ -95,7 +95,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                clientHandler.searchClient(new DataAccess_Layer.Client(txtClientIDSearch.Text));
+                clientHandler.searchClient(int.Parse(txtClientIDSearch.Text));
             }
         }
 
@@ -123,7 +123,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                clientHandler.updateClientDetails(txtClientIDSearch.Text);
+                clientHandler.updateClientDetails(int.Parse(txtClientIDSearch.Text));
             }
             
         }

@@ -10,10 +10,10 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
     {
         int providerId;
         string name, location;
-        Boolean status;
+        int status;
 
         public Provider() { }
-        public Provider(int providerId, string name, string location, bool status)
+        public Provider(int providerId, string name, string location, int status)
         {
             this.providerId = providerId;
             this.name = name;
@@ -24,6 +24,6 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
         public int ProviderId { get => providerId; set => providerId = value; }
         public string Name { get => name; set => name = value; }
         public string Location { get => location; set => location = value; }
-        public bool Status { get => status; set => status = value; }
+        public int Status { get => status; set => status = value; }
     }
 }

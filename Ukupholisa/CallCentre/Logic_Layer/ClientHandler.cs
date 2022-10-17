@@ -42,13 +42,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
             return table;
         }
-        public DataTable searchClient(DataAccess_Layer.Client client)
+        public DataTable searchClient(int client_id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client.ClientID);
+                cmd.Parameters.AddWithValue("@Client_Id", client_id);
 
                 connect.Open();
                 DataTable dt = new DataTable();
@@ -68,20 +68,20 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                 }
             }
         }
-        public void deleteClient(DataAccess_Layer.Client client)
+        public void deleteClient(int client_id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", client.ClientID);    
+                cmd.Parameters.AddWithValue("@Condition_Id", client_id);    
 
                 connect.Open();
                 cmd.ExecuteNonQuery();    
             }
         }
 
-        public void saveClient(string Name, string Surname, string Phone, string Address, string Family_Id)
+        public void saveClient(string Name, string Surname, string Phone, string Address, int Family_Id)
         {
             try
             {
@@ -93,8 +93,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     cmd.Parameters.AddWithValue("@Client_Surname", Surname);
                     cmd.Parameters.AddWithValue("@Client_Phone", Phone);
                     cmd.Parameters.AddWithValue("@Client_Address", Address);
-                    cmd.Parameters.AddWithValue("@Client_FamilyId", Name);
-                    cmd.Parameters.AddWithValue("@Client_Name", Name);
+
+                    //if (Family_Id == 0) //this is for insert into client and see whether they have a family or not
+                    //{
+                    cmd.Parameters.AddWithValue("@Client_FamilyId", Family_Id);
+                    //}
+
+
                     int num = cmd.ExecuteNonQuery();
                     if (num > 0)
                     {
@@ -112,13 +117,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
         }
         //Searching whether a medical condition exists
-        public DataTable searchMedicalCondition(Medical_Department.DataAccess_Layer.MedCondition medCondition)
+        public DataTable searchMedicalCondition(int condition_id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("medicalConditionSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", medCondition.MedConID);
+                cmd.Parameters.AddWithValue("@Condition_Id", condition_id);
 
                 connect.Open();
                 DataTable dt = new DataTable();
@@ -139,23 +144,9 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
         }
 
-        public void updateClientDetails(string clientID)
+        public void updateClientDetails(int clientID)
         {
-            DataAccess_Layer.Client client = new DataAccess_Layer.Client();
-
-            DataTable dtData = searchClient(new DataAccess_Layer.Client(clientID));
-            if (dtData.Rows.Count > 0)
-            {
-                client.FamilyID = dtData.Rows[0][1].ToString();
-                client.Name = dtData.Rows[0][2].ToString();
-                client.Surname = dtData.Rows[0][3].ToString();
-                client.Phone = dtData.Rows[0][4].ToString();    
-                client.Address = dtData.Rows[0][5].ToString();
-            }
-            else
-            {
-                //ClearAllData(); // For clear all control and refresh DataGridView data.  
-            }
+            //nie seker oor die nie
         }
     }
 

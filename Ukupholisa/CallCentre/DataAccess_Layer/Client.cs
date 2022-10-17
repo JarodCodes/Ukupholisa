@@ -8,34 +8,34 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 {
     public class Client
     {
-        string name, surname, phone, clientID, familyID, address;
-
+        string name, surname, phone, address;
+        int client_Id, family_Id;
 
         public Client()
         {
 
         }
 
-        public Client(string clientID)
+        public Client(int clientID)
         {
-            this.clientID = clientID;
+            this.client_Id = clientID;
         }
 
-        public Client(string name, string surname, string phone, string clientID, string familyID, string address)
+        public Client(string name, string surname, string phone, int client_Id, int family_Id, string address)
         {
             this.name = name;
             this.surname = surname;
             this.phone = phone;
-            this.clientID = clientID;
-            this.FamilyID = familyID;
-            this.Address = address;
+            this.client_Id = client_Id;
+            this.family_Id = family_Id;
+            this.address = address;
         }
 
         public string Name { get => name; set => name = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Phone { get => phone; set => phone = value; }
-        public string ClientID { get => clientID; set => clientID = value; }
-        public string FamilyID { get => familyID; set => familyID = value; }
         public string Address { get => address; set => address = value; }
+        public int Client_Id { get => client_Id; set => client_Id = value; }
+        public int Family_Id { get => family_Id; set => family_Id = value; }
     }
 }
