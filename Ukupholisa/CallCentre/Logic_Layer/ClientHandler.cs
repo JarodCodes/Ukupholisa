@@ -144,9 +144,40 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
         }
 
-        public void updateClientDetails(int clientID)
+        public void updateClientDetails(int ID, string Name, string Surname, string Phone, string Address, int Family_Id)
         {
-            //
+            using (SqlConnection connect = new SqlConnection(con)) 
+            {
+                SqlCommand cmd = new SqlCommand("clientUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", ID);
+                cmd.Parameters.AddWithValue("@Client_Name", Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", Phone);
+                cmd.Parameters.AddWithValue("@Client_Address", Address);
+                cmd.Parameters.AddWithValue("@Family_Id", Family_Id);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void addClientPol(int ClientID, int PolID)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("clientAddPol", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Id", ClientID);
+                    cmd.Parameters.AddWithValue("@Policy_Id", PolID);
+                    int num = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
+            }
         }
     }
 

@@ -110,5 +110,31 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 }
             }
         }
+        public DataTable searchMedPol(int conID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("mcPolSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Condition_Id", conID);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No medical condition found");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Medical condition found");
+                    }
+                    return dt;
+                }
+            }
+        }
     }
 }

@@ -53,42 +53,42 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Application.Exit();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSaveClient_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            if (string.IsNullOrWhiteSpace(txtClientName.Text))
             {
                 MessageBox.Show("Enter Client Name!");
-                txtName.Select();
+                txtClientName.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtSurname.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientSurname.Text))
             {
                 MessageBox.Show("Enter Client Surname!");
-                txtSurname.Select();
+                txtClientSurname.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientPhone.Text))
             {
                 MessageBox.Show("Enter Client Phone number!");
-                txtPhone.Select();
+                txtClientPhone.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientAddress.Text))
             {
                 MessageBox.Show("Enter Client Address!");
-                txtAddress.Select();
+                txtClientAddress.Select();
             }
             else if (radiobtnNo.Checked == true)
             {
-                txtFamilyId.Text = "0";
+                txtNewFamilyId.Text = "0";
             }
             else
             {
-                clientHandler.saveClient(txtName.Text, txtSurname.Text, txtPhone.Text, txtAddress.Text, int.Parse(txtFamilyId.Text));
+                clientHandler.saveClient(txtClientName.Text, txtClientSurname.Text, txtClientPhone.Text, txtClientAddress.Text, int.Parse(txtNewFamilyId.Text));
             }
         }
 
         private void OperatorUI_Load(object sender, EventArgs e)
         {
             radiobtnYes.Checked = true;
-            dataGridView2.DataSource = policy.PopulatePolicy();
+            dataGridViewPolicyList.DataSource = policy.PopulatePolicy();
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
@@ -99,35 +99,35 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                clientHandler.searchClient(int.Parse(txtClientIDSearch.Text));
+                dataGridViewClientSummary.DataSource = clientHandler.searchClient(int.Parse(txtClientIDSearch.Text));
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)//Updating the client details
+        private void btnClientUpdate_Click(object sender, EventArgs e)//Updating the client details
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text))
+            if (string.IsNullOrWhiteSpace(txtClientName.Text))
             {
                 MessageBox.Show("Enter Client Name!");
-                txtName.Select();
+                txtClientName.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtSurname.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientSurname.Text))
             {
                 MessageBox.Show("Enter Client Surname!");
-                txtSurname.Select();
+                txtClientSurname.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientPhone.Text))
             {
                 MessageBox.Show("Enter Client Phone number!");
-                txtPhone.Select();
+                txtClientPhone.Select();
             }
-            else if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            else if (string.IsNullOrWhiteSpace(txtClientAddress.Text))
             {
                 MessageBox.Show("Enter Client Address!");
-                txtAddress.Select();
+                txtClientAddress.Select();
             }
             else
             {
-                clientHandler.updateClientDetails(int.Parse(txtClientIDSearch.Text));
+                clientHandler.updateClientDetails(int.Parse(txtClientID.Text), txtClientName.Text, txtClientSurname.Text, txtClientPhone.Text, txtClientAddress.Text, int.Parse(txtNewFamilyId.Text);
             }
             
         }
@@ -159,7 +159,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                medhandler.searchMedCon(int.Parse(txtMedConditionSearch.Text));
+                dataGridViewPolicyList.DataSource = medhandler.searchMedPol(int.Parse(txtMedConditionSearch.Text));
             }
         }
 
@@ -172,13 +172,45 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             if (radiobtnYes.Checked)
             {
-                txtFamilyId.Enabled = true;
+                txtNewFamilyId.Enabled = true;
             }
             else
             {
-                txtFamilyId.Enabled = false;
-                txtFamilyId.Text = "0";
+                txtNewFamilyId.Enabled = false;
+                txtNewFamilyId.Text = "0";
             }
         }
+
+        private void dataGridViewClientSummary_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow rows = this.dataGridViewClientSummary.Rows[e.RowIndex];
+
+                txtClientID.Text = rows.Cells["Client_Id"].Value.ToString();
+                txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
+                txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
+                txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
+                txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
+
+            }
+        }
+
+        private void dataGridViewPolicyList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow rows = this.dataGridViewPolicyList.Rows[e.RowIndex];
+
+                txtNewPolID.Text = rows.Cells["Policy_Id"].Value.ToString();
+
+            }
+        }
+
+        private void txtClientPolAdd_Click(object sender, EventArgs e)
+        {
+            clientHandler.addClientPol(int.Parse(txtClientID.Text), int.Parse(txtNewPolID.Text));
+        }
+    }
     }
 }
