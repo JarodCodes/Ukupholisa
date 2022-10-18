@@ -61,15 +61,15 @@
     <Compile Include="CallCentre\Presentation_Layer\OperatorUI.Designer.cs">
       <DependentUpon>OperatorUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="ICRUD.cs" />
     <Compile Include="mainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mainMenu.Designer.cs">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Medical_Department\Logic_Layer\MedicalHandler.cs" />
-    <Compile Include="Medical_Department\DataAccess_Layer\MedCondition.cs" />
-    <Compile Include="Medical_Department\DataAccess_Layer\MedProvider.cs" />
+    <Compile Include="Medical_Department\DataAccess_Layer\MedicalHandler.cs" />
+    <Compile Include="Medical_Department\Logic_Layer\MedCondition.cs" />
     <Compile Include="Medical_Department\Presentation_Layer\Medical_Dept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,10 +78,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider_Management\DataAccess_Layer\Policy.cs" />
-    <Compile Include="Provider_Management\DataAccess_Layer\PolicyPackage.cs" />
-    <Compile Include="Provider_Management\DataAccess_Layer\Provider.cs" />
-    <Compile Include="Provider_Management\Logic_Layer\PolicyHandler.cs" />
+    <Compile Include="Provider_Management\Logic_Layer\Policy.cs" />
+    <Compile Include="Provider_Management\Logic_Layer\PolicyPackage.cs" />
+    <Compile Include="Provider_Management\Logic_Layer\Provider.cs" />
+    <Compile Include="Provider_Management\DataAccess_Layer\PolicyHandler.cs" />
     <Compile Include="Provider_Management\Presentation_Layer\ProviderManagement.cs">
       <SubType>Form</SubType>
     </Compile>

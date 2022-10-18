@@ -5,29 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
-namespace Ukupholisa.Provider_Management.Logic_Layer
+namespace Ukupholisa.Provider_Management.DataAccess_Layer
 {
     class PolicyHandler
     {
         string con = "Server=(local); Initial Catalog=Ukupholisa_Healthcare; Integrated Security= SSPI";
-        public SqlConnection Connect()
-        {
-            SqlConnection cn = new SqlConnection(con);
-
-            try
-            {
-                cn.Open();
-                MessageBox.Show("Connection successful");
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Connection error");
-            }
-            return cn;
-        }
 
         public DataTable PopulatePolicy()
         {
@@ -66,7 +49,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
 
             return table;
         }
-        public void addPolicy(DataAccess_Layer.Policy policy)
+        public void addPolicy(Logic_Layer.Policy policy)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -81,7 +64,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updatePolicy(DataAccess_Layer.Policy policy)
+        public void updatePolicy(Logic_Layer.Policy policy)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -98,8 +81,6 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         }
         public void deletePolicy(int polID)
         {
-            try
-            {
                 using (SqlConnection connect = new SqlConnection(con))
                 {
                     SqlCommand cmd = new SqlCommand("polDelete", connect);
@@ -108,14 +89,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
 
                     connect.Open();
                     cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            
+                } 
         }
         public DataTable searchPolicy(int polID)
         {
@@ -131,19 +105,11 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No policy found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Policy found");
-                    }
                     return dt;
                 }
             }
         }
-        public void createPackage(DataAccess_Layer.PolicyPackage package)
+        public void createPackage(Logic_Layer.PolicyPackage package)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -158,7 +124,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updatePackage(DataAccess_Layer.PolicyPackage package)
+        public void updatePackage(Logic_Layer.PolicyPackage package)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -199,19 +165,11 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No package found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Package found");
-                    }
                     return dt;
                 }
             }
         }
-        public void addProvider(DataAccess_Layer.Provider provider)
+        public void addProvider(Logic_Layer.Provider provider)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -225,7 +183,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updateProvider(DataAccess_Layer.Provider provider)
+        public void updateProvider(Logic_Layer.Provider provider)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -266,14 +224,6 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No provider found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Provider found");
-                    }
                     return dt;
                 }
             }
@@ -305,14 +255,6 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No policies found, please create a pack");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Policies found, this package already exists");
-                    }
                     return dt;
                 }
             }
