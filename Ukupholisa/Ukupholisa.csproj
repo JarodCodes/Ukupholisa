@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallCentre\DataAccess_Layer\Client.cs" />
-    <Compile Include="CallCentre\DataAccess_Layer\Family.cs" />
-    <Compile Include="CallCentre\Logic_Layer\ClientHandler.cs" />
+    <Compile Include="CallCentre\Logic_Layer\Client.cs" />
+    <Compile Include="CallCentre\Logic_Layer\Family.cs" />
+    <Compile Include="CallCentre\DataAccess_Layer\ClientHandler.cs" />
     <Compile Include="CallCentre\Presentation_Layer\CleintAndPolicy.cs">
       <SubType>Form</SubType>
     </Compile>

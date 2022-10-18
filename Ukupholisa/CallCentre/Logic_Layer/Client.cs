@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ukupholisa.CallCentre.DataAccess_Layer
+namespace Ukupholisa.CallCentre.Logic_Layer
 {
-    public class Client
+    public class Client:ICRUD
     {
         string name, surname, phone, address;
         int client_Id, family_Id;
@@ -37,5 +38,36 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         public string Address { get => address; set => address = value; }
         public int Client_Id { get => client_Id; set => client_Id = value; }
         public int Family_Id { get => family_Id; set => family_Id = value; }
+
+        public void add()
+        {
+            Family fam = new Family();
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            handler.saveClient(this, fam);
+        }
+
+        public void delete()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            handler.deleteClient(Client_Id);
+        }
+
+        public DataTable populate()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            return handler.PopulateClient();
+        }
+
+        public DataTable search()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            return handler.searchClient(Client_Id);
+        }
+
+        public void update()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            handler.updateClientDetails(this);
+        }
     }
 }
