@@ -80,8 +80,39 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                 cmd.ExecuteNonQuery();    
             }
         }
+        public void saveClientFamily(string role, string Name, string Surname, string Phone, string Address, int family_Id)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("saveClientFamily", connect);
+                    cmd.Parameters.AddWithValue("@Family_Role", role);
+                    cmd.Parameters.AddWithValue("@Client_Name", Name);
+                    cmd.Parameters.AddWithValue("@Client_Surname", Surname);
+                    cmd.Parameters.AddWithValue("@Client_Phone", Phone);
+                    cmd.Parameters.AddWithValue("@Client_Address", Address);
+                    cmd.Parameters.AddWithValue("@Family_Id", family_Id);
 
-        public void saveClient(string Name, string Surname, string Phone, string Address, int Family_Id)
+                    connect.Open();
+
+                    cmd.ExecuteNonQuery();
+                    //if (num > 0)
+                    //{
+                    //    MessageBox.Show("Record added successfully!");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Oops! Something went wrong!");
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+        public void saveClient(string Name, string Surname, string Phone, string Address, int family_Id, string role)
         {
             try
             {
@@ -93,12 +124,10 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                     cmd.Parameters.AddWithValue("@Client_Surname", Surname);
                     cmd.Parameters.AddWithValue("@Client_Phone", Phone);
                     cmd.Parameters.AddWithValue("@Client_Address", Address);
+                    cmd.Parameters.AddWithValue("@Family_Id", family_Id);
+                    cmd.Parameters.AddWithValue("@Family_Role", role);
 
-                    if (Family_Id == 0) //this is for insert into client and see whether they have a family or not
-                    {
-                        cmd.Parameters.AddWithValue("@Client_FamilyId", Family_Id);
-                    }
-
+                    connect.Open();
 
                     int num = cmd.ExecuteNonQuery();
                     if (num > 0)
@@ -113,7 +142,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex);
+                MessageBox.Show("Error:" + ex.Message);
             }
         }
         //Searching whether a medical condition exists
