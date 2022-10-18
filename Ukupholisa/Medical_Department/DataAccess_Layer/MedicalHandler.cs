@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace Ukupholisa.Medical_Department.Logic_Layer
+namespace Ukupholisa.Medical_Department.DataAccess_Layer
 {
     public class MedicalHandler
     {
@@ -41,7 +41,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
 
             return table;
         }
-        public void addMedCon(DataAccess_Layer.MedCondition medcon)//wil net seker maak oor die...
+        public void addMedCon(Logic_layer.MedCondition medcon)//wil net seker maak oor die...
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -56,7 +56,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updateMedCon(DataAccess_Layer.MedCondition medcon)
+        public void updateMedCon(Logic_layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -72,7 +72,7 @@ namespace Ukupholisa.Medical_Department.Logic_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void deleteMedCon(int conID)//seker maak oor die
+        public void deleteMedCon(int conID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {

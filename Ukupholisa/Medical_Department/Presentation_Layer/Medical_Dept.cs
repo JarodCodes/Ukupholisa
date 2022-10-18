@@ -16,12 +16,12 @@ namespace Ukupholisa.Medical_Department
         {
             InitializeComponent();
         }
-        Logic_Layer.MedicalHandler medhandler = new Logic_Layer.MedicalHandler();
-        Provider_Management.Logic_Layer.PolicyHandler policyhandler = new Provider_Management.Logic_Layer.PolicyHandler();
+        ICRUD medcon = new Logic_layer.MedCondition();
+        ICRUD policy = new Provider_Management.Logic_Layer.Policy();
         private void Medical_Dept_Load(object sender, EventArgs e)
         {
-            dataGridViewMedCon.DataSource = medhandler.PopulateMedCon();
-            dataGridViewMedPolicies.DataSource = policyhandler.PopulatePolicy();
+            dataGridViewMedCon.DataSource = medcon.populate();
+            dataGridViewMedPolicies.DataSource = policy.populate();
         }
 
         private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -52,19 +52,19 @@ namespace Ukupholisa.Medical_Department
         {
             try
             {
-                DataAccess_Layer.MedCondition medcon = new DataAccess_Layer.MedCondition();
+                Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
                 //medcon.MedConID = int.Parse(txtMedID.Text);
                 medcon.Name = txtMedName.Text;
                 medcon.Description = rtxtMedDesc.Text;
                 medcon.Treatment = txtTreatment.Text;
                 medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
 
-                medhandler.addMedCon(medcon);
+                medcon.add();
                 MessageBox.Show("Condition was added");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Condition was not added" + ex.Message);
+                MessageBox.Show("Condition was not added");
             }
         }
 
@@ -72,19 +72,19 @@ namespace Ukupholisa.Medical_Department
         {
             try
             {
-                DataAccess_Layer.MedCondition medcon = new DataAccess_Layer.MedCondition();
+                Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
                 medcon.MedConID = int.Parse(txtMedID.Text);
                 medcon.Name = txtMedName.Text;
                 medcon.Description = rtxtMedDesc.Text;
                 medcon.Treatment = txtTreatment.Text;
                 medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
 
-                medhandler.updateMedCon(medcon);
+                medcon.update();
                 MessageBox.Show("Condition was updated");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Condition was not updated" + ex.Message);
+                MessageBox.Show("Condition was not updated");
             }
         }
 
@@ -92,25 +92,48 @@ namespace Ukupholisa.Medical_Department
         {
             try
             {
-                int medID = int.Parse(txtMedID.Text);
+                Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
+                medcon.MedConID = int.Parse(txtMedID.Text);
 
-                medhandler.deleteMedCon(medID);
+                medcon.delete();
                 MessageBox.Show("Condition was deleted");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Condition was not deleted" + ex.Message);
+                MessageBox.Show("Condition was not deleted");
             }
         }
 
         private void btnMedSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewMedCon.DataSource = medhandler.searchMedCon(int.Parse(txtMedSearch.Text));
+            Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
+            medcon.MedConID = int.Parse(txtMedSearch.Text);
+            DataTable dt = medcon.search();
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No condition found");
+            }
+            else
+            {
+                MessageBox.Show("Condition found");
+                dataGridViewMedCon.DataSource = dt;
+            }
         }
 
         private void btnMedPolicySearch_Click(object sender, EventArgs e)
         {
-            dataGridViewMedPolicies.DataSource = policyhandler.searchPolicy(int.Parse(txtMedPolicySearch.Text));
+            Provider_Management.Logic_Layer.Policy policy = new Provider_Management.Logic_Layer.Policy();
+            policy.PolicyId = int.Parse(txtMedPolicySearch.Text);
+            DataTable dt = policy.search();
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No policy found");
+            }
+            else
+            {
+                MessageBox.Show("Policy found");
+                dataGridViewMedPolicies.DataSource = dt;
+            }
         }
     }
 }
