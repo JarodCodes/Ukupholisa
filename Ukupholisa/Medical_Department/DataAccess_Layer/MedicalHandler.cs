@@ -5,29 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace Ukupholisa.Medical_Department.DataAccess_Layer
 {
     public class MedicalHandler
     {
         string con = "Server=(local); Initial Catalog=Ukupholisa_Healthcare; Integrated Security= SSPI";
-        public SqlConnection Connect() 
-        {
-            SqlConnection cn = new SqlConnection(con);
-
-            try
-            {
-                cn.Open();
-                MessageBox.Show("Connection successful");
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Connection error");
-            }
-            return cn;
-        }
 
         public DataTable PopulateMedCon()
         {
@@ -98,14 +81,6 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No medical condition found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Medical condition found");
-                    }
                     return dt;
                 }
             }
@@ -124,14 +99,6 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No medical condition found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Medical condition found");
-                    }
                     return dt;
                 }
             }
