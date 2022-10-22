@@ -88,6 +88,9 @@
     <Compile Include="Provider_Management\Presentation_Layer\ProviderManagement.Designer.cs">
       <DependentUpon>ProviderManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CallCentre\Presentation_Layer\CleintAndPolicy.resx">
+      <DependentUpon>CleintAndPolicy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CallCentre\Presentation_Layer\OperatorUI.resx">
       <DependentUpon>OperatorUI.cs</DependentUpon>
     </EmbeddedResource>
