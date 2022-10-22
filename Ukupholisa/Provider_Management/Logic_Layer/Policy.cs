@@ -66,5 +66,10 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             handler.deletePolicy(PolicyId);
         }
+        public DataTable famPolSearch(int family_Id)
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            return handler.searchFamPol(family_Id);
+        }
     }
 }

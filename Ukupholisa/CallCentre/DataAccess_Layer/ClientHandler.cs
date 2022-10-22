@@ -184,7 +184,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
                 cmd.Parameters.AddWithValue("@Client_Address", client.Address);
-                cmd.Parameters.AddWithValue("@Family_Id", client.Family_Id);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();
@@ -206,6 +205,89 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             catch (Exception ex)
             {
                 MessageBox.Show("Error:" + ex);
+            }
+        }
+        public DataTable searchFamily(int family_id) 
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("famSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Family_Id", family_id);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+        public void addFamClient(Logic_Layer.Family family, int client_Id)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("familyClientAdd", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
+                    cmd.Parameters.AddWithValue("@Family_Surname", family.Family_Surname);
+                    int num = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
+            }
+        }
+        public void updateFamily(Logic_Layer.Family family, int client_Id) 
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("familyClientUpdate", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
+                    cmd.Parameters.AddWithValue("@Family_Surname", family.Family_Surname);
+                    int num = cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
+            }
+        }
+        public void removeFamClient(int family_Id, int client_Id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("famClientRemove", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
+                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void deleteFam(int family_Id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("familyDelete", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
             }
         }
     }
