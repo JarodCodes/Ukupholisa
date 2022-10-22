@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 
-namespace Ukupholisa.CallCentre.Logic_Layer
+namespace Ukupholisa.CallCentre.DataAccess_Layer
 {
     internal class ClientHandler
     {
@@ -80,8 +80,39 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                 cmd.ExecuteNonQuery();    
             }
         }
+        public void saveClientFamily(string role, string Name, string Surname, string Phone, string Address, int family_Id)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("saveClientFamily", connect);
+                    cmd.Parameters.AddWithValue("@Family_Role", role);
+                    cmd.Parameters.AddWithValue("@Client_Name", Name);
+                    cmd.Parameters.AddWithValue("@Client_Surname", Surname);
+                    cmd.Parameters.AddWithValue("@Client_Phone", Phone);
+                    cmd.Parameters.AddWithValue("@Client_Address", Address);
+                    cmd.Parameters.AddWithValue("@Family_Id", family_Id);
 
-        public void saveClient(string Name, string Surname, string Phone, string Address, int Family_Id)
+                    connect.Open();
+
+                    cmd.ExecuteNonQuery();
+                    //if (num > 0)
+                    //{
+                    //    MessageBox.Show("Record added successfully!");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Oops! Something went wrong!");
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+        public void saveClient(Logic_Layer.Client client, Logic_Layer.Family family)
         {
             try
             {
@@ -89,16 +120,14 @@ namespace Ukupholisa.CallCentre.Logic_Layer
                 {
                     SqlCommand cmd = new SqlCommand("clientSave", connect);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Name", Name);
-                    cmd.Parameters.AddWithValue("@Client_Surname", Surname);
-                    cmd.Parameters.AddWithValue("@Client_Phone", Phone);
-                    cmd.Parameters.AddWithValue("@Client_Address", Address);
+                    cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                    cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                    cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                    cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
 
-                    if (Family_Id == 0) //this is for insert into client and see whether they have a family or not
-                    {
-                        cmd.Parameters.AddWithValue("@Client_FamilyId", Family_Id);
-                    }
-
+                    connect.Open();
 
                     int num = cmd.ExecuteNonQuery();
                     if (num > 0)
@@ -113,49 +142,49 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex);
+                MessageBox.Show("Error:" + ex.Message);
             }
         }
         //Searching whether a medical condition exists
-        public DataTable searchMedicalCondition(int condition_id)
-        {
-            using (SqlConnection connect = new SqlConnection(con))
-            {
-                SqlCommand cmd = new SqlCommand("medicalConditionSearch", connect);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", condition_id);
+        //public DataTable searchMedicalCondition(int condition_id)
+        //{
+        //    using (SqlConnection connect = new SqlConnection(con))
+        //    {
+        //        SqlCommand cmd = new SqlCommand("medicalConditionSearch", connect);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.AddWithValue("@Condition_Id", condition_id);
 
-                connect.Open();
-                DataTable dt = new DataTable();
+        //        connect.Open();
+        //        DataTable dt = new DataTable();
 
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Condition was not found!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Condition found!");
-                    }
-                    return dt;
-                }
-            }
-        }
+        //        using (SqlDataReader dr = cmd.ExecuteReader())
+        //        {
+        //            dt.Load(dr);
+        //            if (dt.Rows.Count == 0)
+        //            {
+        //                MessageBox.Show("Condition was not found!");
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Condition found!");
+        //            }
+        //            return dt;
+        //        }
+        //    }
+        //}
 
-        public void updateClientDetails(int ID, string Name, string Surname, string Phone, string Address, int Family_Id)
+        public void updateClientDetails(Logic_Layer.Client client)
         {
             using (SqlConnection connect = new SqlConnection(con)) 
             {
                 SqlCommand cmd = new SqlCommand("clientUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", ID);
-                cmd.Parameters.AddWithValue("@Client_Name", Name);
-                cmd.Parameters.AddWithValue("@Client_Surname", Surname);
-                cmd.Parameters.AddWithValue("@Client_Phone", Phone);
-                cmd.Parameters.AddWithValue("@Client_Address", Address);
-                cmd.Parameters.AddWithValue("@Family_Id", Family_Id);
+                cmd.Parameters.AddWithValue("@Client_Id", client.Client_Id);
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                cmd.Parameters.AddWithValue("@Family_Id", client.Family_Id);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();

@@ -38,17 +38,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.btnAnswer = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnSearchClient = new System.Windows.Forms.Button();
-            this.txtClientIDSearch = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnClientUpdate = new System.Windows.Forms.Button();
             this.btnSaveClient = new System.Windows.Forms.Button();
             this.txtClientAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbFamily_Role = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtNewFamilyId = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.radiobtnNo = new System.Windows.Forms.RadioButton();
@@ -61,7 +58,16 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSearchClient = new System.Windows.Forms.Button();
+            this.txtClientIDSearch = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewClientSummary = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtNewPolID = new System.Windows.Forms.TextBox();
+            this.txtClientPolAdd = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -71,21 +77,18 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridViewPolicyList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewClientSummary = new System.Windows.Forms.DataGridView();
-            this.txtClientPolAdd = new System.Windows.Forms.Button();
-            this.txtNewPolID = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.CallReceiver.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientSummary)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPolicyList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientSummary)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -182,7 +185,19 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.dataGridViewClientSummary);
+            this.groupBox6.Controls.Add(this.btnClientUpdate);
+            this.groupBox6.Controls.Add(this.btnSaveClient);
+            this.groupBox6.Controls.Add(this.txtClientAddress);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.groupBox7);
+            this.groupBox6.Controls.Add(this.txtClientID);
+            this.groupBox6.Controls.Add(this.txtClientPhone);
+            this.groupBox6.Controls.Add(this.txtClientSurname);
+            this.groupBox6.Controls.Add(this.txtClientName);
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(557, 6);
             this.groupBox6.Name = "groupBox6";
@@ -191,9 +206,206 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Client Summary";
             // 
+            // btnClientUpdate
+            // 
+            this.btnClientUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientUpdate.Location = new System.Drawing.Point(21, 284);
+            this.btnClientUpdate.Name = "btnClientUpdate";
+            this.btnClientUpdate.Size = new System.Drawing.Size(67, 36);
+            this.btnClientUpdate.TabIndex = 27;
+            this.btnClientUpdate.Text = "Update Client";
+            this.btnClientUpdate.UseVisualStyleBackColor = true;
+            this.btnClientUpdate.Click += new System.EventHandler(this.btnClientUpdate_Click_1);
+            // 
+            // btnSaveClient
+            // 
+            this.btnSaveClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveClient.Location = new System.Drawing.Point(196, 284);
+            this.btnSaveClient.Name = "btnSaveClient";
+            this.btnSaveClient.Size = new System.Drawing.Size(67, 36);
+            this.btnSaveClient.TabIndex = 26;
+            this.btnSaveClient.Text = "Add Client";
+            this.btnSaveClient.UseVisualStyleBackColor = true;
+            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click_1);
+            // 
+            // txtClientAddress
+            // 
+            this.txtClientAddress.Location = new System.Drawing.Point(90, 145);
+            this.txtClientAddress.Name = "txtClientAddress";
+            this.txtClientAddress.Size = new System.Drawing.Size(154, 20);
+            this.txtClientAddress.TabIndex = 25;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(33, 148);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Address";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Controls.Add(this.cmbFamily_Role);
+            this.groupBox7.Controls.Add(this.label3);
+            this.groupBox7.Controls.Add(this.txtNewFamilyId);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.radiobtnNo);
+            this.groupBox7.Controls.Add(this.radiobtnYes);
+            this.groupBox7.Location = new System.Drawing.Point(35, 171);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(208, 107);
+            this.groupBox7.TabIndex = 23;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Family Member?";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(28, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Family?";
+            // 
+            // cmbFamily_Role
+            // 
+            this.cmbFamily_Role.FormattingEnabled = true;
+            this.cmbFamily_Role.Items.AddRange(new object[] {
+            "FATHER",
+            "MOTHER",
+            "CHILDREN"});
+            this.cmbFamily_Role.Location = new System.Drawing.Point(81, 73);
+            this.cmbFamily_Role.Name = "cmbFamily_Role";
+            this.cmbFamily_Role.Size = new System.Drawing.Size(121, 21);
+            this.cmbFamily_Role.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Family Role";
+            // 
+            // txtNewFamilyId
+            // 
+            this.txtNewFamilyId.Enabled = false;
+            this.txtNewFamilyId.Location = new System.Drawing.Point(81, 47);
+            this.txtNewFamilyId.Name = "txtNewFamilyId";
+            this.txtNewFamilyId.Size = new System.Drawing.Size(121, 20);
+            this.txtNewFamilyId.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(18, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Family ID";
+            // 
+            // radiobtnNo
+            // 
+            this.radiobtnNo.AutoSize = true;
+            this.radiobtnNo.Location = new System.Drawing.Point(161, 19);
+            this.radiobtnNo.Name = "radiobtnNo";
+            this.radiobtnNo.Size = new System.Drawing.Size(41, 17);
+            this.radiobtnNo.TabIndex = 1;
+            this.radiobtnNo.TabStop = true;
+            this.radiobtnNo.Text = "No";
+            this.radiobtnNo.UseVisualStyleBackColor = true;
+            this.radiobtnNo.CheckedChanged += new System.EventHandler(this.radiobtnNo_CheckedChanged_1);
+            // 
+            // radiobtnYes
+            // 
+            this.radiobtnYes.AutoSize = true;
+            this.radiobtnYes.Location = new System.Drawing.Point(83, 19);
+            this.radiobtnYes.Name = "radiobtnYes";
+            this.radiobtnYes.Size = new System.Drawing.Size(46, 17);
+            this.radiobtnYes.TabIndex = 0;
+            this.radiobtnYes.TabStop = true;
+            this.radiobtnYes.Text = "Yes";
+            this.radiobtnYes.UseVisualStyleBackColor = true;
+            this.radiobtnYes.CheckedChanged += new System.EventHandler(this.radiobtnYes_CheckedChanged_1);
+            // 
+            // txtClientID
+            // 
+            this.txtClientID.Location = new System.Drawing.Point(90, 41);
+            this.txtClientID.Name = "txtClientID";
+            this.txtClientID.Size = new System.Drawing.Size(154, 20);
+            this.txtClientID.TabIndex = 22;
+            // 
+            // txtClientPhone
+            // 
+            this.txtClientPhone.Location = new System.Drawing.Point(90, 119);
+            this.txtClientPhone.Name = "txtClientPhone";
+            this.txtClientPhone.Size = new System.Drawing.Size(154, 20);
+            this.txtClientPhone.TabIndex = 21;
+            // 
+            // txtClientSurname
+            // 
+            this.txtClientSurname.Location = new System.Drawing.Point(90, 93);
+            this.txtClientSurname.Name = "txtClientSurname";
+            this.txtClientSurname.Size = new System.Drawing.Size(154, 20);
+            this.txtClientSurname.TabIndex = 20;
+            // 
+            // txtClientName
+            // 
+            this.txtClientName.Location = new System.Drawing.Point(90, 67);
+            this.txtClientName.Name = "txtClientName";
+            this.txtClientName.Size = new System.Drawing.Size(154, 20);
+            this.txtClientName.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "ID Number";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(42, 123);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Phone";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(32, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Surname";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(46, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Name";
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(762, 488);
+            this.button2.Location = new System.Drawing.Point(760, 457);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 36);
             this.button2.TabIndex = 7;
@@ -244,19 +456,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnClientUpdate);
-            this.groupBox3.Controls.Add(this.btnSaveClient);
-            this.groupBox3.Controls.Add(this.txtClientAddress);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.groupBox7);
-            this.groupBox3.Controls.Add(this.txtClientID);
-            this.groupBox3.Controls.Add(this.txtClientPhone);
-            this.groupBox3.Controls.Add(this.txtClientSurname);
-            this.groupBox3.Controls.Add(this.txtClientName);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.dataGridViewClientSummary);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(6, 117);
             this.groupBox3.Name = "groupBox3";
@@ -265,166 +465,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Client Details";
             // 
-            // btnClientUpdate
+            // dataGridViewClientSummary
             // 
-            this.btnClientUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientUpdate.Location = new System.Drawing.Point(148, 263);
-            this.btnClientUpdate.Name = "btnClientUpdate";
-            this.btnClientUpdate.Size = new System.Drawing.Size(67, 36);
-            this.btnClientUpdate.TabIndex = 14;
-            this.btnClientUpdate.Text = "Update Client";
-            this.btnClientUpdate.UseVisualStyleBackColor = true;
-            this.btnClientUpdate.Click += new System.EventHandler(this.btnClientUpdate_Click);
-            // 
-            // btnSaveClient
-            // 
-            this.btnSaveClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveClient.Location = new System.Drawing.Point(322, 263);
-            this.btnSaveClient.Name = "btnSaveClient";
-            this.btnSaveClient.Size = new System.Drawing.Size(67, 36);
-            this.btnSaveClient.TabIndex = 13;
-            this.btnSaveClient.Text = "Add Client";
-            this.btnSaveClient.UseVisualStyleBackColor = true;
-            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
-            // 
-            // txtClientAddress
-            // 
-            this.txtClientAddress.Location = new System.Drawing.Point(217, 151);
-            this.txtClientAddress.Name = "txtClientAddress";
-            this.txtClientAddress.Size = new System.Drawing.Size(154, 20);
-            this.txtClientAddress.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(160, 154);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Address";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.txtNewFamilyId);
-            this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.radiobtnNo);
-            this.groupBox7.Controls.Add(this.radiobtnYes);
-            this.groupBox7.Location = new System.Drawing.Point(148, 176);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(241, 81);
-            this.groupBox7.TabIndex = 8;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Family Member?";
-            // 
-            // txtNewFamilyId
-            // 
-            this.txtNewFamilyId.Location = new System.Drawing.Point(69, 47);
-            this.txtNewFamilyId.Name = "txtNewFamilyId";
-            this.txtNewFamilyId.Size = new System.Drawing.Size(154, 20);
-            this.txtNewFamilyId.TabIndex = 14;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 50);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Family ID";
-            // 
-            // radiobtnNo
-            // 
-            this.radiobtnNo.AutoSize = true;
-            this.radiobtnNo.Location = new System.Drawing.Point(161, 19);
-            this.radiobtnNo.Name = "radiobtnNo";
-            this.radiobtnNo.Size = new System.Drawing.Size(41, 17);
-            this.radiobtnNo.TabIndex = 1;
-            this.radiobtnNo.TabStop = true;
-            this.radiobtnNo.Text = "No";
-            this.radiobtnNo.UseVisualStyleBackColor = true;
-            this.radiobtnNo.CheckedChanged += new System.EventHandler(this.radiobtnNo_CheckedChanged);
-            // 
-            // radiobtnYes
-            // 
-            this.radiobtnYes.AutoSize = true;
-            this.radiobtnYes.Location = new System.Drawing.Point(83, 19);
-            this.radiobtnYes.Name = "radiobtnYes";
-            this.radiobtnYes.Size = new System.Drawing.Size(46, 17);
-            this.radiobtnYes.TabIndex = 0;
-            this.radiobtnYes.TabStop = true;
-            this.radiobtnYes.Text = "Yes";
-            this.radiobtnYes.UseVisualStyleBackColor = true;
-            this.radiobtnYes.CheckedChanged += new System.EventHandler(this.radiobtnYes_CheckedChanged);
-            // 
-            // txtClientID
-            // 
-            this.txtClientID.Location = new System.Drawing.Point(217, 47);
-            this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(154, 20);
-            this.txtClientID.TabIndex = 7;
-            // 
-            // txtClientPhone
-            // 
-            this.txtClientPhone.Location = new System.Drawing.Point(217, 125);
-            this.txtClientPhone.Name = "txtClientPhone";
-            this.txtClientPhone.Size = new System.Drawing.Size(154, 20);
-            this.txtClientPhone.TabIndex = 6;
-            // 
-            // txtClientSurname
-            // 
-            this.txtClientSurname.Location = new System.Drawing.Point(217, 99);
-            this.txtClientSurname.Name = "txtClientSurname";
-            this.txtClientSurname.Size = new System.Drawing.Size(154, 20);
-            this.txtClientSurname.TabIndex = 5;
-            // 
-            // txtClientName
-            // 
-            this.txtClientName.Location = new System.Drawing.Point(217, 73);
-            this.txtClientName.Name = "txtClientName";
-            this.txtClientName.Size = new System.Drawing.Size(154, 20);
-            this.txtClientName.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(145, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "ID Number";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(169, 129);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Phone";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(159, 102);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Surname";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(173, 76);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Name";
+            this.dataGridViewClientSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClientSummary.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewClientSummary.Name = "dataGridViewClientSummary";
+            this.dataGridViewClientSummary.Size = new System.Drawing.Size(531, 309);
+            this.dataGridViewClientSummary.TabIndex = 0;
+            this.dataGridViewClientSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientSummary_CellContentClick);
             // 
             // tabPage1
             // 
@@ -440,6 +488,23 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabPage1.Size = new System.Drawing.Size(837, 530);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Policy Check";
+            // 
+            // txtNewPolID
+            // 
+            this.txtNewPolID.Location = new System.Drawing.Point(256, 495);
+            this.txtNewPolID.Name = "txtNewPolID";
+            this.txtNewPolID.Size = new System.Drawing.Size(100, 20);
+            this.txtNewPolID.TabIndex = 8;
+            // 
+            // txtClientPolAdd
+            // 
+            this.txtClientPolAdd.Location = new System.Drawing.Point(175, 493);
+            this.txtClientPolAdd.Name = "txtClientPolAdd";
+            this.txtClientPolAdd.Size = new System.Drawing.Size(75, 23);
+            this.txtClientPolAdd.TabIndex = 7;
+            this.txtClientPolAdd.Text = "Add Policy";
+            this.txtClientPolAdd.UseVisualStyleBackColor = true;
+            this.txtClientPolAdd.Click += new System.EventHandler(this.txtClientPolAdd_Click);
             // 
             // button5
             // 
@@ -536,32 +601,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewPolicyList.TabIndex = 0;
             this.dataGridViewPolicyList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPolicyList_CellContentClick);
             // 
-            // dataGridViewClientSummary
-            // 
-            this.dataGridViewClientSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientSummary.Location = new System.Drawing.Point(6, 16);
-            this.dataGridViewClientSummary.Name = "dataGridViewClientSummary";
-            this.dataGridViewClientSummary.Size = new System.Drawing.Size(260, 423);
-            this.dataGridViewClientSummary.TabIndex = 0;
-            this.dataGridViewClientSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientSummary_CellContentClick);
-            // 
-            // txtClientPolAdd
-            // 
-            this.txtClientPolAdd.Location = new System.Drawing.Point(175, 493);
-            this.txtClientPolAdd.Name = "txtClientPolAdd";
-            this.txtClientPolAdd.Size = new System.Drawing.Size(75, 23);
-            this.txtClientPolAdd.TabIndex = 7;
-            this.txtClientPolAdd.Text = "Add Policy";
-            this.txtClientPolAdd.UseVisualStyleBackColor = true;
-            this.txtClientPolAdd.Click += new System.EventHandler(this.txtClientPolAdd_Click);
-            // 
-            // txtNewPolID
-            // 
-            this.txtNewPolID.Location = new System.Drawing.Point(256, 495);
-            this.txtNewPolID.Name = "txtNewPolID";
-            this.txtNewPolID.Size = new System.Drawing.Size(100, 20);
-            this.txtNewPolID.TabIndex = 8;
-            // 
             // OperatorUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,19 +615,19 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.CallReceiver.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientSummary)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPolicyList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientSummary)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -616,6 +655,22 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Button btnSearchClient;
         private System.Windows.Forms.TextBox txtClientIDSearch;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnEndCall;
+        private System.Windows.Forms.DataGridView dataGridViewClientSummary;
+        private System.Windows.Forms.Button txtClientPolAdd;
+        private System.Windows.Forms.TextBox txtNewPolID;
+        private System.Windows.Forms.Button btnClientUpdate;
+        private System.Windows.Forms.Button btnSaveClient;
+        private System.Windows.Forms.TextBox txtClientAddress;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtNewFamilyId;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RadioButton radiobtnNo;
+        private System.Windows.Forms.RadioButton radiobtnYes;
         private System.Windows.Forms.TextBox txtClientID;
         private System.Windows.Forms.TextBox txtClientPhone;
         private System.Windows.Forms.TextBox txtClientSurname;
@@ -624,21 +679,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox txtClientAddress;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.RadioButton radiobtnNo;
-        private System.Windows.Forms.RadioButton radiobtnYes;
-        private System.Windows.Forms.Button btnClientUpdate;
-        private System.Windows.Forms.Button btnSaveClient;
-        private System.Windows.Forms.TextBox txtNewFamilyId;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnEndCall;
-        private System.Windows.Forms.DataGridView dataGridViewClientSummary;
-        private System.Windows.Forms.Button txtClientPolAdd;
-        private System.Windows.Forms.TextBox txtNewPolID;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbFamily_Role;
+        private System.Windows.Forms.Label label3;
     }
 }
