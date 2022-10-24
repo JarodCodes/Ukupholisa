@@ -17,6 +17,11 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         {
         }
 
+        public Family(string family_role)
+        {
+            this.family_role = family_role;
+        }
+
         public Family(int familyID, string family_Surname, string family_role)
         {
             this.FamilyID = familyID;

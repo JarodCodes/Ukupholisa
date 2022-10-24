@@ -9,7 +9,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 {
     public class Client:ICRUD
     {
-        string name, surname, phone, address;
+        string name, surname, phone, address, uniqueIdentifier;
         int client_Id, family_Id;
 
         public Client()
@@ -36,12 +36,24 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public string Phone { get => phone; set => phone = value; }
         public string Address { get => address; set => address = value; }
         public int Client_Id { get => client_Id; set => client_Id = value; }
+        public int Family_Id { get => family_Id; set => family_Id = value; }
+        public string UniqueIdentifier { get => uniqueIdentifier; set => uniqueIdentifier = value; }
+
+        public bool ifClientExists()
+        {
+            return false;
+        }
 
         public void add()
         {
-            Family fam = new Family();
+            //DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            //handler.saveClient(this);
+        }
+
+        public void getFamilyRole(string role)
+        {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            handler.saveClient(this, fam);
+            handler.saveClient(this, role);
         }
 
         public void delete()
@@ -59,7 +71,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public DataTable search()
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            return handler.searchClient(Client_Id);
+            return handler.searchClient(uniqueIdentifier);
         }
 
         public void update()
