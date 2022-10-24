@@ -20,10 +20,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             InitializeComponent();
         }
         ICRUD client = new Client();
+        Family family = new Family();
         ICRUD policy = new Policy();
         private void CleintAndPolicy_Load(object sender, EventArgs e)
         {
-            dataGridViewClients.DataSource = client.populate();
+            dataGridViewClients.DataSource = family.populate();
             dataGridViewPolicies.DataSource = policy.populate();
         }
 
@@ -101,7 +102,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
                 family.Family_role = cmbFamilyRole.Text;
-                family.Family_Surname = txtFamSurname.Text;
                 Client client = new Client();
                 client.Client_Id = int.Parse(txtFamClientID.Text);
 
@@ -122,7 +122,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
                 txtFamClientID.Text = rows.Cells["Client_Id"].Value.ToString();
                 cmbFamilyRole.Text = rows.Cells["Family_Role"].Value.ToString();
-                txtFamSurname.Text = rows.Cells["Family_Surname"].Value.ToString();
             }
         }
 
@@ -133,7 +132,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
                 family.Family_role = cmbFamilyRole.Text;
-                family.Family_Surname = txtFamSurname.Text;
                 Client client = new Client();
                 client.Client_Id = int.Parse(txtFamClientID.Text);
 
@@ -151,7 +149,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
                 Client client = new Client();
                 client.Client_Id = int.Parse(txtFamClientID.Text);
                 family.removeFromFam(client.Client_Id);
@@ -237,9 +234,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
-                Policy policy = new Policy();
-                policy.PolicyId = int.Parse(txtFamPolSearch.Text);
-                family.removeFamPol(policy.PolicyId);
+                family.removeFamPol();
                 MessageBox.Show("Policy was removed");
             }
             catch (Exception)
