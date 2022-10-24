@@ -20,3 +20,4 @@ C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.exe.config
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.exe
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.pdb
+C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.CallCentre.Presentation_Layer.CleintAndPolicy.resources

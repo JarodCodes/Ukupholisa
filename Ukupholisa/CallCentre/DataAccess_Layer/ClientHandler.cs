@@ -32,7 +32,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         public DataTable PopulateClient()
         {
             //will get all client details
-            string query = @"SELECT * FROM Client";
+            string query = @"SELECT Client_Code, Client_Name, Client_Surname, Client_Phone, Client_Address FROM Client";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
 
@@ -42,13 +42,13 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
             return table;
         }
-        public DataTable searchClient(int client_id)
+        public DataTable searchClient(string uniqueID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client_id);
+                cmd.Parameters.AddWithValue("@Client_Id", uniqueID);
 
                 connect.Open();
                 DataTable dt = new DataTable();
@@ -112,7 +112,13 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 MessageBox.Show("Error:" + ex.Message);
             }
         }
-        public void saveClient(Logic_Layer.Client client, Logic_Layer.Family family)
+
+        public void ifClientExist(Logic_Layer.Client client)
+        {
+            
+        }
+
+        public void saveClient(Logic_Layer.Client client, string family)
         {
             try
             {
@@ -124,8 +130,9 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                     cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
                     cmd.Parameters.AddWithValue("@Client_Address", client.Address);
-                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
-                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
+                    //cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                    cmd.Parameters.AddWithValue("@Family_Role", family);
+                    cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
 
                     connect.Open();
 

@@ -77,7 +77,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else
             {
-                client.Client_Id = int.Parse(txtClientID.Text);
+                client.UniqueIdentifier = txtClientIDSearch.Text;
                 dataGridViewClientSummary.DataSource = client.search();
             }
         }
@@ -147,7 +147,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 DataGridViewRow rows = this.dataGridViewClientSummary.Rows[e.RowIndex];
 
-                txtClientID.Text = rows.Cells["Client_Id"].Value.ToString();
+                txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
                 txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
                 txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
                 txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
@@ -186,6 +186,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnSaveClient_Click_1(object sender, EventArgs e)
         {
+
             if (string.IsNullOrWhiteSpace(txtClientName.Text))
             {
                 MessageBox.Show("Enter Client Name!");
@@ -220,15 +221,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
+                client.UniqueIdentifier = "G" + txtClientPhone.Text.Substring(0, 8);
 
                 fam.FamilyID = int.Parse(txtNewFamilyId.Text);
                 fam.Family_role = cmbFamily_Role.Text;
-
                 client.add();
             }
             else
             {
-                //clientHandler.saveClient(txtClientName.Text, txtClientSurname.Text, txtClientPhone.Text, txtClientAddress.Text, int.Parse(txtNewFamilyId.Text), cmbFamily_Role.Text);
+                Client client = new Client();
+                Family fam = new Family();
+
+                client.Name = txtClientName.Text;
+                client.Surname = txtClientSurname.Text;
+                client.Phone = txtClientPhone.Text;
+                client.Address = txtClientAddress.Text;
+                client.UniqueIdentifier = "G" + txtClientPhone.Text.Substring(0, 8);
+                fam.Family_role = cmbFamily_Role.Text;
+                client.getFamilyRole(fam.Family_role);
             }
         }
 
@@ -280,6 +290,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             cmbFamily_Role.Enabled = true;
             txtNewFamilyId.Enabled = true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
