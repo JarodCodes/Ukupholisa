@@ -22,15 +22,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             this.client_Id = clientID;
         }
 
-        public Client(string name, string surname, string phone, int client_Id, int family_Id, string address, string uniqueIdentifier)
+        public Client(string name, string surname, string phone, int client_Id, string address)
         {
-            this.name = name;
-            this.surname = surname;
-            this.phone = phone;
-            this.client_Id = client_Id;
-            this.family_Id = family_Id;
-            this.address = address;
-            this.uniqueIdentifier = uniqueIdentifier;
+            this.Name = name;
+            this.Surname = surname;
+            this.Phone = phone;
+            this.Client_Id = client_Id;
+            this.Address = address;
         }
 
         public string Name { get => name; set => name = value; }

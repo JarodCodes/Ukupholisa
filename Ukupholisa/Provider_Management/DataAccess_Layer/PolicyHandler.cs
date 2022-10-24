@@ -272,5 +272,49 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
+        public DataTable searchFamPol(int family_Id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("famPolSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+        public void addFamPolicy(int polID, int famID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("famPolAdd", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
+                cmd.Parameters.AddWithValue("@Family_Id", famID);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void removeFamPol(int polID, int famID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("famPolRemove", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", polID);
+                cmd.Parameters.AddWithValue("@Family_Id", famID);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
