@@ -14,7 +14,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
     public partial class OperatorUI : Form
     {
         ICRUD client = new Client();
-        ICRUD family = new Family();
+        Family family = new Family();
         ICRUD policy = new Provider_Management.Logic_Layer.Policy();
         ICRUD medical = new Medical_Department.Logic_layer.MedCondition();
 
@@ -207,7 +207,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 MessageBox.Show("Enter Client Address!");
                 txtClientAddress.Select();
                 return;
-            }else if (radiobtnYes.Checked == true)
+            }
+            else if (radiobtnYes.Checked == true)
             {
                 if (string.IsNullOrWhiteSpace(txtNewFamilyId.Text))
                 {
@@ -221,7 +222,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
-                client.UniqueIdentifier = "G" + txtClientPhone.Text.Substring(0, 8);
+
+                client.UniqueIdentifier = client.getUniqueCode(cmbFamily_Role.Text);
 
                 fam.FamilyID = int.Parse(txtNewFamilyId.Text);
                 fam.Family_role = cmbFamily_Role.Text;
@@ -236,7 +238,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
-                client.UniqueIdentifier = "G" + txtClientPhone.Text.Substring(0, 8);
+                client.UniqueIdentifier = client.getUniqueCode(cmbFamily_Role.Text);
                 fam.Family_role = cmbFamily_Role.Text;
                 client.getFamilyRole(fam.Family_role);
             }

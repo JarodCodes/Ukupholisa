@@ -79,5 +79,28 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.updateClientDetails(this);
         }
+
+        internal string getUniqueCode(string codeclass)
+        {
+            int codePart1 = 0;
+            int codePart2 = 0;
+
+            Random random = new Random();
+
+            codePart1 = random.Next(1000, 9999);
+            codePart2 = random.Next(1000, 9999);
+
+            if (codeclass == "MOTHER")
+            {
+                return "J" + codePart1.ToString() + codePart2.ToString();
+            }else if (codeclass == "CHILD")
+            {
+                return "H" + codePart1.ToString() + codePart2.ToString();
+            }
+            else
+            {
+                return "G" + codePart1.ToString() + codePart2.ToString();
+            }
+        }
     }
 }
