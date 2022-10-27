@@ -38,7 +38,11 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         {
             throw new NotImplementedException();
         }
-
+        public DataTable populate()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            return handler.populateClientFam();
+        }
         public void delete()
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
@@ -64,17 +68,17 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public void removeFromFam(int client_Id)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            handler.removeFamClient(FamilyID, client_Id);
+            handler.removeFamClient(client_Id);
         }
         public void addFamPol(int policy_Id) 
         {
             Provider_Management.DataAccess_Layer.PolicyHandler handler = new Provider_Management.DataAccess_Layer.PolicyHandler();
             handler.addFamPolicy(policy_Id, FamilyID);
         }
-        public void removeFamPol(int policy_Id)
+        public void removeFamPol()
         {
             Provider_Management.DataAccess_Layer.PolicyHandler handler = new Provider_Management.DataAccess_Layer.PolicyHandler();
-            handler.removeFamPol(policy_Id, FamilyID);
+            handler.removeFamPol(FamilyID);
         }
     }
 }

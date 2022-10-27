@@ -43,6 +43,19 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             return table;
         }
         public DataTable searchClient(string uniqueID)
+        public DataTable populateClientFam() 
+        {
+            string query = @"SELECT c.Client_Code,c.Client_Name, c.Client_Surname, c.Client_Phone,c.Client_Address , cf.Family_Role FROM Client c INNER JOIN Client_Family cf ON cf.Client_Id = c.Client_Id";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            return table;
+        }
+        public DataTable searchClient(int client_id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -243,7 +256,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     cmd.Parameters.AddWithValue("@Client_Id", client_Id);
                     cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                     cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                    cmd.Parameters.AddWithValue("@Family_Surname", family.Family_Surname);
                     int num = cmd.ExecuteNonQuery();
                 }
             }
@@ -263,7 +275,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     cmd.Parameters.AddWithValue("@Client_Id", client_Id);
                     cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                     cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                    cmd.Parameters.AddWithValue("@Family_Surname", family.Family_Surname);
                     int num = cmd.ExecuteNonQuery();
                 }
             }
@@ -272,13 +283,12 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 MessageBox.Show("Error:" + ex);
             }
         }
-        public void removeFamClient(int family_Id, int client_Id)
+        public void removeFamClient(int client_Id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("famClientRemove", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
                 cmd.Parameters.AddWithValue("@Client_Id", client_Id);
 
                 connect.Open();

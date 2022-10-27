@@ -303,13 +303,12 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void removeFamPol(int polID, int famID)
+        public void removeFamPol(int famID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("famPolRemove", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", polID);
                 cmd.Parameters.AddWithValue("@Family_Id", famID);
 
                 connect.Open();
