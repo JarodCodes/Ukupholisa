@@ -252,5 +252,43 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtFamPolSearch.Text = rows.Cells["Policy_Id"].Value.ToString();
             }
         }
+
+        private void txtClientID_TextChanged(object sender, EventArgs e)
+        {
+            Policy policy = new Policy();
+            Client client = new Client();
+            client.Client_Id = int.Parse(txtClientID.Text);
+            dataGridViewCurFamPol.DataSource = policy.clientPolSearch(client.Client_Id);
+        }
+
+        private void btnUpdateStatus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Client client = new Client();
+                client.Client_Id = int.Parse(txtClientID.Text);
+                Policy policy = new Policy();
+                policy.PolicyId = int.Parse(txtClientPolSearch.Text);
+                policy.Status = txtClientPolSearch.Text;
+
+                policy.updateStatus(client.Client_Id);
+                MessageBox.Show("Policy was not updated");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Policy was not updated");
+            }
+        }
+
+        private void dataGridViewClientPol_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow rows = this.dataGridViewClientPol.Rows[e.RowIndex];
+
+                txtClientPolSearch.Text = rows.Cells["Policy_Id"].Value.ToString();
+                cmbClientPolStatus.Text = rows.Cells["Policy_Status"].Value.ToString();
+            }
+        }
     }
 }

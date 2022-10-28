@@ -33,6 +33,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
+                cmd.Parameters.AddWithValue("@Condition_Duration", medcon.Duration);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();
@@ -49,6 +50,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
+                cmd.Parameters.AddWithValue("@Condition_Duration", medcon.Duration);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();

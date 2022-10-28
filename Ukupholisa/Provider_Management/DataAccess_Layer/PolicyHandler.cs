@@ -315,5 +315,37 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
+        public DataTable searchClientPol(int family_Id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("clientPolSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", family_Id);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+        public void updatePolicyStatus(Logic_Layer.Policy policy, int client_Id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("policyStatusUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
+                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Policy_Status", policy.Status);
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

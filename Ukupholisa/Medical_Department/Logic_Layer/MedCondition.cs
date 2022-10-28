@@ -10,16 +10,17 @@ namespace Ukupholisa.Medical_Department.Logic_layer
     public class MedCondition:ICRUD
     {
         string name, description, treatment;
-        int medConID, policyID;
+        int medConID, policyID, duration;
 
         public MedCondition() { }
-        public MedCondition(string name, string description, string treatment, int medConID, int policyID)
+        public MedCondition(string name, string description, string treatment, int medConID, int policyID, int duration)
         {
             this.Name = name;
             this.Description = description;
             this.Treatment = treatment;
             this.MedConID = medConID;
             this.PolicyID = policyID;
+            this.Duration = duration;
         }
 
         public string Name { get => name; set => name = value; }
@@ -27,6 +28,7 @@ namespace Ukupholisa.Medical_Department.Logic_layer
         public string Treatment { get => treatment; set => treatment = value; }
         public int MedConID { get => medConID; set => medConID = value; }
         public int PolicyID { get => policyID; set => policyID = value; }
+        public int Duration { get => duration; set => duration = value; }
 
         public void add()
         {
