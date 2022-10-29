@@ -33,6 +33,8 @@
             this.btnMedNext = new System.Windows.Forms.Button();
             this.btnMedPrev = new System.Windows.Forms.Button();
             this.groupBoxMedOperations = new System.Windows.Forms.GroupBox();
+            this.txtMedPolicyID = new System.Windows.Forms.TextBox();
+            this.txtTreatment = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -45,24 +47,25 @@
             this.txtMedID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxMedSearch = new System.Windows.Forms.GroupBox();
+            this.btnMedPolicySearch = new System.Windows.Forms.Button();
+            this.txtMedPolicySearch = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnMedSearch = new System.Windows.Forms.Button();
             this.txtMedSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTreatment = new System.Windows.Forms.TextBox();
-            this.txtMedPolicyID = new System.Windows.Forms.TextBox();
             this.groupBoxMedPolicies = new System.Windows.Forms.GroupBox();
             this.btnMedPolicyNext = new System.Windows.Forms.Button();
             this.btnMedPolicyPrev = new System.Windows.Forms.Button();
             this.dataGridViewMedPolicies = new System.Windows.Forms.DataGridView();
-            this.txtMedPolicySearch = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnMedPolicySearch = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.spinDuration = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedCon)).BeginInit();
             this.groupBoxMedData.SuspendLayout();
             this.groupBoxMedOperations.SuspendLayout();
             this.groupBoxMedSearch.SuspendLayout();
             this.groupBoxMedPolicies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedPolicies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinDuration)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMedCon
@@ -106,6 +109,8 @@
             // 
             // groupBoxMedOperations
             // 
+            this.groupBoxMedOperations.Controls.Add(this.spinDuration);
+            this.groupBoxMedOperations.Controls.Add(this.label8);
             this.groupBoxMedOperations.Controls.Add(this.txtMedPolicyID);
             this.groupBoxMedOperations.Controls.Add(this.txtTreatment);
             this.groupBoxMedOperations.Controls.Add(this.btnDelete);
@@ -125,6 +130,20 @@
             this.groupBoxMedOperations.TabIndex = 4;
             this.groupBoxMedOperations.TabStop = false;
             this.groupBoxMedOperations.Text = "Condition Operations";
+            // 
+            // txtMedPolicyID
+            // 
+            this.txtMedPolicyID.Location = new System.Drawing.Point(90, 225);
+            this.txtMedPolicyID.Name = "txtMedPolicyID";
+            this.txtMedPolicyID.Size = new System.Drawing.Size(183, 20);
+            this.txtMedPolicyID.TabIndex = 20;
+            // 
+            // txtTreatment
+            // 
+            this.txtTreatment.Location = new System.Drawing.Point(90, 200);
+            this.txtTreatment.Name = "txtTreatment";
+            this.txtTreatment.Size = new System.Drawing.Size(183, 20);
+            this.txtTreatment.TabIndex = 19;
             // 
             // btnDelete
             // 
@@ -238,6 +257,32 @@
             this.groupBoxMedSearch.TabStop = false;
             this.groupBoxMedSearch.Text = "Search";
             // 
+            // btnMedPolicySearch
+            // 
+            this.btnMedPolicySearch.Location = new System.Drawing.Point(144, 75);
+            this.btnMedPolicySearch.Name = "btnMedPolicySearch";
+            this.btnMedPolicySearch.Size = new System.Drawing.Size(129, 23);
+            this.btnMedPolicySearch.TabIndex = 23;
+            this.btnMedPolicySearch.Text = "Policy Search";
+            this.btnMedPolicySearch.UseVisualStyleBackColor = true;
+            this.btnMedPolicySearch.Click += new System.EventHandler(this.btnMedPolicySearch_Click);
+            // 
+            // txtMedPolicySearch
+            // 
+            this.txtMedPolicySearch.Location = new System.Drawing.Point(77, 46);
+            this.txtMedPolicySearch.Name = "txtMedPolicySearch";
+            this.txtMedPolicySearch.Size = new System.Drawing.Size(196, 20);
+            this.txtMedPolicySearch.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Policy ID";
+            // 
             // btnMedSearch
             // 
             this.btnMedSearch.Location = new System.Drawing.Point(9, 75);
@@ -263,20 +308,6 @@
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 19;
             this.label6.Text = "Condition ID";
-            // 
-            // txtTreatment
-            // 
-            this.txtTreatment.Location = new System.Drawing.Point(90, 200);
-            this.txtTreatment.Name = "txtTreatment";
-            this.txtTreatment.Size = new System.Drawing.Size(183, 20);
-            this.txtTreatment.TabIndex = 19;
-            // 
-            // txtMedPolicyID
-            // 
-            this.txtMedPolicyID.Location = new System.Drawing.Point(90, 225);
-            this.txtMedPolicyID.Name = "txtMedPolicyID";
-            this.txtMedPolicyID.Size = new System.Drawing.Size(183, 20);
-            this.txtMedPolicyID.TabIndex = 20;
             // 
             // groupBoxMedPolicies
             // 
@@ -317,31 +348,31 @@
             this.dataGridViewMedPolicies.TabIndex = 0;
             this.dataGridViewMedPolicies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMedPolicies_CellContentClick);
             // 
-            // txtMedPolicySearch
+            // label8
             // 
-            this.txtMedPolicySearch.Location = new System.Drawing.Point(77, 46);
-            this.txtMedPolicySearch.Name = "txtMedPolicySearch";
-            this.txtMedPolicySearch.Size = new System.Drawing.Size(196, 20);
-            this.txtMedPolicySearch.TabIndex = 22;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 253);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Duration (Days)";
             // 
-            // label7
+            // spinDuration
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Policy ID";
-            // 
-            // btnMedPolicySearch
-            // 
-            this.btnMedPolicySearch.Location = new System.Drawing.Point(144, 75);
-            this.btnMedPolicySearch.Name = "btnMedPolicySearch";
-            this.btnMedPolicySearch.Size = new System.Drawing.Size(129, 23);
-            this.btnMedPolicySearch.TabIndex = 23;
-            this.btnMedPolicySearch.Text = "Policy Search";
-            this.btnMedPolicySearch.UseVisualStyleBackColor = true;
-            this.btnMedPolicySearch.Click += new System.EventHandler(this.btnMedPolicySearch_Click);
+            this.spinDuration.Location = new System.Drawing.Point(90, 251);
+            this.spinDuration.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinDuration.Name = "spinDuration";
+            this.spinDuration.Size = new System.Drawing.Size(183, 20);
+            this.spinDuration.TabIndex = 22;
+            this.spinDuration.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Medical_Dept
             // 
@@ -363,6 +394,7 @@
             this.groupBoxMedSearch.PerformLayout();
             this.groupBoxMedPolicies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedPolicies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinDuration)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,5 +430,7 @@
         private System.Windows.Forms.TextBox txtMedPolicySearch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnMedPolicySearch;
+        private System.Windows.Forms.NumericUpDown spinDuration;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -35,6 +35,7 @@ namespace Ukupholisa.Medical_Department
                 rtxtMedDesc.Text = rows.Cells["Condition_Description"].Value.ToString();
                 txtTreatment.Text = rows.Cells["Condition_Treatment"].Value.ToString();
                 txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
+                spinDuration.Value = int.Parse(rows.Cells["Condition_Duration"].Value.ToString());
             }
         }
 
@@ -58,6 +59,7 @@ namespace Ukupholisa.Medical_Department
                 medcon.Description = rtxtMedDesc.Text;
                 medcon.Treatment = txtTreatment.Text;
                 medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
+                medcon.Duration = (int)spinDuration.Value;
 
                 medcon.add();
                 MessageBox.Show("Condition was added");
@@ -78,6 +80,7 @@ namespace Ukupholisa.Medical_Department
                 medcon.Description = rtxtMedDesc.Text;
                 medcon.Treatment = txtTreatment.Text;
                 medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
+                medcon.Duration = (int)spinDuration.Value;
 
                 medcon.update();
                 MessageBox.Show("Condition was updated");

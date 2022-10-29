@@ -21,3 +21,7 @@ C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.exe
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\bin\Debug\Ukupholisa.pdb
 C:\Users\frikk\Desktop\SEN381_Project\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.CallCentre.Presentation_Layer.CleintAndPolicy.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.CallCentre.Presentation_Layer.CleintAndPolicy.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.mainMenu.resources
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.exe
+F:\Programming\Ukupholisa\Ukupholisa\obj\Debug\Ukupholisa.pdb

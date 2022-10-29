@@ -11,19 +11,19 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
     {
         string name;
         string coverLevel;
-        bool status;
+        string status;
         int policyId;
         int cost;
         int providerId;
 
         public string Name { get => name; set => name = value; }
         public string CoverLevel { get => coverLevel; set => coverLevel = value; }
-        public bool Status { get => status; set => status = value; }
+        public string Status { get => status; set => status = value; }
         public int PolicyId { get => policyId; set => policyId = value; }
         public int Cost { get => cost; set => cost = value; }
         public int ProviderId { get => providerId; set => providerId = value; }
 
-        public Policy(string name, string coverLevel, bool status, int policyId, int cost, int providerId)
+        public Policy(string name, string coverLevel, string status, int policyId, int cost, int providerId)
         {
             this.Name = name;
             this.CoverLevel = coverLevel;
@@ -71,10 +71,15 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             return handler.searchFamPol(family_Id);
         }
-
-        public bool validateStrings(string input)
+        public DataTable clientPolSearch(int client_Id)
         {
-            throw new NotImplementedException();
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            return handler.searchClientPol(client_Id);
+        }
+        public void updateStatus(int client_Id) 
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            handler.updatePolicyStatus(this, client_Id);
         }
     }
 }

@@ -84,6 +84,18 @@
             this.btnPrev = new System.Windows.Forms.Button();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.tabControlClientManagement = new System.Windows.Forms.TabControl();
+            this.tabPageClientPolicy = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmbClientPolStatus = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnUpdateStatus = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.dataGridViewClientPol = new System.Windows.Forms.DataGridView();
+            this.txtClientPolSearch = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPageFamPol.SuspendLayout();
             this.groupBoxFamCurPol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurFamPol)).BeginInit();
@@ -100,6 +112,11 @@
             this.groupBoxClientData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.tabControlClientManagement.SuspendLayout();
+            this.tabPageClientPolicy.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientPol)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPageFamPol
@@ -592,6 +609,7 @@
             this.txtClientID.Name = "txtClientID";
             this.txtClientID.Size = new System.Drawing.Size(183, 20);
             this.txtClientID.TabIndex = 6;
+            this.txtClientID.TextChanged += new System.EventHandler(this.txtClientID_TextChanged);
             // 
             // label1
             // 
@@ -644,6 +662,7 @@
             // tabControlClientManagement
             // 
             this.tabControlClientManagement.Controls.Add(this.tabPageClients);
+            this.tabControlClientManagement.Controls.Add(this.tabPageClientPolicy);
             this.tabControlClientManagement.Controls.Add(this.tabPageFamily);
             this.tabControlClientManagement.Controls.Add(this.tabPageFamPol);
             this.tabControlClientManagement.Location = new System.Drawing.Point(3, 2);
@@ -651,6 +670,123 @@
             this.tabControlClientManagement.SelectedIndex = 0;
             this.tabControlClientManagement.Size = new System.Drawing.Size(817, 508);
             this.tabControlClientManagement.TabIndex = 5;
+            // 
+            // tabPageClientPolicy
+            // 
+            this.tabPageClientPolicy.Controls.Add(this.groupBox1);
+            this.tabPageClientPolicy.Controls.Add(this.groupBox2);
+            this.tabPageClientPolicy.Location = new System.Drawing.Point(4, 22);
+            this.tabPageClientPolicy.Name = "tabPageClientPolicy";
+            this.tabPageClientPolicy.Size = new System.Drawing.Size(809, 482);
+            this.tabPageClientPolicy.TabIndex = 4;
+            this.tabPageClientPolicy.Text = "Client Policy";
+            this.tabPageClientPolicy.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Location = new System.Drawing.Point(5, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(801, 202);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Policy Operations";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.cmbClientPolStatus);
+            this.groupBox4.Controls.Add(this.txtClientPolSearch);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.btnUpdateStatus);
+            this.groupBox4.Location = new System.Drawing.Point(221, 57);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(343, 106);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Update";
+            // 
+            // cmbClientPolStatus
+            // 
+            this.cmbClientPolStatus.FormattingEnabled = true;
+            this.cmbClientPolStatus.Location = new System.Drawing.Point(62, 49);
+            this.cmbClientPolStatus.Name = "cmbClientPolStatus";
+            this.cmbClientPolStatus.Size = new System.Drawing.Size(275, 21);
+            this.cmbClientPolStatus.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Status";
+            // 
+            // btnUpdateStatus
+            // 
+            this.btnUpdateStatus.Location = new System.Drawing.Point(10, 75);
+            this.btnUpdateStatus.Name = "btnUpdateStatus";
+            this.btnUpdateStatus.Size = new System.Drawing.Size(327, 23);
+            this.btnUpdateStatus.TabIndex = 17;
+            this.btnUpdateStatus.Text = "Update Status";
+            this.btnUpdateStatus.UseVisualStyleBackColor = true;
+            this.btnUpdateStatus.Click += new System.EventHandler(this.btnUpdateStatus_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.dataGridViewClientPol);
+            this.groupBox2.Location = new System.Drawing.Point(-1, 211);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(807, 266);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Policies";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(726, 237);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 3;
+            this.button8.Text = ">";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(6, 237);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "<";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewClientPol
+            // 
+            this.dataGridViewClientPol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClientPol.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewClientPol.Name = "dataGridViewClientPol";
+            this.dataGridViewClientPol.Size = new System.Drawing.Size(795, 212);
+            this.dataGridViewClientPol.TabIndex = 0;
+            this.dataGridViewClientPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientPol_CellContentClick);
+            // 
+            // txtClientPolSearch
+            // 
+            this.txtClientPolSearch.Location = new System.Drawing.Point(62, 23);
+            this.txtClientPolSearch.Name = "txtClientPolSearch";
+            this.txtClientPolSearch.Size = new System.Drawing.Size(275, 20);
+            this.txtClientPolSearch.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Policy ID";
             // 
             // CleintAndPolicy
             // 
@@ -681,6 +817,12 @@
             this.groupBoxClientData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.tabControlClientManagement.ResumeLayout(false);
+            this.tabPageClientPolicy.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientPol)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -743,5 +885,17 @@
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.DataGridView dataGridViewClients;
         private System.Windows.Forms.TabControl tabControlClientManagement;
+        private System.Windows.Forms.TabPage tabPageClientPolicy;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.DataGridView dataGridViewClientPol;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox cmbClientPolStatus;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnUpdateStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtClientPolSearch;
     }
 }
