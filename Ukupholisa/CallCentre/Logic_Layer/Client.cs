@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ukupholisa.CallCentre.Logic_Layer
@@ -13,6 +14,11 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         int client_Id, family_Id;
 
         public Client()
+        {
+
+        }
+
+        public void add()
         {
 
         }
@@ -44,11 +50,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             return false;
         }
 
-        public void add()
+        public void addClientWithFamily(string role, int famID)
         {
-            //DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            //handler.saveClient(this);
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            handler.saveClientExistingFam(this, role, famID);
         }
+
+
 
         public void getFamilyRole(string role)
         {
@@ -80,6 +88,45 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             handler.updateClientDetails(this);
         }
 
+
+        public bool validateAddress(string address)
+        {
+            if (!Regex.Match(address, @"^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                // address was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool validateStrings(string input)
+        {
+            if (!Regex.Match(input, "^[A-Z][a-zA-Z]*$").Success)
+            {
+                // first name was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool validatePhone(string phone)
+        {
+            if (!Regex.Match(phone, @"^[0]{1}[0-9]{9}$").Success)
+            {
+                // phone number was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         internal string getUniqueCode(string codeclass)
         {
             int codePart1 = 0;
@@ -93,9 +140,14 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             if (codeclass == "MOTHER")
             {
                 return "J" + codePart1.ToString() + codePart2.ToString();
-            }else if (codeclass == "CHILD")
+            }
+            else if (codeclass == "CHILD")
             {
                 return "H" + codePart1.ToString() + codePart2.ToString();
+            }
+            else if (codeclass == "UNSPECIFIED")
+            {
+                return "L" + codePart1.ToString() + codePart2.ToString();
             }
             else
             {

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ukupholisa.CallCentre.Logic_Layer;
@@ -27,6 +28,13 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
+            tabControl1.TabPages.Add(tabPage2);
+            tabControl1.TabPages.Add(tabPage1);
+
+            tabControl1.SelectedIndex = 1;
+
+            btnAnswer.Enabled = false;
+            btnEndCall.Enabled = true;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,6 +74,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             dataGridViewClientSummary.DataSource = client.populate();
             txtClientID.Enabled = false;
             cmbFamily_Role.SelectedIndex = 0;
+
+            tabControl1.TabPages.Remove(tabPage1);
+            tabControl1.TabPages.Remove(tabPage2);
+            btnEndCall.Enabled = false;
+
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
@@ -97,16 +110,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
-            //{
-            //    MessageBox.Show("Please provide a client ID");
-            //}
-            //else
-            //{
-            //    clientHandler.searchClient(new DataAccess_Layer.Client(txtClientIDSearch.Text));
-            //}
-
-            //redundant???????
+            //IGNORE THIS
         }
 
         private void button6_Click(object sender, EventArgs e)//Searches the available policies for the medical condition entered.
@@ -186,6 +190,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnSaveClient_Click_1(object sender, EventArgs e)
         {
+           // Logic_Layer.Client client = new Client();
+
+            Client client = new Client();
+            Family fam = new Family();
 
             if (string.IsNullOrWhiteSpace(txtClientName.Text))
             {
@@ -208,6 +216,34 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtClientAddress.Select();
                 return;
             }
+            else if(client.validateStrings(txtClientName.Text))
+            {
+                // Name was incorrect
+                MessageBox.Show("Invalid First Name", "Message");
+                txtClientName.Focus();
+                return;
+            }
+            else if(client.validateStrings(txtClientSurname.Text))
+            {
+                // Surname was incorrect
+                MessageBox.Show("Invalid Last Name", "Message");
+                txtClientSurname.Focus();
+                return;
+            }
+            else if (client.validatePhone(txtClientPhone.Text))
+            {
+                // phone was incorrect
+                MessageBox.Show("Invalid phone number", "Message");
+                txtClientPhone.Focus();
+                return;
+            }
+            else if (client.validateAddress(txtClientAddress.Text))
+            {
+                // address was incorrect
+                MessageBox.Show("Invalid address", "Message");
+                txtClientAddress.Focus();
+                return;
+            }
             else if (radiobtnYes.Checked == true)
             {
                 if (string.IsNullOrWhiteSpace(txtNewFamilyId.Text))
@@ -215,8 +251,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     MessageBox.Show("Enter Client Family number!");
                     txtNewFamilyId.Select();
                 }
-                Client client = new Client();
-                Family fam = new Family();
+                
 
                 client.Name = txtClientName.Text;
                 client.Surname = txtClientSurname.Text;
@@ -227,19 +262,18 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
                 fam.FamilyID = int.Parse(txtNewFamilyId.Text);
                 fam.Family_role = cmbFamily_Role.Text;
-                client.add();
+                client.addClientWithFamily(fam.Family_role, fam.FamilyID);
             }
             else
             {
-                Client client = new Client();
-                Family fam = new Family();
-
                 client.Name = txtClientName.Text;
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
                 client.UniqueIdentifier = client.getUniqueCode(cmbFamily_Role.Text);
                 fam.Family_role = cmbFamily_Role.Text;
+
+
                 client.getFamilyRole(fam.Family_role);
             }
         }
@@ -297,6 +331,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void button1_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnEndCall_Click(object sender, EventArgs e)
+        {
+            btnEndCall.Enabled = false;
+            btnAnswer.Enabled = true;
+            tabControl1.TabPages.Remove(tabPage1);
+            tabControl1.TabPages.Remove(tabPage2);
+
         }
     }
 }

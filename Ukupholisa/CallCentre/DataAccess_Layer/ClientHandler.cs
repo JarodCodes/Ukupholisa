@@ -42,7 +42,10 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
             return table;
         }
-        public DataTable searchClient(string uniqueID)
+        //public DataTable searchClient(string uniqueID)
+        //{ 
+        //    return 
+        //}
         public DataTable populateClientFam() 
         {
             string query = @"SELECT c.Client_Code,c.Client_Name, c.Client_Surname, c.Client_Phone,c.Client_Address , cf.Family_Role FROM Client c INNER JOIN Client_Family cf ON cf.Client_Id = c.Client_Id";
@@ -55,7 +58,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
             return table;
         }
-        public DataTable searchClient(int client_id)
+        public DataTable searchClient(string uniqueID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -131,6 +134,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             
         }
 
+
         public void saveClient(Logic_Layer.Client client, string family)
         {
             try
@@ -146,6 +150,41 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     //cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                     cmd.Parameters.AddWithValue("@Family_Role", family);
                     cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
+
+                    connect.Open();
+
+                    int num = cmd.ExecuteNonQuery();
+                    if (num > 0)
+                    {
+                        MessageBox.Show("Record added successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Oops! Something went wrong!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+        
+        public void saveClientExistingFam(Logic_Layer.Client client, string role, int famID)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("saveClientExistingFam", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
+                    cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                    cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                    cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                    cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                    cmd.Parameters.AddWithValue("@Family_Id", famID);
+                    cmd.Parameters.AddWithValue("@Family_Role", role);
 
                     connect.Open();
 
@@ -199,7 +238,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             {
                 SqlCommand cmd = new SqlCommand("clientUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client.Client_Id);
+                cmd.Parameters.AddWithValue("@Client_Id", client.UniqueIdentifier);
                 cmd.Parameters.AddWithValue("@Client_Name", client.Name);
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
