@@ -81,5 +81,16 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             handler.updatePolicyStatus(this, client_Id);
         }
+        public Boolean checkStatus(DataTable dt) 
+        {
+            foreach (DataRow item in dt.Rows)
+            {
+                if (item.Field<string>("Policy_Status") == "In Progress")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
