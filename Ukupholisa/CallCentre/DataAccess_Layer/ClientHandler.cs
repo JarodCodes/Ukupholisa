@@ -19,12 +19,11 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             try
             {
                 sqlCon.Open();
-                MessageBox.Show("Connection successful");
+
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Connection error");
             }
             return sqlCon;
         }
@@ -72,14 +71,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     dt.Load(dr);
-                    if (dt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No Client found!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Client found!");
-                    }
                     return dt;
                 }
             }
@@ -113,14 +104,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     connect.Open();
 
                     cmd.ExecuteNonQuery();
-                    //if (num > 0)
-                    //{
-                    //    MessageBox.Show("Record added successfully!");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Oops! Something went wrong!");
-                    //}
+
                 }
             }
             catch (Exception ex)
@@ -232,7 +216,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         //    }
         //}
 
-        public void updateClientDetails(Logic_Layer.Client client)
+        public void updateClientDetailsWithFam(Logic_Layer.Client client)
         {
             using (SqlConnection connect = new SqlConnection(con)) 
             {
@@ -243,6 +227,12 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
                 cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+
+
+                cmd.Parameters.AddWithValue("@Family_Id", client.Address);
+                cmd.Parameters.AddWithValue("@Family_Role", client.Address);
+
+
 
                 connect.Open();
                 cmd.ExecuteNonQuery();

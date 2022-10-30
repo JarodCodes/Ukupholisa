@@ -58,7 +58,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
 
 
-        public void getFamilyRole(string role)
+        public void addClientWithoutFamily(string role)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.saveClient(this, role);
@@ -84,8 +84,14 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
         public void update()
         {
+            //DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            //handler.updateClientDetailsWithFam(this);
+        }
+
+        public void updateClientWithFamily()
+        {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            handler.updateClientDetails(this);
+            handler.updateClientDetailsWithFam(this);
         }
 
 
@@ -152,6 +158,26 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             else
             {
                 return "G" + codePart1.ToString() + codePart2.ToString();
+            }
+        }
+
+        internal string getRoleCode(string codeclass)
+        {
+            if (codeclass == "MOTHER")
+            {
+                return "J";
+            }
+            else if (codeclass == "CHILD")
+            {
+                return "H";
+            }
+            else if (codeclass == "UNSPECIFIED")
+            {
+                return "L";
+            }
+            else
+            {
+                return "G";
             }
         }
     }

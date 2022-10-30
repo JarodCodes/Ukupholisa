@@ -84,14 +84,33 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
             Client client = new Client();
+            client.UniqueIdentifier = txtClientIDSearch.Text;
+            DataTable dt = client.search();
+
+
             if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
             {
-                MessageBox.Show("Please provide a client ID");
+                MessageBox.Show("Please provide a client code!");
+            }
+            else if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No client found");
             }
             else
             {
-                client.UniqueIdentifier = txtClientIDSearch.Text;
-                dataGridViewClientSummary.DataSource = client.search();
+                MessageBox.Show("Client found!");
+
+                groupBox7.Enabled = false;
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    txtClientID.Text = item.Field<string>("Client_Code");
+                    txtClientName.Text = item.Field<string>("Client_Name");
+                    txtClientSurname.Text = item.Field<string>("Client_Surname");
+                    txtClientPhone.Text = item.Field<string>("Client_Phone");
+                    txtClientAddress.Text = item.Field<string>("Client_Address");
+                }
+                //dataGridViewClientSummary.DataSource = dt;
             }
         }
 
@@ -157,6 +176,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
                 txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
 
+                groupBox7.Enabled = false;
+                
+
             }
         }
 
@@ -174,18 +196,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void txtClientPolAdd_Click(object sender, EventArgs e)
         {
 
-            //Client client = new Client();
-            //Family fam = new Family();
-            //client.Client_Id = 
-            //client.Name = txtClientName.Text;
-            //client.Surname = txtClientName.Text;
-            //client.Phone = txtClientName.Text;
-            //client.Address = txtClientName.Text;
+            Client client = new Client();
+            Family fam = new Family();
+            Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
+            
 
-            //fam.FamilyID = int.Parse(txtNewFamilyId.Text);
-            //fam.Family_role = cmbFamily_Role.Text;
-
-            //client.add();
+            client.add();
         }
 
         private void btnSaveClient_Click_1(object sender, EventArgs e)
@@ -274,12 +290,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 fam.Family_role = cmbFamily_Role.Text;
 
 
-                client.getFamilyRole(fam.Family_role);
+                client.addClientWithoutFamily(fam.Family_role);
             }
         }
 
         private void btnClientUpdate_Click_1(object sender, EventArgs e)
         {
+            Client client = new Client();
+            Family fam = new Family();
+
             if (string.IsNullOrWhiteSpace(txtClientName.Text))
             {
                 MessageBox.Show("Enter Client Name!");
@@ -300,11 +319,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 MessageBox.Show("Enter Client Address!");
                 txtClientAddress.Select();
             }
-            else
+            else if (radiobtnYes.Checked == true)
             {
-                Client client = new Client();
-                Family fam = new Family();
-
                 client.Name = txtClientName.Text;
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
@@ -312,8 +328,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
                 fam.FamilyID = int.Parse(txtNewFamilyId.Text);
                 fam.Family_role = cmbFamily_Role.Text;
+                client.UniqueIdentifier = client.getRoleCode(fam.Family_role) + txtClientID.Text.Substring(1,8);
 
-                client.update();
+                client.updateClientWithFamily();
+
+            }
+            else
+            {
+                
             }
         }
 
@@ -340,6 +362,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

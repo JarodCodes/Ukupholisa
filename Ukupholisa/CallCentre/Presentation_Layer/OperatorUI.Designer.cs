@@ -214,7 +214,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(557, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(272, 445);
+            this.groupBox6.Size = new System.Drawing.Size(272, 326);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Client Summary";
@@ -387,9 +387,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(18, 44);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 18;
-            this.label7.Text = "ID Number";
+            this.label7.Text = "Client Code";
             // 
             // label6
             // 
@@ -437,9 +437,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox5.Controls.Add(this.txtClientIDSearch);
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(6, 6);
+            this.groupBox5.Location = new System.Drawing.Point(557, 340);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(543, 105);
+            this.groupBox5.Size = new System.Drawing.Size(272, 105);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Client Search";
@@ -447,9 +447,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // btnSearchClient
             // 
             this.btnSearchClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchClient.Location = new System.Drawing.Point(203, 67);
+            this.btnSearchClient.Location = new System.Drawing.Point(97, 60);
             this.btnSearchClient.Name = "btnSearchClient";
-            this.btnSearchClient.Size = new System.Drawing.Size(103, 23);
+            this.btnSearchClient.Size = new System.Drawing.Size(67, 36);
             this.btnSearchClient.TabIndex = 2;
             this.btnSearchClient.Text = "Search Client";
             this.btnSearchClient.UseVisualStyleBackColor = true;
@@ -457,28 +457,28 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtClientIDSearch
             // 
-            this.txtClientIDSearch.Location = new System.Drawing.Point(217, 41);
+            this.txtClientIDSearch.Location = new System.Drawing.Point(131, 34);
             this.txtClientIDSearch.Name = "txtClientIDSearch";
-            this.txtClientIDSearch.Size = new System.Drawing.Size(225, 20);
+            this.txtClientIDSearch.Size = new System.Drawing.Size(106, 20);
             this.txtClientIDSearch.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(118, 44);
+            this.label8.Location = new System.Drawing.Point(46, 37);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.Size = new System.Drawing.Size(72, 13);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Enter Client ID";
+            this.label8.Text = "Client Code";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridViewClientSummary);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 117);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(543, 334);
+            this.groupBox3.Size = new System.Drawing.Size(543, 439);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Client Details";
@@ -488,7 +488,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewClientSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientSummary.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewClientSummary.Name = "dataGridViewClientSummary";
-            this.dataGridViewClientSummary.Size = new System.Drawing.Size(531, 309);
+            this.dataGridViewClientSummary.Size = new System.Drawing.Size(531, 385);
             this.dataGridViewClientSummary.TabIndex = 0;
             this.dataGridViewClientSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientSummary_CellContentClick);
             // 
@@ -597,6 +597,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button7.TabIndex = 2;
             this.button7.Text = ">";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
