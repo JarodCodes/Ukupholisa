@@ -37,6 +37,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnClientUpdate = new System.Windows.Forms.Button();
             this.btnSaveClient = new System.Windows.Forms.Button();
@@ -77,7 +78,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridViewPolicyList = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.CallReceiver.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -128,6 +128,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.btnEndCall.TabIndex = 4;
             this.btnEndCall.Text = "End Call";
             this.btnEndCall.UseVisualStyleBackColor = true;
+            this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
             // 
             // label10
             // 
@@ -185,6 +186,16 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Client Check";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 457);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 36);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnClientUpdate);
@@ -233,6 +244,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtClientAddress
             // 
             this.txtClientAddress.Location = new System.Drawing.Point(90, 145);
+            this.txtClientAddress.MaxLength = 50;
             this.txtClientAddress.Name = "txtClientAddress";
             this.txtClientAddress.Size = new System.Drawing.Size(154, 20);
             this.txtClientAddress.TabIndex = 25;
@@ -279,7 +291,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.cmbFamily_Role.Items.AddRange(new object[] {
             "FATHER",
             "MOTHER",
-            "CHILDREN"});
+            "CHILD",
+            "UNSPECIFIED"});
             this.cmbFamily_Role.Location = new System.Drawing.Point(81, 73);
             this.cmbFamily_Role.Name = "cmbFamily_Role";
             this.cmbFamily_Role.Size = new System.Drawing.Size(121, 21);
@@ -347,6 +360,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtClientPhone
             // 
             this.txtClientPhone.Location = new System.Drawing.Point(90, 119);
+            this.txtClientPhone.MaxLength = 10;
             this.txtClientPhone.Name = "txtClientPhone";
             this.txtClientPhone.Size = new System.Drawing.Size(154, 20);
             this.txtClientPhone.TabIndex = 21;
@@ -354,6 +368,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtClientSurname
             // 
             this.txtClientSurname.Location = new System.Drawing.Point(90, 93);
+            this.txtClientSurname.MaxLength = 30;
             this.txtClientSurname.Name = "txtClientSurname";
             this.txtClientSurname.Size = new System.Drawing.Size(154, 20);
             this.txtClientSurname.TabIndex = 20;
@@ -361,6 +376,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtClientName
             // 
             this.txtClientName.Location = new System.Drawing.Point(90, 67);
+            this.txtClientName.MaxLength = 30;
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(154, 20);
             this.txtClientName.TabIndex = 19;
@@ -602,16 +618,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewPolicyList.Size = new System.Drawing.Size(474, 277);
             this.dataGridViewPolicyList.TabIndex = 0;
             this.dataGridViewPolicyList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPolicyList_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 457);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 36);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // OperatorUI
             // 

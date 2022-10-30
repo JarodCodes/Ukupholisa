@@ -57,5 +57,9 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             handler.addProvider(this);
         }
 
+        public bool validateStrings(string input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

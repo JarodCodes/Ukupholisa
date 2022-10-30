@@ -15,5 +15,7 @@ namespace Ukupholisa
         void add();
         void update();
         void delete();
+
+        bool validateStrings(string input);        
     }
 }

@@ -59,5 +59,10 @@ namespace Ukupholisa.Medical_Department.Logic_layer
             DataAccess_Layer.MedicalHandler handler = new DataAccess_Layer.MedicalHandler();
             handler.updateMedCon(this);
         }
+
+        public bool validateStrings(string input)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
