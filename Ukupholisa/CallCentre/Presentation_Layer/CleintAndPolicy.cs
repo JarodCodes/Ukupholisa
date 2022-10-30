@@ -265,14 +265,22 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             try
             {
-                Client client = new Client();
-                client.Client_Id = int.Parse(txtClientID.Text);
                 Policy policy = new Policy();
-                policy.PolicyId = int.Parse(txtClientPolSearch.Text);
-                policy.Status = txtClientPolSearch.Text;
 
-                policy.updateStatus(client.Client_Id);
-                MessageBox.Show("Policy was not updated");
+                if (policy.checkStatus((DataTable)dataGridViewClientPol.DataSource))
+                {
+                    policy.PolicyId = int.Parse(txtClientPolSearch.Text);
+                    Client client = new Client();
+                    client.Client_Id = int.Parse(txtClientID.Text);
+                    policy.Status = txtClientPolSearch.Text;
+                    policy.updateStatus(client.Client_Id);
+                }
+                else 
+                {
+                    MessageBox.Show("Policy was not updated");
+                }
+
+                MessageBox.Show("Policy was updated");
             }
             catch (Exception)
             {
