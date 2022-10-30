@@ -34,7 +34,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 DataGridViewRow rows = this.dataGridViewClients.Rows[e.RowIndex];
 
-                txtClientID.Text = rows.Cells["Client_Id"].Value.ToString();
+                txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
                 txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
                 txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
                 txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
@@ -45,22 +45,22 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnClientUpdate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Client client = new Client();
-                client.Client_Id = int.Parse(txtClientID.Text);
-                client.Name = txtClientName.Text;
-                client.Surname = txtClientSurname.Text;
-                client.Phone = txtClientPhone.Text;
-                client.Address = txtClientAddress.Text;
+            //try
+            //{
+            //    Client client = new Client();
+            //    client.UniqueIdentifier = txtClientID.Text;
+            //    client.Name = txtClientName.Text;
+            //    client.Surname = txtClientSurname.Text;
+            //    client.Phone = txtClientPhone.Text;
+            //    client.Address = txtClientAddress.Text;
 
-                client.update();
-                MessageBox.Show("Client was updated");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Client was not updated");
-            }
+            //    client.update();
+            //    MessageBox.Show("Client was updated");
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Client was not updated");
+            //}
         }
 
         private void btnClientDelete_Click(object sender, EventArgs e)
@@ -68,12 +68,20 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Client client = new Client();
-                client.Client_Id = int.Parse(txtClientID.Text);
+                client.UniqueIdentifier = txtClientID.Text;
 
-                client.delete();
-                MessageBox.Show("Client was deleted");
+                if (MessageBox.Show("Are you sure you want to delete client " + client.UniqueIdentifier + "?", "WARNING" , MessageBoxButtons.YesNo , MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    client.delete(); 
+                    MessageBox.Show("Client was deleted");
+
+                    dataGridViewClients.DataSource = family.populate();
+                    dataGridViewClients.Update();
+                    dataGridViewClients.Refresh();
+
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Client was not deleted");
             }
@@ -82,7 +90,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnClientSearch_Click(object sender, EventArgs e)
         {
             Client client = new Client();
-            client.Client_Id = int.Parse(txtClientID.Text);
+            client.UniqueIdentifier = txtClientSearch.Text;
             DataTable dt = client.search();
             if (dt.Rows.Count == 0)
             {
@@ -120,7 +128,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 DataGridViewRow rows = this.dataGridViewFamily.Rows[e.RowIndex];
 
-                txtFamClientID.Text = rows.Cells["Client_Id"].Value.ToString();
+                txtFamClientID.Text = rows.Cells["Client_Code"].Value.ToString();
                 cmbFamilyRole.Text = rows.Cells["Family_Role"].Value.ToString();
             }
         }
@@ -257,8 +265,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             Policy policy = new Policy();
             Client client = new Client();
-            client.Client_Id = int.Parse(txtClientID.Text);
-            dataGridViewCurFamPol.DataSource = policy.clientPolSearch(client.Client_Id);
+            client.UniqueIdentifier = txtClientID.Text;
+            dataGridViewCurFamPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
         }
 
         private void btnUpdateStatus_Click(object sender, EventArgs e)
@@ -271,9 +279,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 {
                     policy.PolicyId = int.Parse(txtClientPolSearch.Text);
                     Client client = new Client();
-                    client.Client_Id = int.Parse(txtClientID.Text);
+                    client.UniqueIdentifier = txtClientID.Text;
                     policy.Status = txtClientPolSearch.Text;
-                    policy.updateStatus(client.Client_Id);
+                    policy.updateStatus(client.UniqueIdentifier);
                 }
                 else 
                 {

@@ -73,7 +73,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtClientSurname = new System.Windows.Forms.TextBox();
             this.btnClientDelete = new System.Windows.Forms.Button();
-            this.btnClientUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtClientName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,15 +86,15 @@
             this.tabPageClientPolicy = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cmbClientPolStatus = new System.Windows.Forms.ComboBox();
+            this.txtClientPolSearch = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnUpdateStatus = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.dataGridViewClientPol = new System.Windows.Forms.DataGridView();
-            this.txtClientPolSearch = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabPageFamPol.SuspendLayout();
             this.groupBoxFamCurPol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurFamPol)).BeginInit();
@@ -489,7 +488,6 @@
             this.groupBoxClientOperations.Controls.Add(this.label12);
             this.groupBoxClientOperations.Controls.Add(this.txtClientSurname);
             this.groupBoxClientOperations.Controls.Add(this.btnClientDelete);
-            this.groupBoxClientOperations.Controls.Add(this.btnClientUpdate);
             this.groupBoxClientOperations.Controls.Add(this.label3);
             this.groupBoxClientOperations.Controls.Add(this.txtClientName);
             this.groupBoxClientOperations.Controls.Add(this.label2);
@@ -560,23 +558,13 @@
             // 
             // btnClientDelete
             // 
-            this.btnClientDelete.Location = new System.Drawing.Point(220, 296);
+            this.btnClientDelete.Location = new System.Drawing.Point(9, 306);
             this.btnClientDelete.Name = "btnClientDelete";
-            this.btnClientDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnClientDelete.Size = new System.Drawing.Size(286, 23);
             this.btnClientDelete.TabIndex = 18;
             this.btnClientDelete.Text = "Delete";
             this.btnClientDelete.UseVisualStyleBackColor = true;
             this.btnClientDelete.Click += new System.EventHandler(this.btnClientDelete_Click);
-            // 
-            // btnClientUpdate
-            // 
-            this.btnClientUpdate.Location = new System.Drawing.Point(9, 296);
-            this.btnClientUpdate.Name = "btnClientUpdate";
-            this.btnClientUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnClientUpdate.TabIndex = 17;
-            this.btnClientUpdate.Text = "Update";
-            this.btnClientUpdate.UseVisualStyleBackColor = true;
-            this.btnClientUpdate.Click += new System.EventHandler(this.btnClientUpdate_Click);
             // 
             // label3
             // 
@@ -706,6 +694,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Update";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Policy ID";
+            // 
             // cmbClientPolStatus
             // 
             this.cmbClientPolStatus.FormattingEnabled = true;
@@ -713,6 +710,13 @@
             this.cmbClientPolStatus.Name = "cmbClientPolStatus";
             this.cmbClientPolStatus.Size = new System.Drawing.Size(275, 21);
             this.cmbClientPolStatus.TabIndex = 21;
+            // 
+            // txtClientPolSearch
+            // 
+            this.txtClientPolSearch.Location = new System.Drawing.Point(62, 23);
+            this.txtClientPolSearch.Name = "txtClientPolSearch";
+            this.txtClientPolSearch.Size = new System.Drawing.Size(275, 20);
+            this.txtClientPolSearch.TabIndex = 6;
             // 
             // label5
             // 
@@ -771,22 +775,6 @@
             this.dataGridViewClientPol.Size = new System.Drawing.Size(795, 212);
             this.dataGridViewClientPol.TabIndex = 0;
             this.dataGridViewClientPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientPol_CellContentClick);
-            // 
-            // txtClientPolSearch
-            // 
-            this.txtClientPolSearch.Location = new System.Drawing.Point(62, 23);
-            this.txtClientPolSearch.Name = "txtClientPolSearch";
-            this.txtClientPolSearch.Size = new System.Drawing.Size(275, 20);
-            this.txtClientPolSearch.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Policy ID";
             // 
             // CleintAndPolicy
             // 
@@ -874,7 +862,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtClientSurname;
         private System.Windows.Forms.Button btnClientDelete;
-        private System.Windows.Forms.Button btnClientUpdate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtClientName;
         private System.Windows.Forms.Label label2;

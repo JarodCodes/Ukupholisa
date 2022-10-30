@@ -71,13 +71,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             radiobtnYes.Checked = true;
             dataGridViewPolicyList.DataSource = policy.populate();
-            dataGridViewClientSummary.DataSource = client.populate();
+            //dataGridViewClientSummary.DataSource = client.populate();
             txtClientID.Enabled = false;
             cmbFamily_Role.SelectedIndex = 0;
 
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
             btnEndCall.Enabled = false;
+
+            dataGridViewClientSummary.Enabled = false;
 
         }
 
@@ -86,7 +88,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Client client = new Client();
             client.UniqueIdentifier = txtClientIDSearch.Text;
             DataTable dt = client.search();
-
+            DataTable dtPolSearch = client.searchClientPol();
 
             if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
             {
@@ -110,7 +112,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     txtClientPhone.Text = item.Field<string>("Client_Phone");
                     txtClientAddress.Text = item.Field<string>("Client_Address");
                 }
-                //dataGridViewClientSummary.DataSource = dt;
+                dataGridViewClientSummary.DataSource = dtPolSearch;
             }
         }
 
@@ -166,20 +168,20 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void dataGridViewClientSummary_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow rows = this.dataGridViewClientSummary.Rows[e.RowIndex];
+            //if (e.RowIndex >= 0)
+            //{
+            //    DataGridViewRow rows = this.dataGridViewClientSummary.Rows[e.RowIndex];
 
-                txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
-                txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
-                txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
-                txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
-                txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
+            //    txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
+            //    txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
+            //    txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
+            //    txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
+            //    txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
 
-                groupBox7.Enabled = false;
+            //    groupBox7.Enabled = false;
                 
 
-            }
+            //}
         }
 
         private void dataGridViewPolicyList_CellContentClick(object sender, DataGridViewCellEventArgs e)

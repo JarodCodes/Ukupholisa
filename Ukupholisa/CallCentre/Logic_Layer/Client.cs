@@ -67,7 +67,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public void delete()
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            handler.deleteClient(Client_Id);
+            handler.deleteClient(uniqueIdentifier);
         }
 
         public DataTable populate()
@@ -80,6 +80,12 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             return handler.searchClient(uniqueIdentifier);
+        }
+
+        public DataTable searchClientPol()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            return handler.searchClientPolicies(uniqueIdentifier);
         }
 
         public void update()

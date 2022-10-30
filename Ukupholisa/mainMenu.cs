@@ -47,5 +47,12 @@ namespace Ukupholisa
             provdept.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CallCentre.Presentation_Layer.CleintAndPolicy clientPol = new CallCentre.Presentation_Layer.CleintAndPolicy();
+            clientPol.Show();
+            this.Hide();
+        }
     }
 }

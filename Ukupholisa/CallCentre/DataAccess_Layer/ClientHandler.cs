@@ -47,7 +47,9 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         //}
         public DataTable populateClientFam() 
         {
-            string query = @"SELECT c.Client_Code,c.Client_Name, c.Client_Surname, c.Client_Phone,c.Client_Address , cf.Family_Role FROM Client c INNER JOIN Client_Family cf ON cf.Client_Id = c.Client_Id";
+            string query = @"SELECT c.Client_Code,c.Client_Name, c.Client_Surname, c.Client_Phone,c.Client_Address , cf.Family_Id, cf.Family_Role
+                            FROM Client c 
+                            INNER JOIN Client_Family cf ON cf.Client_Id = c.Client_Id";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
 
@@ -56,6 +58,25 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             adapter.Fill(table);
 
             return table;
+        }
+
+        public DataTable searchClientPolicies(string uniqueID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("clientPolSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Code", uniqueID);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
         }
         public DataTable searchClient(string uniqueID)
         {
@@ -75,13 +96,13 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 }
             }
         }
-        public void deleteClient(int client_id)
+        public void deleteClient(string client_code)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", client_id);    
+                cmd.Parameters.AddWithValue("@Client_Code", client_code);    
 
                 connect.Open();
                 cmd.ExecuteNonQuery();    

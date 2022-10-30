@@ -71,12 +71,12 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             return handler.searchFamPol(family_Id);
         }
-        public DataTable clientPolSearch(int client_Id)
+        public DataTable clientPolSearch(string client_Id)
         {
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             return handler.searchClientPol(client_Id);
         }
-        public void updateStatus(int client_Id) 
+        public void updateStatus(string client_Id) 
         {
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             handler.updatePolicyStatus(this, client_Id);

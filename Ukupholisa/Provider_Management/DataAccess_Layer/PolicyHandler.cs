@@ -315,13 +315,13 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public DataTable searchClientPol(int family_Id)
+        public DataTable searchClientPol(string client_code)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientPolSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", family_Id);
+                cmd.Parameters.AddWithValue("@Client_Code", client_code);
 
                 connect.Open();
                 DataTable dt = new DataTable();
@@ -333,14 +333,14 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 }
             }
         }
-        public void updatePolicyStatus(Logic_Layer.Policy policy, int client_Id)
+        public void updatePolicyStatus(Logic_Layer.Policy policy, string client_code)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("policyStatusUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
-                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Client_Code", client_code);
                 cmd.Parameters.AddWithValue("@Policy_Status", policy.Status);
 
                 connect.Open();
