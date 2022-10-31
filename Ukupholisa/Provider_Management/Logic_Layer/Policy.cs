@@ -97,5 +97,40 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         {
             throw new NotImplementedException();
         }
+        public string generateCode() 
+        {
+            DateTime time = DateTime.Now;
+            string year = time.Year.ToString();
+            string coverCode="";
+            string importance="";
+            switch (CoverLevel)
+            {
+                case "Partial":
+                    coverCode = "B";
+                    break;
+                case "Full":
+                    coverCode = "A";
+                    break;
+            }
+            if (Cost <= 1000)
+            {
+                importance = "D";
+            }
+            else if(Cost > 1000 && Cost <= 10000)
+            {
+                importance = "C";
+            }
+            else if (Cost > 10000 && Cost <= 100000)
+            {
+                importance = "B";
+            }
+            else if (Cost > 100000 && Cost <= 1000000)
+            {
+                importance = "A";
+            }
+            Random random = new Random();
+            string digits = random.Next(100000, 999999).ToString();
+            return String.Format("{0}{1}{2}{3}", year, coverCode, importance, digits);
+        }
     }
 }
