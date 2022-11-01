@@ -61,11 +61,29 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
 
             return table;
         }
-        public DataTable retrieveTreatmentInfo(int provID)
+        public DataTable retrieveTreatmentInfoPending(int provID)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("curTreatmentsSearch", connect);
+                SqlCommand cmd = new SqlCommand("pendingTreatmentSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Provider_Id", provID);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+        public DataTable retrieveTreatmentInfoProgress(int provID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("inProgressTreatmentSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Provider_Id", provID);
 

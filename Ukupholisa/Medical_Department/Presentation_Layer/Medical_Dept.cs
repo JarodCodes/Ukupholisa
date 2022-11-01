@@ -25,28 +25,46 @@ namespace Ukupholisa.Medical_Department
             dataGridViewMedCon.DataSource = medcon.populate();
             dataGridViewMedPolicies.DataSource = policy.populate();
             TreeNode treeNode = new TreeNode();
+            TreeNode pendingNode = new TreeNode();
+            TreeNode progressNode = new TreeNode();
             foreach (DataRow dr in provider.getProviderInfo().Rows)
             {
                 treeNode = treeViewTreatments.Nodes.Add(dr["Provider_Name"].ToString());
-                //Display Parent node and ID number
-                PopulateTreeViewChild(Convert.ToInt32(dr["Provider_Id"].ToString()), treeNode);
+                pendingNode = treeNode.Nodes.Add("Pending");
+                PopulateTreeViewChildPending(Convert.ToInt32(dr["Provider_Id"].ToString()), pendingNode);
+                progressNode = treeNode.Nodes.Add("In Progress");
+                PopulateTreeViewChildProgress(Convert.ToInt32(dr["Provider_Id"].ToString()), progressNode);
             }
         }
-        private void PopulateTreeViewChild(int parentId, TreeNode ParentNode)
+        private void PopulateTreeViewChildPending(int parentId, TreeNode ParentNode)
         {
             provider.ProviderId = parentId;
             TreeNode childnode = new TreeNode();
-            foreach (DataRow dr in provider.getCurrentTreatments().Rows)
+            foreach (DataRow dr in provider.getCurrentTreatmentsPending().Rows)
             {
                 if (ParentNode == null)
-                    childnode = treeViewTreatments.Nodes.Add(dr["Policy_Name"].ToString());
+                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString()+" Total: "+dr["Total"].ToString());
                 else
-                    childnode = ParentNode.Nodes.Add(dr["Policy_Name"].ToString());
+                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
 
             }
 
         }
-    private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void PopulateTreeViewChildProgress(int parentId, TreeNode ParentNode)
+        {
+            provider.ProviderId = parentId;
+            TreeNode childnode = new TreeNode();
+            foreach (DataRow dr in provider.getCurrentTreatmentsProgress().Rows)
+            {
+                if (ParentNode == null)
+                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
+                else
+                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
+
+            }
+
+        }
+        private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {

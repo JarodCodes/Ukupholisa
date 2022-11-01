@@ -61,10 +61,15 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             return handler.retrieveProviderInfo();
         }
-        public DataTable getCurrentTreatments()
+        public DataTable getCurrentTreatmentsPending()
         {
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
-            return handler.retrieveTreatmentInfo(ProviderId);
+            return handler.retrieveTreatmentInfoPending(ProviderId);
+        }
+        public DataTable getCurrentTreatmentsProgress()
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            return handler.retrieveTreatmentInfoProgress(ProviderId);
         }
 
         public bool validateStrings(string input)
