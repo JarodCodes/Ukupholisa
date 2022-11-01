@@ -144,11 +144,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Client_Id = int.Parse(txtFamClientID.Text);
 
                 family.update(client.Client_Id);
-                MessageBox.Show("Client was not updated");
+                MessageBox.Show("Client was successfully updated!");
             }
             catch (Exception)
             {
-                MessageBox.Show("Client was not updated");
+                MessageBox.Show("Client was not updated!");
             }
         }
 

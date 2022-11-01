@@ -268,22 +268,22 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Controls.Add(this.radiobtnNo);
             this.groupBox7.Controls.Add(this.radiobtnYes);
-            this.groupBox7.Location = new System.Drawing.Point(35, 171);
+            this.groupBox7.Location = new System.Drawing.Point(6, 171);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(208, 107);
+            this.groupBox7.Size = new System.Drawing.Size(237, 107);
             this.groupBox7.TabIndex = 23;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Family Member?";
+            this.groupBox7.Text = "Family Details";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(28, 21);
+            this.label12.Location = new System.Drawing.Point(12, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.Size = new System.Drawing.Size(87, 13);
             this.label12.TabIndex = 17;
-            this.label12.Text = "Family?";
+            this.label12.Text = "Family Referal";
             // 
             // cmbFamily_Role
             // 
@@ -293,7 +293,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             "MOTHER",
             "CHILD",
             "UNSPECIFIED"});
-            this.cmbFamily_Role.Location = new System.Drawing.Point(81, 73);
+            this.cmbFamily_Role.Location = new System.Drawing.Point(110, 73);
             this.cmbFamily_Role.Name = "cmbFamily_Role";
             this.cmbFamily_Role.Size = new System.Drawing.Size(121, 21);
             this.cmbFamily_Role.TabIndex = 16;
@@ -302,7 +302,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 76);
+            this.label3.Location = new System.Drawing.Point(27, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 15;
@@ -311,7 +311,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtNewFamilyId
             // 
             this.txtNewFamilyId.Enabled = false;
-            this.txtNewFamilyId.Location = new System.Drawing.Point(81, 47);
+            this.txtNewFamilyId.Location = new System.Drawing.Point(110, 47);
             this.txtNewFamilyId.Name = "txtNewFamilyId";
             this.txtNewFamilyId.Size = new System.Drawing.Size(121, 20);
             this.txtNewFamilyId.TabIndex = 14;
@@ -320,7 +320,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(18, 50);
+            this.label11.Location = new System.Drawing.Point(40, 50);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
             this.label11.TabIndex = 13;
@@ -329,7 +329,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // radiobtnNo
             // 
             this.radiobtnNo.AutoSize = true;
-            this.radiobtnNo.Location = new System.Drawing.Point(161, 19);
+            this.radiobtnNo.Location = new System.Drawing.Point(190, 19);
             this.radiobtnNo.Name = "radiobtnNo";
             this.radiobtnNo.Size = new System.Drawing.Size(41, 17);
             this.radiobtnNo.TabIndex = 1;
@@ -341,7 +341,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // radiobtnYes
             // 
             this.radiobtnYes.AutoSize = true;
-            this.radiobtnYes.Location = new System.Drawing.Point(83, 19);
+            this.radiobtnYes.Location = new System.Drawing.Point(112, 19);
             this.radiobtnYes.Name = "radiobtnYes";
             this.radiobtnYes.Size = new System.Drawing.Size(46, 17);
             this.radiobtnYes.TabIndex = 0;

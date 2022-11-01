@@ -73,7 +73,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             dataGridViewPolicyList.DataSource = policy.populate();
             //dataGridViewClientSummary.DataSource = client.populate();
             txtClientID.Enabled = false;
-            cmbFamily_Role.SelectedIndex = 0;
+            cmbFamily_Role.SelectedIndex = 3;
 
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
@@ -111,8 +111,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     txtClientSurname.Text = item.Field<string>("Client_Surname");
                     txtClientPhone.Text = item.Field<string>("Client_Phone");
                     txtClientAddress.Text = item.Field<string>("Client_Address");
+                    txtNewFamilyId.Text = item.Field<int>("Family_Id").ToString();
+                    cmbFamily_Role.Text = item.Field<string>("Family_Role");
                 }
-                dataGridViewClientSummary.DataSource = dtPolSearch;
+                dataGridViewClientSummary.DataSource = dt;
             }
         }
 
@@ -328,8 +330,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
 
-                fam.FamilyID = int.Parse(txtNewFamilyId.Text);
-                fam.Family_role = cmbFamily_Role.Text;
+                //fam.FamilyID = int.Parse(txtNewFamilyId.Text);
+                //fam.Family_role = cmbFamily_Role.Text;
                 client.UniqueIdentifier = client.getRoleCode(fam.Family_role) + txtClientID.Text.Substring(1,8);
 
                 client.updateClientWithFamily();
