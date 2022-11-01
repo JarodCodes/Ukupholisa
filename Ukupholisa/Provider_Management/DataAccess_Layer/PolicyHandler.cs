@@ -49,6 +49,36 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
 
             return table;
         }
+        public DataTable retrieveProviderInfo()
+        {
+            string query = @"SELECT Provider_Id, Provider_Name FROM Medical_Provider";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            return table;
+        }
+        public DataTable retrieveTreatmentInfo(int provID)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("curTreatmentsSearch", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Provider_Id", provID);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
         public void addPolicy(Logic_Layer.Policy policy)
         {
             using (SqlConnection connect = new SqlConnection(con))

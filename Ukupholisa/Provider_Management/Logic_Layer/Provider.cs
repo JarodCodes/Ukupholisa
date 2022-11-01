@@ -56,6 +56,16 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             handler.addProvider(this);
         }
+        public DataTable getProviderInfo() 
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            return handler.retrieveProviderInfo();
+        }
+        public DataTable getCurrentTreatments()
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            return handler.retrieveTreatmentInfo(ProviderId);
+        }
 
         public bool validateStrings(string input)
         {

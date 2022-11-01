@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ukupholisa.Provider_Management.Logic_Layer;
 
 namespace Ukupholisa.Medical_Department
 {
@@ -17,14 +18,35 @@ namespace Ukupholisa.Medical_Department
             InitializeComponent();
         }
         ICRUD medcon = new Logic_layer.MedCondition();
-        ICRUD policy = new Provider_Management.Logic_Layer.Policy();
+        ICRUD policy = new Policy();
+        Provider provider = new Provider();
         private void Medical_Dept_Load(object sender, EventArgs e)
         {
             dataGridViewMedCon.DataSource = medcon.populate();
             dataGridViewMedPolicies.DataSource = policy.populate();
+            TreeNode treeNode = new TreeNode();
+            foreach (DataRow dr in provider.getProviderInfo().Rows)
+            {
+                treeNode = treeViewTreatments.Nodes.Add(dr["Provider_Name"].ToString());
+                //Display Parent node and ID number
+                PopulateTreeViewChild(Convert.ToInt32(dr["Provider_Id"].ToString()), treeNode);
+            }
         }
+        private void PopulateTreeViewChild(int parentId, TreeNode ParentNode)
+        {
+            provider.ProviderId = parentId;
+            TreeNode childnode = new TreeNode();
+            foreach (DataRow dr in provider.getCurrentTreatments().Rows)
+            {
+                if (ParentNode == null)
+                    childnode = treeViewTreatments.Nodes.Add(dr["Policy_Name"].ToString());
+                else
+                    childnode = ParentNode.Nodes.Add(dr["Policy_Name"].ToString());
 
-        private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            }
+
+        }
+    private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -125,7 +147,7 @@ namespace Ukupholisa.Medical_Department
 
         private void btnMedPolicySearch_Click(object sender, EventArgs e)
         {
-            Provider_Management.Logic_Layer.Policy policy = new Provider_Management.Logic_Layer.Policy();
+            Policy policy = new Policy();
             policy.PolicyId = int.Parse(txtMedPolicySearch.Text);
             DataTable dt = policy.search();
             if (dt.Rows.Count == 0)
