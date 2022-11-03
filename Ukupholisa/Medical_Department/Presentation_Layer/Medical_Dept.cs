@@ -88,8 +88,7 @@ namespace Ukupholisa.Medical_Department
                 txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
             }
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnMedAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -110,7 +109,7 @@ namespace Ukupholisa.Medical_Department
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnMedUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -131,7 +130,7 @@ namespace Ukupholisa.Medical_Department
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnMedDelete_Click(object sender, EventArgs e)
         {
             try
             {

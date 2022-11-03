@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConditions = new System.Windows.Forms.TabPage();
-            this.tabPageTreatments = new System.Windows.Forms.TabPage();
             this.groupBoxMedPolicies = new System.Windows.Forms.GroupBox();
             this.btnMedPolicyNext = new System.Windows.Forms.Button();
             this.btnMedPolicyPrev = new System.Windows.Forms.Button();
@@ -47,9 +46,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtMedPolicyID = new System.Windows.Forms.TextBox();
             this.txtTreatment = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnMedDelete = new System.Windows.Forms.Button();
+            this.btnMedUpdate = new System.Windows.Forms.Button();
+            this.btnMedAdd = new System.Windows.Forms.Button();
             this.rtxtMedDesc = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,10 +61,10 @@
             this.btnMedNext = new System.Windows.Forms.Button();
             this.btnMedPrev = new System.Windows.Forms.Button();
             this.dataGridViewMedCon = new System.Windows.Forms.DataGridView();
+            this.tabPageTreatments = new System.Windows.Forms.TabPage();
             this.treeViewTreatments = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPageConditions.SuspendLayout();
-            this.tabPageTreatments.SuspendLayout();
             this.groupBoxMedPolicies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedPolicies)).BeginInit();
             this.groupBoxMedSearch.SuspendLayout();
@@ -73,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinDuration)).BeginInit();
             this.groupBoxMedData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedCon)).BeginInit();
+            this.tabPageTreatments.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -98,17 +98,6 @@
             this.tabPageConditions.TabIndex = 0;
             this.tabPageConditions.Text = "Conditions";
             this.tabPageConditions.UseVisualStyleBackColor = true;
-            // 
-            // tabPageTreatments
-            // 
-            this.tabPageTreatments.Controls.Add(this.treeViewTreatments);
-            this.tabPageTreatments.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTreatments.Name = "tabPageTreatments";
-            this.tabPageTreatments.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTreatments.Size = new System.Drawing.Size(788, 476);
-            this.tabPageTreatments.TabIndex = 1;
-            this.tabPageTreatments.Text = "Treatments";
-            this.tabPageTreatments.UseVisualStyleBackColor = true;
             // 
             // groupBoxMedPolicies
             // 
@@ -171,6 +160,7 @@
             this.btnMedPolicySearch.TabIndex = 23;
             this.btnMedPolicySearch.Text = "Policy Search";
             this.btnMedPolicySearch.UseVisualStyleBackColor = true;
+            this.btnMedPolicySearch.Click += new System.EventHandler(this.btnMedPolicySearch_Click);
             // 
             // txtMedPolicySearch
             // 
@@ -196,6 +186,7 @@
             this.btnMedSearch.TabIndex = 19;
             this.btnMedSearch.Text = "Condition Search";
             this.btnMedSearch.UseVisualStyleBackColor = true;
+            this.btnMedSearch.Click += new System.EventHandler(this.btnMedSearch_Click);
             // 
             // txtMedSearch
             // 
@@ -219,9 +210,9 @@
             this.groupBoxMedOperations.Controls.Add(this.label8);
             this.groupBoxMedOperations.Controls.Add(this.txtMedPolicyID);
             this.groupBoxMedOperations.Controls.Add(this.txtTreatment);
-            this.groupBoxMedOperations.Controls.Add(this.btnDelete);
-            this.groupBoxMedOperations.Controls.Add(this.btnUpdate);
-            this.groupBoxMedOperations.Controls.Add(this.btnAdd);
+            this.groupBoxMedOperations.Controls.Add(this.btnMedDelete);
+            this.groupBoxMedOperations.Controls.Add(this.btnMedUpdate);
+            this.groupBoxMedOperations.Controls.Add(this.btnMedAdd);
             this.groupBoxMedOperations.Controls.Add(this.rtxtMedDesc);
             this.groupBoxMedOperations.Controls.Add(this.label5);
             this.groupBoxMedOperations.Controls.Add(this.label4);
@@ -277,32 +268,35 @@
             this.txtTreatment.Size = new System.Drawing.Size(183, 20);
             this.txtTreatment.TabIndex = 19;
             // 
-            // btnDelete
+            // btnMedDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(198, 320);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 18;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnMedDelete.Location = new System.Drawing.Point(198, 320);
+            this.btnMedDelete.Name = "btnMedDelete";
+            this.btnMedDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnMedDelete.TabIndex = 18;
+            this.btnMedDelete.Text = "Delete";
+            this.btnMedDelete.UseVisualStyleBackColor = true;
+            this.btnMedDelete.Click += new System.EventHandler(this.btnMedDelete_Click);
             // 
-            // btnUpdate
+            // btnMedUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(104, 320);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnMedUpdate.Location = new System.Drawing.Point(104, 320);
+            this.btnMedUpdate.Name = "btnMedUpdate";
+            this.btnMedUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnMedUpdate.TabIndex = 17;
+            this.btnMedUpdate.Text = "Update";
+            this.btnMedUpdate.UseVisualStyleBackColor = true;
+            this.btnMedUpdate.Click += new System.EventHandler(this.btnMedUpdate_Click);
             // 
-            // btnAdd
+            // btnMedAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(9, 320);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnMedAdd.Location = new System.Drawing.Point(9, 320);
+            this.btnMedAdd.Name = "btnMedAdd";
+            this.btnMedAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnMedAdd.TabIndex = 4;
+            this.btnMedAdd.Text = "Add";
+            this.btnMedAdd.UseVisualStyleBackColor = true;
+            this.btnMedAdd.Click += new System.EventHandler(this.btnMedAdd_Click);
             // 
             // rtxtMedDesc
             // 
@@ -409,6 +403,17 @@
             this.dataGridViewMedCon.Size = new System.Drawing.Size(478, 173);
             this.dataGridViewMedCon.TabIndex = 0;
             // 
+            // tabPageTreatments
+            // 
+            this.tabPageTreatments.Controls.Add(this.treeViewTreatments);
+            this.tabPageTreatments.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTreatments.Name = "tabPageTreatments";
+            this.tabPageTreatments.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTreatments.Size = new System.Drawing.Size(788, 476);
+            this.tabPageTreatments.TabIndex = 1;
+            this.tabPageTreatments.Text = "Treatments";
+            this.tabPageTreatments.UseVisualStyleBackColor = true;
+            // 
             // treeViewTreatments
             // 
             this.treeViewTreatments.Location = new System.Drawing.Point(8, 6);
@@ -427,7 +432,6 @@
             this.Load += new System.EventHandler(this.Medical_Dept_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageConditions.ResumeLayout(false);
-            this.tabPageTreatments.ResumeLayout(false);
             this.groupBoxMedPolicies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedPolicies)).EndInit();
             this.groupBoxMedSearch.ResumeLayout(false);
@@ -437,6 +441,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spinDuration)).EndInit();
             this.groupBoxMedData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMedCon)).EndInit();
+            this.tabPageTreatments.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -461,9 +466,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtMedPolicyID;
         private System.Windows.Forms.TextBox txtTreatment;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnMedDelete;
+        private System.Windows.Forms.Button btnMedUpdate;
+        private System.Windows.Forms.Button btnMedAdd;
         private System.Windows.Forms.RichTextBox rtxtMedDesc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
