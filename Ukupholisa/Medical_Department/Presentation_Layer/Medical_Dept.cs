@@ -64,30 +64,6 @@ namespace Ukupholisa.Medical_Department
             }
 
         }
-        private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow rows = this.dataGridViewMedCon.Rows[e.RowIndex];
-
-                txtMedID.Text = rows.Cells["Condition_Id"].Value.ToString();
-                txtMedName.Text = rows.Cells["Condition_Name"].Value.ToString();
-                rtxtMedDesc.Text = rows.Cells["Condition_Description"].Value.ToString();
-                txtTreatment.Text = rows.Cells["Condition_Treatment"].Value.ToString();
-                txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
-                spinDuration.Value = int.Parse(rows.Cells["Condition_Duration"].Value.ToString());
-            }
-        }
-
-        private void dataGridViewMedPolicies_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow rows = this.dataGridViewMedPolicies.Rows[e.RowIndex];
-
-                txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
-            }
-        }
         private void btnMedAdd_Click(object sender, EventArgs e)
         {
             try
@@ -175,6 +151,31 @@ namespace Ukupholisa.Medical_Department
             {
                 MessageBox.Show("Policy found");
                 dataGridViewMedPolicies.DataSource = dt;
+            }
+        }
+
+        private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow rows = this.dataGridViewMedCon.Rows[e.RowIndex];
+
+                txtMedID.Text = rows.Cells["Condition_Id"].Value.ToString();
+                txtMedName.Text = rows.Cells["Condition_Name"].Value.ToString();
+                rtxtMedDesc.Text = rows.Cells["Condition_Description"].Value.ToString();
+                txtTreatment.Text = rows.Cells["Condition_Treatment"].Value.ToString();
+                txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
+                spinDuration.Value = int.Parse(rows.Cells["Condition_Duration"].Value.ToString());
+            }
+        }
+
+        private void dataGridViewMedPolicies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow rows = this.dataGridViewMedPolicies.Rows[e.RowIndex];
+
+                txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
             }
         }
     }

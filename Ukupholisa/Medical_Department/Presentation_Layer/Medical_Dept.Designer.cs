@@ -136,6 +136,7 @@
             this.dataGridViewMedPolicies.Name = "dataGridViewMedPolicies";
             this.dataGridViewMedPolicies.Size = new System.Drawing.Size(478, 173);
             this.dataGridViewMedPolicies.TabIndex = 0;
+            this.dataGridViewMedPolicies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMedPolicies_CellContentClick);
             // 
             // groupBoxMedSearch
             // 
@@ -402,6 +403,7 @@
             this.dataGridViewMedCon.Name = "dataGridViewMedCon";
             this.dataGridViewMedCon.Size = new System.Drawing.Size(478, 173);
             this.dataGridViewMedCon.TabIndex = 0;
+            this.dataGridViewMedCon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMedCon_CellContentClick);
             // 
             // tabPageTreatments
             // 
