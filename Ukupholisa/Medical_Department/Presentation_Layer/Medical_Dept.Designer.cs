@@ -63,6 +63,7 @@
             this.dataGridViewMedCon = new System.Windows.Forms.DataGridView();
             this.tabPageTreatments = new System.Windows.Forms.TabPage();
             this.treeViewTreatments = new System.Windows.Forms.TreeView();
+            this.btnMedConRefresh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageConditions.SuspendLayout();
             this.groupBoxMedPolicies.SuspendLayout();
@@ -207,6 +208,7 @@
             // 
             // groupBoxMedOperations
             // 
+            this.groupBoxMedOperations.Controls.Add(this.btnMedConRefresh);
             this.groupBoxMedOperations.Controls.Add(this.spinDuration);
             this.groupBoxMedOperations.Controls.Add(this.label8);
             this.groupBoxMedOperations.Controls.Add(this.txtMedPolicyID);
@@ -423,6 +425,16 @@
             this.treeViewTreatments.Size = new System.Drawing.Size(777, 467);
             this.treeViewTreatments.TabIndex = 0;
             // 
+            // btnMedConRefresh
+            // 
+            this.btnMedConRefresh.Location = new System.Drawing.Point(9, 291);
+            this.btnMedConRefresh.Name = "btnMedConRefresh";
+            this.btnMedConRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnMedConRefresh.TabIndex = 23;
+            this.btnMedConRefresh.Text = "Refresh";
+            this.btnMedConRefresh.UseVisualStyleBackColor = true;
+            this.btnMedConRefresh.Click += new System.EventHandler(this.btnMedConRefresh_Click);
+            // 
             // Medical_Dept
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,5 +497,6 @@
         private System.Windows.Forms.DataGridView dataGridViewMedCon;
         private System.Windows.Forms.TabPage tabPageTreatments;
         private System.Windows.Forms.TreeView treeViewTreatments;
+        private System.Windows.Forms.Button btnMedConRefresh;
     }
 }

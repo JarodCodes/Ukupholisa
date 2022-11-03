@@ -77,6 +77,7 @@ namespace Ukupholisa.Medical_Department
                 medcon.Duration = (int)spinDuration.Value;
 
                 medcon.add();
+                dataGridViewMedCon.DataSource = medcon.populate();
                 MessageBox.Show("Condition was added");
             }
             catch (Exception)
@@ -98,6 +99,7 @@ namespace Ukupholisa.Medical_Department
                 medcon.Duration = (int)spinDuration.Value;
 
                 medcon.update();
+                dataGridViewMedCon.DataSource = medcon.populate();
                 MessageBox.Show("Condition was updated");
             }
             catch (Exception)
@@ -114,6 +116,7 @@ namespace Ukupholisa.Medical_Department
                 medcon.MedConID = int.Parse(txtMedID.Text);
 
                 medcon.delete();
+                dataGridViewMedCon.DataSource = medcon.populate();
                 MessageBox.Show("Condition was deleted");
             }
             catch (Exception)
@@ -177,6 +180,12 @@ namespace Ukupholisa.Medical_Department
 
                 txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
             }
+        }
+
+        private void btnMedConRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewMedCon.DataSource = medcon.populate();
+            dataGridViewMedPolicies.DataSource = policy.populate();
         }
     }
 }
