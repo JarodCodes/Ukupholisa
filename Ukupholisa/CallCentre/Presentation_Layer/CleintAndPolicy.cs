@@ -78,8 +78,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     MessageBox.Show("Client was deleted");
 
                     dataGridViewClients.DataSource = family.populate();
-                    dataGridViewClients.Update();
-                    dataGridViewClients.Refresh();
 
                 }
             }
@@ -116,6 +114,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Client_Id = int.Parse(txtFamClientID.Text);
 
                 family.addToFam(client.Client_Id);
+                dataGridViewFamily.DataSource = family.search();
                 MessageBox.Show("Client was added to family");
             }
             catch (Exception)
@@ -146,6 +145,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Client_Id = int.Parse(txtFamClientID.Text);
 
                 family.update(client.Client_Id);
+                dataGridViewFamily.DataSource = family.search();
                 MessageBox.Show("Client was successfully updated!");
             }
             catch (Exception)
@@ -163,6 +163,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Client_Id = int.Parse(txtFamClientID.Text);
                 family.removeFromFam(client.Client_Id);
                 MessageBox.Show("Client was removed from family");
+                dataGridViewFamily.DataSource = family.search();
             }
             catch (Exception)
             {
@@ -177,6 +178,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
                 family.delete();
+                dataGridViewFamily.DataSource = family.search();
                 MessageBox.Show("Family was deleted");
             }
             catch (Exception)
@@ -220,6 +222,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 policy.PolicyId = int.Parse(txtFamPolSearch.Text);
 
                 family.addFamPol(policy.PolicyId);
+                dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
                 MessageBox.Show("Policy was added to family");
             }
             catch (Exception)
@@ -245,6 +248,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
                 family.removeFamPol();
+                dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
                 MessageBox.Show("Policy was removed");
             }
             catch (Exception)
@@ -268,7 +272,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Policy policy = new Policy();
             Client client = new Client();
             client.UniqueIdentifier = txtClientID.Text;
-            dataGridViewCurFamPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
+            dataGridViewClientPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
         }
 
         private void btnUpdateStatus_Click(object sender, EventArgs e)
@@ -284,6 +288,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     client.UniqueIdentifier = txtClientID.Text;
                     policy.Status = txtClientPolSearch.Text;
                     policy.updateStatus(client.UniqueIdentifier);
+                    dataGridViewClientPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
                 }
                 else 
                 {
@@ -307,6 +312,19 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtClientPolSearch.Text = rows.Cells["Policy_Id"].Value.ToString();
                 cmbClientPolStatus.Text = rows.Cells["Policy_Status"].Value.ToString();
             }
+        }
+
+        private void btnClientRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewClients.DataSource = family.populate();
+        }
+
+        private void btnFamPolRefresh_Click(object sender, EventArgs e)
+        {
+            Policy policy = new Policy();
+            policy.PolicyId = int.Parse(txtFamPolSearch.Text);
+            dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
+            dataGridViewPolicies.DataSource = policy.populate();
         }
     }
 }
