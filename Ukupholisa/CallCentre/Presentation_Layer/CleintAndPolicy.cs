@@ -248,6 +248,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Family family = new Family();
                 family.FamilyID = int.Parse(txtFamilyID.Text);
                 family.removeFamPol();
+                Policy policy = new Policy();
+                policy.PolicyId = int.Parse(txtFamPolSearch.Text);
                 dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
                 MessageBox.Show("Policy was removed");
             }
