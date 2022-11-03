@@ -328,6 +328,11 @@
             // cmbFamilyRole
             // 
             this.cmbFamilyRole.FormattingEnabled = true;
+            this.cmbFamilyRole.Items.AddRange(new object[] {
+            "FATHER",
+            "MOTHER",
+            "CHILD",
+            "UNSPECIFIED"});
             this.cmbFamilyRole.Location = new System.Drawing.Point(90, 58);
             this.cmbFamilyRole.Name = "cmbFamilyRole";
             this.cmbFamilyRole.Size = new System.Drawing.Size(183, 21);
@@ -706,6 +711,9 @@
             // cmbClientPolStatus
             // 
             this.cmbClientPolStatus.FormattingEnabled = true;
+            this.cmbClientPolStatus.Items.AddRange(new object[] {
+            "Pending",
+            "In Progress"});
             this.cmbClientPolStatus.Location = new System.Drawing.Point(62, 49);
             this.cmbClientPolStatus.Name = "cmbClientPolStatus";
             this.cmbClientPolStatus.Size = new System.Drawing.Size(275, 21);

@@ -26,6 +26,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             dataGridViewClients.DataSource = family.populate();
             dataGridViewPolicies.DataSource = policy.populate();
+            cmbClientPolStatus.SelectedIndex = 1;
+            cmbFamilyRole.SelectedIndex = 3;
         }
 
         private void dataGridViewClients_CellContentClick(object sender, DataGridViewCellEventArgs e)

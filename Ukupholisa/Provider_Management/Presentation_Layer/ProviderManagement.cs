@@ -27,6 +27,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             dataGridViewPol.DataSource = policy.populate();
             dataGridViewPackPol.DataSource = policy.populate();
             dataGridViewPackage.DataSource = package.populate();
+            cmbCoverLevel.SelectedIndex = 0;
         }
 
         private void dataGridViewProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -67,6 +68,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
 
                 provider.add();
                 MessageBox.Show("Provider was added");
+                dataGridViewProv.DataSource = provider.populate();
             }
             catch (Exception)
             {
@@ -92,6 +94,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 }
 
                 provider.update();
+                dataGridViewProv.DataSource = provider.populate();
                 MessageBox.Show("Provider was updated");
             }
             catch (Exception )
@@ -108,6 +111,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 provider.ProviderId = int.Parse(txtProvID.Text);
 
                 provider.delete();
+                dataGridViewProv.DataSource = provider.populate();
                 MessageBox.Show("Provider was deleted");
             }
             catch (Exception)
@@ -157,6 +161,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policy.ProviderId = int.Parse(txtPolProvID.Text);
 
                 policy.add();
+                dataGridViewPol.DataSource = policy.populate();
                 MessageBox.Show("Policy was added");
             }
             catch (Exception )
@@ -177,6 +182,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policy.ProviderId = int.Parse(txtPolProvID.Text);
 
                 policy.update();
+                dataGridViewPol.DataSource = policy.populate();
                 MessageBox.Show("Policy was updated");
             }
             catch (Exception )
@@ -193,6 +199,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 policy.PolicyId = int.Parse(txtPolID.Text);
 
                 policy.delete();
+                dataGridViewPol.DataSource = policy.populate();
                 MessageBox.Show("Policy was deleted");
             }
             catch (Exception)
@@ -276,6 +283,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.ProviderId = int.Parse(txtPackProvID.Text);
 
                 package.add();
+                dataGridViewPackage.DataSource = package.populate();
                 MessageBox.Show("Package was created, remember to add policies on the next screen!");
             }
             catch (Exception )
@@ -295,6 +303,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.ProviderId = int.Parse(txtPackProvID.Text);
 
                 package.update();
+                dataGridViewPackage.DataSource = package.populate();
                 MessageBox.Show("Package was updated");
             }
             catch (Exception )
@@ -311,6 +320,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.PackageId = int.Parse(txtPackID.Text);
 
                 package.delete();
+                dataGridViewPackage.DataSource = package.populate();
                 MessageBox.Show("Package was deleted");
             }
             catch (Exception )
@@ -385,6 +395,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.PolicyId = int.Parse(txtPackPolSearch.Text);
                 package.PackageId = int.Parse(txtPackID.Text);
                 package.addPol();
+                dataGridViewCurPackPol.DataSource = package.packPolSearch();
                 MessageBox.Show("Policy was added");
             }
             catch (Exception)
@@ -408,12 +419,38 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 package.PolicyId = int.Parse(txtPackPolSearch.Text);
                 package.PackageId = int.Parse(txtPackID.Text);
                 package.removePol();
+                dataGridViewCurPackPol.DataSource = package.packPolSearch();
                 MessageBox.Show("Policy was removed");
             }
             catch (Exception)
             {
                 MessageBox.Show("Policy was not removed");
             }
+        }
+
+        private void btnProvRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewProv.DataSource = provider.populate();
+        }
+
+        private void btnPolRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewPolProv.DataSource = provider.populate();
+            dataGridViewPol.DataSource = policy.populate();
+        }
+
+        private void btnPackRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewPackage.DataSource = package.populate();
+            dataGridViewPackProv.DataSource = provider.populate();
+        }
+
+        private void btnPackPolRefresh_Click(object sender, EventArgs e)
+        {
+            Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+            package.PackageId = int.Parse(txtPackID.Text);
+            dataGridViewCurPackPol.DataSource = package.packPolSearch();
+            dataGridViewPackPol.DataSource = policy.populate();
         }
     }
 }

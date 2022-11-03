@@ -105,10 +105,10 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             string importance="";
             switch (CoverLevel)
             {
-                case "Partial":
+                case "PRT":
                     coverCode = "B";
                     break;
-                case "Full":
+                case "FLL":
                     coverCode = "A";
                     break;
             }
