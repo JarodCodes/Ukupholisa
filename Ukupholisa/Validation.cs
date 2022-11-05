@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Ukupholisa
+{
+    public class Validation
+    {
+        public bool validateAddress(string address)
+        {
+            if (!Regex.Match(address, @"^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
+            {
+                // address was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool validateStrings(string input)
+        {
+            if (!Regex.Match(input, "^[A-Z][a-zA-Z]*$").Success)
+            {
+                // first name was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool validatePhone(string phone)
+        {
+            if (!Regex.Match(phone, @"^[0]{1}[0-9]{9}$").Success)
+            {
+                // phone number was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

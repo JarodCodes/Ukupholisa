@@ -100,45 +100,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             handler.updateClientDetailsWithFam(this);
         }
 
-
-        public bool validateAddress(string address)
-        {
-            if (!Regex.Match(address, @"^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$").Success)
-            {
-                // address was incorrect
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public bool validateStrings(string input)
-        {
-            if (!Regex.Match(input, "^[A-Z][a-zA-Z]*$").Success)
-            {
-                // first name was incorrect
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validatePhone(string phone)
-        {
-            if (!Regex.Match(phone, @"^[0]{1}[0-9]{9}$").Success)
-            {
-                // phone number was incorrect
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         internal string getUniqueCode(string codeclass)
         {
             int codePart1 = 0;

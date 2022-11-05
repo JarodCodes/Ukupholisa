@@ -88,6 +88,7 @@
     <Compile Include="Provider_Management\Presentation_Layer\ProviderManagement.Designer.cs">
       <DependentUpon>ProviderManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="CallCentre\Presentation_Layer\CleintAndPolicy.resx">
       <DependentUpon>CleintAndPolicy.cs</DependentUpon>
     </EmbeddedResource>

@@ -14,8 +14,6 @@ namespace Ukupholisa
         DataTable search();
         void add();
         void update();
-        void delete();
-
-        bool validateStrings(string input);        
+        void delete();       
     }
 }
