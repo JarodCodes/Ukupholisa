@@ -34,6 +34,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridViewCurFamPol = new System.Windows.Forms.DataGridView();
             this.groupBoxClientFamPol = new System.Windows.Forms.GroupBox();
+            this.btnFamPolRefresh = new System.Windows.Forms.Button();
             this.btnFamPolRemove = new System.Windows.Forms.Button();
             this.btnFamPolAdd = new System.Windows.Forms.Button();
             this.btnFamPolSearch = new System.Windows.Forms.Button();
@@ -65,17 +66,10 @@
             this.txtClientSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxClientOperations = new System.Windows.Forms.GroupBox();
+            this.btnClientRefresh = new System.Windows.Forms.Button();
             this.txtFamilyID = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtClientAddress = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtClientPhone = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtClientSurname = new System.Windows.Forms.TextBox();
             this.btnClientDelete = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtClientName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtClientID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxClientData = new System.Windows.Forms.GroupBox();
@@ -95,8 +89,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.dataGridViewClientPol = new System.Windows.Forms.DataGridView();
-            this.btnClientRefresh = new System.Windows.Forms.Button();
-            this.btnFamPolRefresh = new System.Windows.Forms.Button();
             this.tabPageFamPol.SuspendLayout();
             this.groupBoxFamCurPol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurFamPol)).BeginInit();
@@ -185,6 +177,16 @@
             this.groupBoxClientFamPol.TabIndex = 13;
             this.groupBoxClientFamPol.TabStop = false;
             this.groupBoxClientFamPol.Text = "Policy Operations";
+            // 
+            // btnFamPolRefresh
+            // 
+            this.btnFamPolRefresh.Location = new System.Drawing.Point(262, 164);
+            this.btnFamPolRefresh.Name = "btnFamPolRefresh";
+            this.btnFamPolRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnFamPolRefresh.TabIndex = 27;
+            this.btnFamPolRefresh.Text = "Refresh";
+            this.btnFamPolRefresh.UseVisualStyleBackColor = true;
+            this.btnFamPolRefresh.Click += new System.EventHandler(this.btnFamPolRefresh_Click);
             // 
             // btnFamPolRemove
             // 
@@ -491,15 +493,7 @@
             this.groupBoxClientOperations.Controls.Add(this.btnClientRefresh);
             this.groupBoxClientOperations.Controls.Add(this.txtFamilyID);
             this.groupBoxClientOperations.Controls.Add(this.label11);
-            this.groupBoxClientOperations.Controls.Add(this.txtClientAddress);
-            this.groupBoxClientOperations.Controls.Add(this.label13);
-            this.groupBoxClientOperations.Controls.Add(this.txtClientPhone);
-            this.groupBoxClientOperations.Controls.Add(this.label12);
-            this.groupBoxClientOperations.Controls.Add(this.txtClientSurname);
             this.groupBoxClientOperations.Controls.Add(this.btnClientDelete);
-            this.groupBoxClientOperations.Controls.Add(this.label3);
-            this.groupBoxClientOperations.Controls.Add(this.txtClientName);
-            this.groupBoxClientOperations.Controls.Add(this.label2);
             this.groupBoxClientOperations.Controls.Add(this.txtClientID);
             this.groupBoxClientOperations.Controls.Add(this.label1);
             this.groupBoxClientOperations.Location = new System.Drawing.Point(502, 6);
@@ -509,9 +503,19 @@
             this.groupBoxClientOperations.TabStop = false;
             this.groupBoxClientOperations.Text = "Operations";
             // 
+            // btnClientRefresh
+            // 
+            this.btnClientRefresh.Location = new System.Drawing.Point(9, 277);
+            this.btnClientRefresh.Name = "btnClientRefresh";
+            this.btnClientRefresh.Size = new System.Drawing.Size(286, 23);
+            this.btnClientRefresh.TabIndex = 26;
+            this.btnClientRefresh.Text = "Refresh";
+            this.btnClientRefresh.UseVisualStyleBackColor = true;
+            this.btnClientRefresh.Click += new System.EventHandler(this.btnClientRefresh_Click);
+            // 
             // txtFamilyID
             // 
-            this.txtFamilyID.Location = new System.Drawing.Point(112, 175);
+            this.txtFamilyID.Location = new System.Drawing.Point(112, 70);
             this.txtFamilyID.Name = "txtFamilyID";
             this.txtFamilyID.Size = new System.Drawing.Size(183, 20);
             this.txtFamilyID.TabIndex = 25;
@@ -520,50 +524,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 178);
+            this.label11.Location = new System.Drawing.Point(6, 73);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 24;
             this.label11.Text = "Family ID";
-            // 
-            // txtClientAddress
-            // 
-            this.txtClientAddress.Location = new System.Drawing.Point(112, 149);
-            this.txtClientAddress.Name = "txtClientAddress";
-            this.txtClientAddress.Size = new System.Drawing.Size(183, 20);
-            this.txtClientAddress.TabIndex = 23;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 149);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Address";
-            // 
-            // txtClientPhone
-            // 
-            this.txtClientPhone.Location = new System.Drawing.Point(112, 123);
-            this.txtClientPhone.Name = "txtClientPhone";
-            this.txtClientPhone.Size = new System.Drawing.Size(183, 20);
-            this.txtClientPhone.TabIndex = 21;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 123);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Phone";
-            // 
-            // txtClientSurname
-            // 
-            this.txtClientSurname.Location = new System.Drawing.Point(112, 97);
-            this.txtClientSurname.Name = "txtClientSurname";
-            this.txtClientSurname.Size = new System.Drawing.Size(183, 20);
-            this.txtClientSurname.TabIndex = 19;
             // 
             // btnClientDelete
             // 
@@ -574,31 +539,6 @@
             this.btnClientDelete.Text = "Delete";
             this.btnClientDelete.UseVisualStyleBackColor = true;
             this.btnClientDelete.Click += new System.EventHandler(this.btnClientDelete_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Surname";
-            // 
-            // txtClientName
-            // 
-            this.txtClientName.Location = new System.Drawing.Point(112, 68);
-            this.txtClientName.Name = "txtClientName";
-            this.txtClientName.Size = new System.Drawing.Size(183, 20);
-            this.txtClientName.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Name";
             // 
             // txtClientID
             // 
@@ -788,26 +728,6 @@
             this.dataGridViewClientPol.TabIndex = 0;
             this.dataGridViewClientPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientPol_CellContentClick);
             // 
-            // btnClientRefresh
-            // 
-            this.btnClientRefresh.Location = new System.Drawing.Point(9, 277);
-            this.btnClientRefresh.Name = "btnClientRefresh";
-            this.btnClientRefresh.Size = new System.Drawing.Size(286, 23);
-            this.btnClientRefresh.TabIndex = 26;
-            this.btnClientRefresh.Text = "Refresh";
-            this.btnClientRefresh.UseVisualStyleBackColor = true;
-            this.btnClientRefresh.Click += new System.EventHandler(this.btnClientRefresh_Click);
-            // 
-            // btnFamPolRefresh
-            // 
-            this.btnFamPolRefresh.Location = new System.Drawing.Point(262, 164);
-            this.btnFamPolRefresh.Name = "btnFamPolRefresh";
-            this.btnFamPolRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnFamPolRefresh.TabIndex = 27;
-            this.btnFamPolRefresh.Text = "Refresh";
-            this.btnFamPolRefresh.UseVisualStyleBackColor = true;
-            this.btnFamPolRefresh.Click += new System.EventHandler(this.btnFamPolRefresh_Click);
-            // 
             // CleintAndPolicy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,15 +808,7 @@
         private System.Windows.Forms.GroupBox groupBoxClientOperations;
         private System.Windows.Forms.TextBox txtFamilyID;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtClientAddress;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtClientPhone;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtClientSurname;
         private System.Windows.Forms.Button btnClientDelete;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtClientName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtClientID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBoxClientData;

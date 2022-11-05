@@ -37,10 +37,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 DataGridViewRow rows = this.dataGridViewClients.Rows[e.RowIndex];
 
                 txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
-                txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
-                txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
-                txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
-                txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
                 txtFamilyID.Text = rows.Cells["Family_Id"].Value.ToString();
             }
         }
@@ -70,15 +66,21 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Client client = new Client();
-                client.UniqueIdentifier = txtClientID.Text;
-
-                if (MessageBox.Show("Are you sure you want to delete client " + client.UniqueIdentifier + "?", "WARNING" , MessageBoxButtons.YesNo , MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (String.IsNullOrEmpty(txtClientID.Text))
                 {
-                    client.delete(); 
-                    MessageBox.Show("Client was deleted");
+                    MessageBox.Show("Invalid code");
+                }
+                else
+                {
+                    client.UniqueIdentifier = txtClientID.Text;
+                    if (MessageBox.Show("Are you sure you want to delete client " + client.UniqueIdentifier + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        client.delete();
+                        MessageBox.Show("Client was deleted");
 
-                    dataGridViewClients.DataSource = family.populate();
+                        dataGridViewClients.DataSource = family.populate();
 
+                    }
                 }
             }
             catch (Exception)
@@ -90,16 +92,23 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnClientSearch_Click(object sender, EventArgs e)
         {
             Client client = new Client();
-            client.UniqueIdentifier = txtClientSearch.Text;
-            DataTable dt = client.search();
-            if (dt.Rows.Count == 0)
+            if (String.IsNullOrEmpty(txtClientID.Text))
             {
-                MessageBox.Show("No client found");
+                MessageBox.Show("Invalid code");
             }
             else
             {
-                MessageBox.Show("Client found");
-                dataGridViewClients.DataSource = dt;
+                client.UniqueIdentifier = txtClientSearch.Text;
+                DataTable dt = client.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No client found");
+                }
+                else
+                {
+                    MessageBox.Show("Client found");
+                    dataGridViewClients.DataSource = dt;
+                }
             }
         }
 
@@ -108,14 +117,25 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
-                family.Family_role = cmbFamilyRole.Text;
                 Client client = new Client();
-                client.Client_Id = int.Parse(txtFamClientID.Text);
+                if (!int.TryParse(txtFamilyID.Text, out int famId))
+                {
+                    MessageBox.Show("Invalid family ID");
+                }
+                else if (!int.TryParse(txtFamClientID.Text, out int clientId))
+                {
+                    MessageBox.Show("Invalid cleint ID");
+                }
+                else
+                {
+                    family.FamilyID = famId;
+                    family.Family_role = cmbFamilyRole.Text;
+                    client.Client_Id = clientId;
 
-                family.addToFam(client.Client_Id);
-                dataGridViewFamily.DataSource = family.search();
-                MessageBox.Show("Client was added to family");
+                    family.addToFam(client.Client_Id);
+                    dataGridViewFamily.DataSource = family.search();
+                    MessageBox.Show("Client was added to family");
+                }
             }
             catch (Exception)
             {
@@ -139,14 +159,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
-                family.Family_role = cmbFamilyRole.Text;
                 Client client = new Client();
-                client.Client_Id = int.Parse(txtFamClientID.Text);
-
-                family.update(client.Client_Id);
-                dataGridViewFamily.DataSource = family.search();
-                MessageBox.Show("Client was successfully updated!");
+                if (!int.TryParse(txtFamilyID.Text, out int famId))
+                {
+                    MessageBox.Show("Invalid family ID");
+                }
+                else if (!int.TryParse(txtFamClientID.Text, out int clientId))
+                {
+                    MessageBox.Show("Invalid cleint ID");
+                }
+                else
+                {
+                    family.FamilyID = famId;
+                    family.Family_role = cmbFamilyRole.Text;
+                    client.Client_Id = clientId;
+                    family.update(client.Client_Id);
+                    dataGridViewFamily.DataSource = family.search();
+                    MessageBox.Show("Client was successfully updated!");
+                }
             }
             catch (Exception)
             {
@@ -160,10 +190,17 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 Family family = new Family();
                 Client client = new Client();
-                client.Client_Id = int.Parse(txtFamClientID.Text);
-                family.removeFromFam(client.Client_Id);
-                MessageBox.Show("Client was removed from family");
-                dataGridViewFamily.DataSource = family.search();
+                if (!int.TryParse(txtFamClientID.Text, out int clientId))
+                {
+                    MessageBox.Show("Invalid client ID");
+                }
+                else 
+                {
+                    client.Client_Id = clientId;
+                    family.removeFromFam(client.Client_Id);
+                    MessageBox.Show("Client was removed from family");
+                    dataGridViewFamily.DataSource = family.search();
+                }
             }
             catch (Exception)
             {
@@ -176,10 +213,17 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
-                family.delete();
-                dataGridViewFamily.DataSource = family.search();
-                MessageBox.Show("Family was deleted");
+                if (!int.TryParse(txtFamilyID.Text, out int famId))
+                {
+                    MessageBox.Show("Invalid family ID");
+                }
+                else 
+                {
+                    family.FamilyID = famId;
+                    family.delete();
+                    dataGridViewFamily.DataSource = family.search();
+                    MessageBox.Show("Family was deleted");
+                }
             }
             catch (Exception)
             {
@@ -199,17 +243,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnFamPolSearch_Click(object sender, EventArgs e)
         {
             Policy policy = new Policy();
-            policy.PolicyId = int.Parse(txtFamPolSearch.Text);
-            DataTable dt = policy.search();
-            if (dt.Rows.Count == 0)
+            if (!int.TryParse(txtFamPolSearch.Text, out int polId))
             {
-                MessageBox.Show("No policy found");
+                MessageBox.Show("Invalid policy ID");
             }
             else
             {
-                MessageBox.Show("Policy found");
-                dataGridViewPolicies.DataSource = dt;
-            }
+                policy.PolicyId = polId;
+                DataTable dt = policy.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No policy found");
+                }
+                else
+                {
+                    MessageBox.Show("Policy found");
+                    dataGridViewPolicies.DataSource = dt;
+                }
+            }   
         }
 
         private void btnFamPolAdd_Click(object sender, EventArgs e)
@@ -217,13 +268,25 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
-                Policy policy = new Policy();
-                policy.PolicyId = int.Parse(txtFamPolSearch.Text);
 
-                family.addFamPol(policy.PolicyId);
-                dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
-                MessageBox.Show("Policy was added to family");
+                Policy policy = new Policy();
+                if (!int.TryParse(txtFamilyID.Text, out int famId))
+                {
+                    MessageBox.Show("Invalid family ID");
+                }
+                else if (!int.TryParse(txtFamPolSearch.Text, out int polId))
+                {
+                    MessageBox.Show("Invalid policy ID");
+                }
+                else
+                {
+                    policy.PolicyId = polId;
+                    family.FamilyID = famId;
+
+                    family.addFamPol(policy.PolicyId);
+                    dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
+                    MessageBox.Show("Policy was added to family");
+                }
             }
             catch (Exception)
             {
@@ -246,12 +309,23 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Family family = new Family();
-                family.FamilyID = int.Parse(txtFamilyID.Text);
-                family.removeFamPol();
                 Policy policy = new Policy();
-                policy.PolicyId = int.Parse(txtFamPolSearch.Text);
-                dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
-                MessageBox.Show("Policy was removed");
+                if (!int.TryParse(txtFamilyID.Text, out int famId))
+                {
+                    MessageBox.Show("Invalid family ID");
+                }
+                else if (!int.TryParse(txtFamPolSearch.Text, out int polId))
+                {
+                    MessageBox.Show("Invalid policy ID");
+                }
+                else
+                {
+                    policy.PolicyId = polId;
+                    family.FamilyID = famId;
+                    family.removeFamPol();
+                    dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
+                    MessageBox.Show("Policy was removed");
+                }
             }
             catch (Exception)
             {
