@@ -95,6 +95,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.dataGridViewClientPol = new System.Windows.Forms.DataGridView();
+            this.btnClientRefresh = new System.Windows.Forms.Button();
+            this.btnFamPolRefresh = new System.Windows.Forms.Button();
             this.tabPageFamPol.SuspendLayout();
             this.groupBoxFamCurPol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurFamPol)).BeginInit();
@@ -171,6 +173,7 @@
             // 
             // groupBoxClientFamPol
             // 
+            this.groupBoxClientFamPol.Controls.Add(this.btnFamPolRefresh);
             this.groupBoxClientFamPol.Controls.Add(this.btnFamPolRemove);
             this.groupBoxClientFamPol.Controls.Add(this.btnFamPolAdd);
             this.groupBoxClientFamPol.Controls.Add(this.btnFamPolSearch);
@@ -185,7 +188,7 @@
             // 
             // btnFamPolRemove
             // 
-            this.btnFamPolRemove.Location = new System.Drawing.Point(262, 152);
+            this.btnFamPolRemove.Location = new System.Drawing.Point(262, 135);
             this.btnFamPolRemove.Name = "btnFamPolRemove";
             this.btnFamPolRemove.Size = new System.Drawing.Size(264, 23);
             this.btnFamPolRemove.TabIndex = 19;
@@ -195,7 +198,7 @@
             // 
             // btnFamPolAdd
             // 
-            this.btnFamPolAdd.Location = new System.Drawing.Point(262, 123);
+            this.btnFamPolAdd.Location = new System.Drawing.Point(262, 106);
             this.btnFamPolAdd.Name = "btnFamPolAdd";
             this.btnFamPolAdd.Size = new System.Drawing.Size(264, 23);
             this.btnFamPolAdd.TabIndex = 18;
@@ -205,7 +208,7 @@
             // 
             // btnFamPolSearch
             // 
-            this.btnFamPolSearch.Location = new System.Drawing.Point(262, 94);
+            this.btnFamPolSearch.Location = new System.Drawing.Point(262, 77);
             this.btnFamPolSearch.Name = "btnFamPolSearch";
             this.btnFamPolSearch.Size = new System.Drawing.Size(264, 23);
             this.btnFamPolSearch.TabIndex = 17;
@@ -215,7 +218,7 @@
             // 
             // txtFamPolSearch
             // 
-            this.txtFamPolSearch.Location = new System.Drawing.Point(343, 68);
+            this.txtFamPolSearch.Location = new System.Drawing.Point(343, 51);
             this.txtFamPolSearch.Name = "txtFamPolSearch";
             this.txtFamPolSearch.Size = new System.Drawing.Size(183, 20);
             this.txtFamPolSearch.TabIndex = 6;
@@ -223,7 +226,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(259, 71);
+            this.label21.Location = new System.Drawing.Point(259, 54);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
             this.label21.TabIndex = 5;
@@ -328,6 +331,11 @@
             // cmbFamilyRole
             // 
             this.cmbFamilyRole.FormattingEnabled = true;
+            this.cmbFamilyRole.Items.AddRange(new object[] {
+            "FATHER",
+            "MOTHER",
+            "CHILD",
+            "UNSPECIFIED"});
             this.cmbFamilyRole.Location = new System.Drawing.Point(90, 58);
             this.cmbFamilyRole.Name = "cmbFamilyRole";
             this.cmbFamilyRole.Size = new System.Drawing.Size(183, 21);
@@ -480,6 +488,7 @@
             // 
             // groupBoxClientOperations
             // 
+            this.groupBoxClientOperations.Controls.Add(this.btnClientRefresh);
             this.groupBoxClientOperations.Controls.Add(this.txtFamilyID);
             this.groupBoxClientOperations.Controls.Add(this.label11);
             this.groupBoxClientOperations.Controls.Add(this.txtClientAddress);
@@ -706,6 +715,9 @@
             // cmbClientPolStatus
             // 
             this.cmbClientPolStatus.FormattingEnabled = true;
+            this.cmbClientPolStatus.Items.AddRange(new object[] {
+            "Pending",
+            "In Progress"});
             this.cmbClientPolStatus.Location = new System.Drawing.Point(62, 49);
             this.cmbClientPolStatus.Name = "cmbClientPolStatus";
             this.cmbClientPolStatus.Size = new System.Drawing.Size(275, 21);
@@ -775,6 +787,26 @@
             this.dataGridViewClientPol.Size = new System.Drawing.Size(795, 212);
             this.dataGridViewClientPol.TabIndex = 0;
             this.dataGridViewClientPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientPol_CellContentClick);
+            // 
+            // btnClientRefresh
+            // 
+            this.btnClientRefresh.Location = new System.Drawing.Point(9, 277);
+            this.btnClientRefresh.Name = "btnClientRefresh";
+            this.btnClientRefresh.Size = new System.Drawing.Size(286, 23);
+            this.btnClientRefresh.TabIndex = 26;
+            this.btnClientRefresh.Text = "Refresh";
+            this.btnClientRefresh.UseVisualStyleBackColor = true;
+            this.btnClientRefresh.Click += new System.EventHandler(this.btnClientRefresh_Click);
+            // 
+            // btnFamPolRefresh
+            // 
+            this.btnFamPolRefresh.Location = new System.Drawing.Point(262, 164);
+            this.btnFamPolRefresh.Name = "btnFamPolRefresh";
+            this.btnFamPolRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnFamPolRefresh.TabIndex = 27;
+            this.btnFamPolRefresh.Text = "Refresh";
+            this.btnFamPolRefresh.UseVisualStyleBackColor = true;
+            this.btnFamPolRefresh.Click += new System.EventHandler(this.btnFamPolRefresh_Click);
             // 
             // CleintAndPolicy
             // 
@@ -884,5 +916,7 @@
         private System.Windows.Forms.Button btnUpdateStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtClientPolSearch;
+        private System.Windows.Forms.Button btnClientRefresh;
+        private System.Windows.Forms.Button btnFamPolRefresh;
     }
 }
