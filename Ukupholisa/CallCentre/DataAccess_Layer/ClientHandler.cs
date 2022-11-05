@@ -237,23 +237,19 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         //    }
         //}
 
-        public void updateClientDetailsWithFam(Logic_Layer.Client client)
+        public void updateClientDetails(Logic_Layer.Client client, string role)
         {
             using (SqlConnection connect = new SqlConnection(con)) 
             {
                 SqlCommand cmd = new SqlCommand("clientUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client.UniqueIdentifier);
+                cmd.Parameters.AddWithValue("@Client_Code", client.UniqueIdentifier);
                 cmd.Parameters.AddWithValue("@Client_Name", client.Name);
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
                 cmd.Parameters.AddWithValue("@Client_Address", client.Address);
 
-
-                cmd.Parameters.AddWithValue("@Family_Id", client.Address);
-                cmd.Parameters.AddWithValue("@Family_Role", client.Address);
-
-
+                cmd.Parameters.AddWithValue("@Family_Role", role);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();

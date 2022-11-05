@@ -43,9 +43,9 @@ namespace Ukupholisa.Medical_Department
             foreach (DataRow dr in provider.getCurrentTreatmentsPending().Rows)
             {
                 if (ParentNode == null)
-                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString()+" Total: "+dr["Total"].ToString());
+                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString()+" (Total: "+dr["Total"].ToString() + ")");
                 else
-                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
+                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " (Total: " + dr["Total"].ToString() + ")");
 
             }
 
@@ -57,9 +57,9 @@ namespace Ukupholisa.Medical_Department
             foreach (DataRow dr in provider.getCurrentTreatmentsProgress().Rows)
             {
                 if (ParentNode == null)
-                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
+                    childnode = treeViewTreatments.Nodes.Add(dr["Condition_Treatment"].ToString() + " (Total: " + dr["Total"].ToString() + ")");
                 else
-                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " Total: " + dr["Total"].ToString());
+                    childnode = ParentNode.Nodes.Add(dr["Condition_Treatment"].ToString() + " (Total: " + dr["Total"].ToString() + ")");
 
             }
 

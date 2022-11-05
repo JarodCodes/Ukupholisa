@@ -29,6 +29,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperatorUI));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CallReceiver = new System.Windows.Forms.TabPage();
             this.btnEndCall = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnClientUpdate = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveClient = new System.Windows.Forms.Button();
             this.txtClientAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,7 +70,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewClientSummary = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtNewPolID = new System.Windows.Forms.TextBox();
-            this.txtClientPolAdd = new System.Windows.Forms.Button();
+            this.btnClientPolAdd = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -122,11 +124,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // btnEndCall
             // 
-            this.btnEndCall.Location = new System.Drawing.Point(734, 479);
+            this.btnEndCall.Image = ((System.Drawing.Image)(resources.GetObject("btnEndCall.Image")));
+            this.btnEndCall.Location = new System.Drawing.Point(732, 464);
             this.btnEndCall.Name = "btnEndCall";
-            this.btnEndCall.Size = new System.Drawing.Size(97, 43);
+            this.btnEndCall.Size = new System.Drawing.Size(97, 58);
             this.btnEndCall.TabIndex = 4;
-            this.btnEndCall.Text = "End Call";
             this.btnEndCall.UseVisualStyleBackColor = true;
             this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
             // 
@@ -134,7 +136,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(312, 485);
+            this.label10.Location = new System.Drawing.Point(338, 478);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(144, 26);
             this.label10.TabIndex = 3;
@@ -153,7 +155,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(6, 479);
+            this.btnExit.Location = new System.Drawing.Point(3, 472);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(97, 43);
             this.btnExit.TabIndex = 1;
@@ -163,11 +165,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // btnAnswer
             // 
-            this.btnAnswer.Location = new System.Drawing.Point(734, 430);
+            this.btnAnswer.Image = ((System.Drawing.Image)(resources.GetObject("btnAnswer.Image")));
+            this.btnAnswer.Location = new System.Drawing.Point(629, 464);
             this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(97, 43);
+            this.btnAnswer.Size = new System.Drawing.Size(97, 58);
             this.btnAnswer.TabIndex = 0;
-            this.btnAnswer.Text = "Answer Call";
             this.btnAnswer.UseVisualStyleBackColor = true;
             this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
             // 
@@ -199,6 +201,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnClientUpdate);
+            this.groupBox6.Controls.Add(this.btnCancel);
             this.groupBox6.Controls.Add(this.btnSaveClient);
             this.groupBox6.Controls.Add(this.txtClientAddress);
             this.groupBox6.Controls.Add(this.label9);
@@ -222,18 +225,29 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // btnClientUpdate
             // 
             this.btnClientUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientUpdate.Location = new System.Drawing.Point(21, 284);
+            this.btnClientUpdate.Location = new System.Drawing.Point(36, 275);
             this.btnClientUpdate.Name = "btnClientUpdate";
             this.btnClientUpdate.Size = new System.Drawing.Size(67, 36);
             this.btnClientUpdate.TabIndex = 27;
-            this.btnClientUpdate.Text = "Update Client";
+            this.btnClientUpdate.Text = "Update";
             this.btnClientUpdate.UseVisualStyleBackColor = true;
             this.btnClientUpdate.Click += new System.EventHandler(this.btnClientUpdate_Click_1);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(36, 275);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(67, 36);
+            this.btnCancel.TabIndex = 28;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSaveClient
             // 
             this.btnSaveClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveClient.Location = new System.Drawing.Point(196, 284);
+            this.btnSaveClient.Location = new System.Drawing.Point(181, 275);
             this.btnSaveClient.Name = "btnSaveClient";
             this.btnSaveClient.Size = new System.Drawing.Size(67, 36);
             this.btnSaveClient.TabIndex = 26;
@@ -243,7 +257,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtClientAddress
             // 
-            this.txtClientAddress.Location = new System.Drawing.Point(90, 145);
+            this.txtClientAddress.Location = new System.Drawing.Point(96, 136);
             this.txtClientAddress.MaxLength = 50;
             this.txtClientAddress.Name = "txtClientAddress";
             this.txtClientAddress.Size = new System.Drawing.Size(154, 20);
@@ -253,7 +267,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 148);
+            this.label9.Location = new System.Drawing.Point(39, 139);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 24;
@@ -268,7 +282,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Controls.Add(this.radiobtnNo);
             this.groupBox7.Controls.Add(this.radiobtnYes);
-            this.groupBox7.Location = new System.Drawing.Point(6, 171);
+            this.groupBox7.Location = new System.Drawing.Point(21, 162);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(237, 107);
             this.groupBox7.TabIndex = 23;
@@ -279,11 +293,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 21);
+            this.label12.Location = new System.Drawing.Point(6, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.Size = new System.Drawing.Size(91, 13);
             this.label12.TabIndex = 17;
-            this.label12.Text = "Family Referal";
+            this.label12.Text = "Family Referral";
             // 
             // cmbFamily_Role
             // 
@@ -293,7 +307,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             "MOTHER",
             "CHILD",
             "UNSPECIFIED"});
-            this.cmbFamily_Role.Location = new System.Drawing.Point(110, 73);
+            this.cmbFamily_Role.Location = new System.Drawing.Point(103, 73);
             this.cmbFamily_Role.Name = "cmbFamily_Role";
             this.cmbFamily_Role.Size = new System.Drawing.Size(121, 21);
             this.cmbFamily_Role.TabIndex = 16;
@@ -302,7 +316,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 76);
+            this.label3.Location = new System.Drawing.Point(25, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 15;
@@ -311,7 +325,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // txtNewFamilyId
             // 
             this.txtNewFamilyId.Enabled = false;
-            this.txtNewFamilyId.Location = new System.Drawing.Point(110, 47);
+            this.txtNewFamilyId.Location = new System.Drawing.Point(103, 47);
             this.txtNewFamilyId.Name = "txtNewFamilyId";
             this.txtNewFamilyId.Size = new System.Drawing.Size(121, 20);
             this.txtNewFamilyId.TabIndex = 14;
@@ -320,7 +334,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(40, 50);
+            this.label11.Location = new System.Drawing.Point(38, 50);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
             this.label11.TabIndex = 13;
@@ -352,14 +366,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtClientID
             // 
-            this.txtClientID.Location = new System.Drawing.Point(90, 41);
+            this.txtClientID.Location = new System.Drawing.Point(96, 32);
             this.txtClientID.Name = "txtClientID";
             this.txtClientID.Size = new System.Drawing.Size(154, 20);
             this.txtClientID.TabIndex = 22;
             // 
             // txtClientPhone
             // 
-            this.txtClientPhone.Location = new System.Drawing.Point(90, 119);
+            this.txtClientPhone.Location = new System.Drawing.Point(96, 110);
             this.txtClientPhone.MaxLength = 10;
             this.txtClientPhone.Name = "txtClientPhone";
             this.txtClientPhone.Size = new System.Drawing.Size(154, 20);
@@ -367,7 +381,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtClientSurname
             // 
-            this.txtClientSurname.Location = new System.Drawing.Point(90, 93);
+            this.txtClientSurname.Location = new System.Drawing.Point(96, 84);
             this.txtClientSurname.MaxLength = 30;
             this.txtClientSurname.Name = "txtClientSurname";
             this.txtClientSurname.Size = new System.Drawing.Size(154, 20);
@@ -375,7 +389,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtClientName
             // 
-            this.txtClientName.Location = new System.Drawing.Point(90, 67);
+            this.txtClientName.Location = new System.Drawing.Point(96, 58);
             this.txtClientName.MaxLength = 30;
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(154, 20);
@@ -385,7 +399,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 44);
+            this.label7.Location = new System.Drawing.Point(18, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 18;
@@ -395,7 +409,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(42, 123);
+            this.label6.Location = new System.Drawing.Point(48, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 17;
@@ -405,7 +419,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 96);
+            this.label5.Location = new System.Drawing.Point(38, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 16;
@@ -415,7 +429,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 70);
+            this.label4.Location = new System.Drawing.Point(52, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 15;
@@ -496,7 +510,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.tabPage1.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPage1.Controls.Add(this.txtNewPolID);
-            this.tabPage1.Controls.Add(this.txtClientPolAdd);
+            this.tabPage1.Controls.Add(this.btnClientPolAdd);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox4);
@@ -514,15 +528,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.txtNewPolID.Size = new System.Drawing.Size(100, 20);
             this.txtNewPolID.TabIndex = 8;
             // 
-            // txtClientPolAdd
+            // btnClientPolAdd
             // 
-            this.txtClientPolAdd.Location = new System.Drawing.Point(175, 493);
-            this.txtClientPolAdd.Name = "txtClientPolAdd";
-            this.txtClientPolAdd.Size = new System.Drawing.Size(75, 23);
-            this.txtClientPolAdd.TabIndex = 7;
-            this.txtClientPolAdd.Text = "Add Policy";
-            this.txtClientPolAdd.UseVisualStyleBackColor = true;
-            this.txtClientPolAdd.Click += new System.EventHandler(this.txtClientPolAdd_Click);
+            this.btnClientPolAdd.Location = new System.Drawing.Point(175, 493);
+            this.btnClientPolAdd.Name = "btnClientPolAdd";
+            this.btnClientPolAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnClientPolAdd.TabIndex = 7;
+            this.btnClientPolAdd.Text = "Add Policy";
+            this.btnClientPolAdd.UseVisualStyleBackColor = true;
+            this.btnClientPolAdd.Click += new System.EventHandler(this.btnClientPolAdd_Click);
             // 
             // button5
             // 
@@ -679,7 +693,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnEndCall;
         private System.Windows.Forms.DataGridView dataGridViewClientSummary;
-        private System.Windows.Forms.Button txtClientPolAdd;
+        private System.Windows.Forms.Button btnClientPolAdd;
         private System.Windows.Forms.TextBox txtNewPolID;
         private System.Windows.Forms.Button btnClientUpdate;
         private System.Windows.Forms.Button btnSaveClient;
@@ -702,5 +716,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.ComboBox cmbFamily_Role;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -69,13 +69,13 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public DataTable searchMedCon(int conID)
+        public DataTable searchMedCon(string condition_name)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Condition_Id", conID);
+                cmd.Parameters.AddWithValue("@Condition_Name", condition_name);
 
                 connect.Open();
                 DataTable dt = new DataTable();
