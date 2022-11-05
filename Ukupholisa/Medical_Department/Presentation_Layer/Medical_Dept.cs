@@ -20,6 +20,7 @@ namespace Ukupholisa.Medical_Department
         ICRUD medcon = new Logic_layer.MedCondition();
         ICRUD policy = new Policy();
         Provider provider = new Provider();
+        Validation validation = new Validation();
         private void Medical_Dept_Load(object sender, EventArgs e)
         {
             dataGridViewMedCon.DataSource = medcon.populate();
@@ -70,15 +71,34 @@ namespace Ukupholisa.Medical_Department
             {
                 Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
                 //medcon.MedConID = int.Parse(txtMedID.Text);
-                medcon.Name = txtMedName.Text;
-                medcon.Description = rtxtMedDesc.Text;
-                medcon.Treatment = txtTreatment.Text;
-                medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
-                medcon.Duration = (int)spinDuration.Value;
+                if (validation.validateStrings(txtMedName.Text))
+                {
+                    MessageBox.Show("Invalid name");
+                }
+                else if (String.IsNullOrEmpty(rtxtMedDesc.Text))
+                {
+                    MessageBox.Show("Invalid description");
+                }
+                else if (validation.validateStrings(txtTreatment.Text))
+                {
+                    MessageBox.Show("Invalid treatment name");
+                }
+                else if (!int.TryParse(txtMedPolicyID.Text,out int polId))
+                {
+                    MessageBox.Show("Invalid policy ID");
+                }
+                else 
+                {
+                    medcon.Name = txtMedName.Text;
+                    medcon.Description = rtxtMedDesc.Text;
+                    medcon.Treatment = txtTreatment.Text;
+                    medcon.PolicyID = polId;
+                    medcon.Duration = (int)spinDuration.Value;
 
-                medcon.add();
-                dataGridViewMedCon.DataSource = medcon.populate();
-                MessageBox.Show("Condition was added");
+                    medcon.add();
+                    dataGridViewMedCon.DataSource = medcon.populate();
+                    MessageBox.Show("Condition was added");
+                }
             }
             catch (Exception)
             {
@@ -91,16 +111,39 @@ namespace Ukupholisa.Medical_Department
             try
             {
                 Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-                medcon.MedConID = int.Parse(txtMedID.Text);
-                medcon.Name = txtMedName.Text;
-                medcon.Description = rtxtMedDesc.Text;
-                medcon.Treatment = txtTreatment.Text;
-                medcon.PolicyID = int.Parse(txtMedPolicyID.Text);
-                medcon.Duration = (int)spinDuration.Value;
+                if (!int.TryParse(txtMedPolicyID.Text, out int medId))
+                {
+                    MessageBox.Show("Invalid medical ID");
+                }
+                else if (validation.validateStrings(txtMedName.Text))
+                {
+                    MessageBox.Show("Invalid name");
+                }
+                else if (String.IsNullOrEmpty(rtxtMedDesc.Text))
+                {
+                    MessageBox.Show("Invalid description");
+                }
+                else if (validation.validateStrings(txtTreatment.Text))
+                {
+                    MessageBox.Show("Invalid treatment name");
+                }
+                else if (!int.TryParse(txtMedPolicyID.Text, out int polId))
+                {
+                    MessageBox.Show("Invalid policy ID");
+                }
+                else
+                {
+                    medcon.MedConID = medId;
+                    medcon.Name = txtMedName.Text;
+                    medcon.Description = rtxtMedDesc.Text;
+                    medcon.Treatment = txtTreatment.Text;
+                    medcon.PolicyID = polId;
+                    medcon.Duration = (int)spinDuration.Value;
 
-                medcon.update();
-                dataGridViewMedCon.DataSource = medcon.populate();
-                MessageBox.Show("Condition was updated");
+                    medcon.update();
+                    dataGridViewMedCon.DataSource = medcon.populate();
+                    MessageBox.Show("Condition was updated");
+                }
             }
             catch (Exception)
             {
@@ -113,11 +156,17 @@ namespace Ukupholisa.Medical_Department
             try
             {
                 Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-                medcon.MedConID = int.Parse(txtMedID.Text);
-
-                medcon.delete();
-                dataGridViewMedCon.DataSource = medcon.populate();
-                MessageBox.Show("Condition was deleted");
+                if (!int.TryParse(txtMedPolicyID.Text, out int medId))
+                {
+                    MessageBox.Show("Invalid medical ID");
+                }
+                else 
+                {
+                    medcon.MedConID = int.Parse(txtMedID.Text);
+                    medcon.delete();
+                    dataGridViewMedCon.DataSource = medcon.populate();
+                    MessageBox.Show("Condition was deleted");
+                }
             }
             catch (Exception)
             {
@@ -128,33 +177,48 @@ namespace Ukupholisa.Medical_Department
         private void btnMedSearch_Click(object sender, EventArgs e)
         {
             Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-            medcon.MedConID = int.Parse(txtMedSearch.Text);
-            DataTable dt = medcon.search();
-            if (dt.Rows.Count == 0)
+            if (!int.TryParse(txtMedSearch.Text, out int medId))
             {
-                MessageBox.Show("No condition found");
+                MessageBox.Show("Invalid medical ID");
             }
             else
             {
-                MessageBox.Show("Condition found");
-                dataGridViewMedCon.DataSource = dt;
+                medcon.MedConID = medId;
+                DataTable dt = medcon.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No condition found");
+                }
+                else
+                {
+                    MessageBox.Show("Condition found");
+                    dataGridViewMedCon.DataSource = dt;
+                }
             }
         }
 
         private void btnMedPolicySearch_Click(object sender, EventArgs e)
         {
             Policy policy = new Policy();
-            policy.PolicyId = int.Parse(txtMedPolicySearch.Text);
-            DataTable dt = policy.search();
-            if (dt.Rows.Count == 0)
+            if (!int.TryParse(txtMedPolicySearch.Text, out int polId))
             {
-                MessageBox.Show("No policy found");
+                MessageBox.Show("Invalid policy ID");
             }
             else
             {
-                MessageBox.Show("Policy found");
-                dataGridViewMedPolicies.DataSource = dt;
+                policy.PolicyId = polId;
+                DataTable dt = policy.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No policy found");
+                }
+                else
+                {
+                    MessageBox.Show("Policy found");
+                    dataGridViewMedPolicies.DataSource = dt;
+                }
             }
+            
         }
 
         private void dataGridViewMedCon_CellContentClick(object sender, DataGridViewCellEventArgs e)
