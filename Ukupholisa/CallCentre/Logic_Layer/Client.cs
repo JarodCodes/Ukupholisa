@@ -91,13 +91,13 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public void update()
         {
             //DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            //handler.updateClientDetailsWithFam(this);
+            //handler.updateClientDetails(this, family_role);
         }
 
-        public void updateClientWithFamily()
+        public void updateClient(string role)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            handler.updateClientDetailsWithFam(this);
+            handler.updateClientDetails(this, role);
         }
 
 
@@ -149,41 +149,54 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             codePart1 = random.Next(1000, 9999);
             codePart2 = random.Next(1000, 9999);
 
-            if (codeclass == "MOTHER")
+            if (codeclass == "J")
             {
-                return "J" + codePart1.ToString() + codePart2.ToString();
+                return codeclass + codePart1.ToString() + codePart2.ToString();
             }
-            else if (codeclass == "CHILD")
+            else if (codeclass == "H")
             {
-                return "H" + codePart1.ToString() + codePart2.ToString();
+                return codeclass + codePart1.ToString() + codePart2.ToString();
             }
-            else if (codeclass == "UNSPECIFIED")
+            else if (codeclass == "L")
             {
-                return "L" + codePart1.ToString() + codePart2.ToString();
+                return codeclass + codePart1.ToString() + codePart2.ToString();
             }
             else
             {
-                return "G" + codePart1.ToString() + codePart2.ToString();
+                return codeclass + codePart1.ToString() + codePart2.ToString();
             }
         }
 
-        internal string getRoleCode(string codeclass)
+        internal string getRoleCode(string role)
         {
-            if (codeclass == "MOTHER")
+            if (role == "MOTHER")
             {
                 return "J";
             }
-            else if (codeclass == "CHILD")
+            else if (role == "CHILD")
             {
                 return "H";
             }
-            else if (codeclass == "UNSPECIFIED")
+            else if (role == "UNSPECIFIED")
             {
                 return "L";
             }
             else
             {
                 return "G";
+            }
+        }
+
+        internal bool validateFamilyId(string familyId)
+        {
+            if (!Regex.Match(familyId, @"^[0-9]{4,10}$").Success)
+            {
+                // phone number was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

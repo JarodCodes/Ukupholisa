@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ukupholisa.Medical_Department.Logic_layer
@@ -51,7 +52,7 @@ namespace Ukupholisa.Medical_Department.Logic_layer
         public DataTable search()
         {
             DataAccess_Layer.MedicalHandler handler = new DataAccess_Layer.MedicalHandler();
-            return handler.searchMedCon(MedConID);
+            return handler.searchMedCon(Name);
         }
 
         public void update()
@@ -62,7 +63,15 @@ namespace Ukupholisa.Medical_Department.Logic_layer
 
         public bool validateStrings(string input)
         {
-            throw new NotImplementedException();
+            if (!Regex.Match(input, "^[a-zA-Z]{1,50}$").Success)
+            {
+                // Medical condition name was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -81,7 +81,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Client was not deleted");
             }
@@ -266,7 +266,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Policy policy = new Policy();
             Client client = new Client();
             client.UniqueIdentifier = txtClientID.Text;
-            dataGridViewCurFamPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
+            dataGridViewClientPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
         }
 
         private void btnUpdateStatus_Click(object sender, EventArgs e)
@@ -274,25 +274,26 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             try
             {
                 Policy policy = new Policy();
+                policy.Status = cmbClientPolStatus.Text;
 
-                if (policy.checkStatus((DataTable)dataGridViewClientPol.DataSource))
+                if (policy.checkStatus((DataTable)dataGridViewClientPol.DataSource, policy.Status))
                 {
                     policy.PolicyId = int.Parse(txtClientPolSearch.Text);
                     Client client = new Client();
                     client.UniqueIdentifier = txtClientID.Text;
-                    policy.Status = txtClientPolSearch.Text;
+                    
                     policy.updateStatus(client.UniqueIdentifier);
+                    dataGridViewClientPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
+                    MessageBox.Show("Policy status was updated!");
                 }
                 else 
                 {
-                    MessageBox.Show("Policy was not updated");
+                    MessageBox.Show("Policy status was not updated!");
                 }
-
-                MessageBox.Show("Policy was updated");
             }
             catch (Exception)
             {
-                MessageBox.Show("Policy was not updated");
+                MessageBox.Show("Policy status was not updated!");
             }
         }
 
@@ -302,7 +303,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 DataGridViewRow rows = this.dataGridViewClientPol.Rows[e.RowIndex];
 
-                txtClientPolSearch.Text = rows.Cells["Policy_Id"].Value.ToString();
+                txtClientPolSearch.Text = rows.Cells["Policy_Code"].Value.ToString();
                 cmbClientPolStatus.Text = rows.Cells["Policy_Status"].Value.ToString();
             }
         }

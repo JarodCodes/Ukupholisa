@@ -79,8 +79,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             tabControl1.TabPages.Remove(tabPage2);
             btnEndCall.Enabled = false;
 
-            dataGridViewClientSummary.Enabled = false;
+            btnClientPolAdd.Enabled = false;
 
+            btnClientUpdate.Enabled = false;
+            btnCancel.Hide();
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
@@ -89,6 +91,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             client.UniqueIdentifier = txtClientIDSearch.Text;
             DataTable dt = client.search();
             DataTable dtPolSearch = client.searchClientPol();
+
 
             if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
             {
@@ -114,7 +117,17 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     txtNewFamilyId.Text = item.Field<int>("Family_Id").ToString();
                     cmbFamily_Role.Text = item.Field<string>("Family_Role");
                 }
-                dataGridViewClientSummary.DataSource = dt;
+                dataGridViewClientSummary.DataSource = dtPolSearch;
+
+                btnCancel.Show();
+                btnSaveClient.Enabled = false;
+                btnClientUpdate.Enabled = true;
+                btnClientPolAdd.Enabled = true;
+
+                Button b = btnClientUpdate;
+                Point point = new Point(108, 275);
+                b.Location = point;
+                txtClientIDSearch.Clear();
             }
         }
 
@@ -140,13 +153,13 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             Medical_Department.Logic_layer.MedCondition Medical = new Medical_Department.Logic_layer.MedCondition();
 
-            if (string.IsNullOrWhiteSpace(txtMedConditionSearch.Text))
+            if (medical.validateStrings(txtMedConditionSearch.Text))
             {
-                MessageBox.Show("Please provide a medical condition!");
+                MessageBox.Show("Invalid medical condition name!");
             }
             else
             {
-                Medical.MedConID = int.Parse(txtMedConditionSearch.Text);
+                Medical.Name = txtMedConditionSearch.Text;
                 dataGridViewPolicyList.DataSource = Medical.search();
             }
         }
@@ -192,51 +205,17 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 DataGridViewRow rows = this.dataGridViewPolicyList.Rows[e.RowIndex];
 
-                txtNewPolID.Text = rows.Cells["Policy_Id"].Value.ToString();
+                txtNewPolID.Text = rows.Cells["Policy_Code"].Value.ToString();
 
             }
-        }
-
-        private void txtClientPolAdd_Click(object sender, EventArgs e)
-        {
-
-            Client client = new Client();
-            Family fam = new Family();
-            Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
-            
-
-            client.add();
         }
 
         private void btnSaveClient_Click_1(object sender, EventArgs e)
         {
-           // Logic_Layer.Client client = new Client();
-
             Client client = new Client();
             Family fam = new Family();
 
-            if (string.IsNullOrWhiteSpace(txtClientName.Text))
-            {
-                MessageBox.Show("Enter Client Name!");
-                txtClientName.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientSurname.Text))
-            {
-                MessageBox.Show("Enter Client Surname!");
-                txtClientSurname.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientPhone.Text))
-            {
-                MessageBox.Show("Enter Client Phone number!");
-                txtClientPhone.Select();            
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientAddress.Text))
-            {
-                MessageBox.Show("Enter Client Address!");
-                txtClientAddress.Select();
-                return;
-            }
-            else if(client.validateStrings(txtClientName.Text))
+            if(client.validateStrings(txtClientName.Text))
             {
                 // Name was incorrect
                 MessageBox.Show("Invalid First Name", "Message");
@@ -264,25 +243,38 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtClientAddress.Focus();
                 return;
             }
-            else if (radiobtnYes.Checked == true)
+            else if (radiobtnYes.Checked.Equals(true))
             {
-                if (string.IsNullOrWhiteSpace(txtNewFamilyId.Text))
+                if (client.validateFamilyId(txtNewFamilyId.Text))
                 {
-                    MessageBox.Show("Enter Client Family number!");
-                    txtNewFamilyId.Select();
+                    // address was incorrect
+                    MessageBox.Show("Invalid Family Id", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtClientAddress.Focus();
+                    return;
                 }
-                
+                else
+                {
+                    client.Name = txtClientName.Text;
+                    client.Surname = txtClientSurname.Text;
+                    client.Phone = txtClientPhone.Text;
+                    client.Address = txtClientAddress.Text;
+                    fam.FamilyID = int.Parse(txtNewFamilyId.Text);
+                    fam.Family_role = cmbFamily_Role.Text;
+                    client.UniqueIdentifier = client.getUniqueCode(client.getRoleCode(fam.Family_role));
 
-                client.Name = txtClientName.Text;
-                client.Surname = txtClientSurname.Text;
-                client.Phone = txtClientPhone.Text;
-                client.Address = txtClientAddress.Text;
-
-                client.UniqueIdentifier = client.getUniqueCode(cmbFamily_Role.Text);
-
-                fam.FamilyID = int.Parse(txtNewFamilyId.Text);
-                fam.Family_role = cmbFamily_Role.Text;
-                client.addClientWithFamily(fam.Family_role, fam.FamilyID);
+                    if (MessageBox.Show("Are you sure you want to add the following client?\n" +
+                                    "Name: " + client.Name + "\n" +
+                                    "Surname: " + client.Surname + "\n" +
+                                    "Phone: " + client.Phone + "\n" +
+                                    "Address: " + client.Address + "\n" +
+                                    "Family Id: " + fam.FamilyID.ToString() + "\n" +
+                                    "Family Role: " + fam.Family_role + "\n", "Adding Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+                    {
+                        client.addClientWithFamily(fam.Family_role, fam.FamilyID);
+                        clearAllData();
+                        MessageBox.Show("The Client Code is: " + client.UniqueIdentifier,"Client Code");
+                    }
+                }
             }
             else
             {
@@ -290,57 +282,85 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 client.Surname = txtClientSurname.Text;
                 client.Phone = txtClientPhone.Text;
                 client.Address = txtClientAddress.Text;
-                client.UniqueIdentifier = client.getUniqueCode(cmbFamily_Role.Text);
                 fam.Family_role = cmbFamily_Role.Text;
+                client.UniqueIdentifier = client.getUniqueCode(client.getRoleCode(fam.Family_role));
 
+                if (MessageBox.Show("Are you sure you want to add the following client?\n" +
+                                    "Name: " + client.Name + "\n" +
+                                    "Surname: " + client.Surname + "\n" +
+                                    "Phone: " + client.Phone + "\n" +
+                                    "Address: " + client.Address + "\n" +
+                                    "Family Id: " + fam.FamilyID.ToString() + "\n" +
+                                    "Family Role: " + fam.Family_role + "\n", "Adding Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+                {
+                    client.addClientWithoutFamily(fam.Family_role);
+                    clearAllData();
+                    MessageBox.Show("The Client Code is: " + client.UniqueIdentifier, "Client Code");
+                }
 
-                client.addClientWithoutFamily(fam.Family_role);
+                
             }
         }
-
+        //update a client's details
         private void btnClientUpdate_Click_1(object sender, EventArgs e)
         {
-            Client client = new Client();
-            Family fam = new Family();
+            try
+            {
+                Client client = new Client();
+                Family fam = new Family();
+                if (client.validateStrings(txtClientName.Text))
+                {
+                    // Name was incorrect
+                    MessageBox.Show("Invalid First Name", "Message");
+                    txtClientName.Focus();
+                    return;
+                }
+                else if (client.validateStrings(txtClientSurname.Text))
+                {
+                    // Surname was incorrect
+                    MessageBox.Show("Invalid Last Name", "Message");
+                    txtClientSurname.Focus();
+                    return;
+                }
+                else if (client.validatePhone(txtClientPhone.Text))
+                {
+                    // phone was incorrect
+                    MessageBox.Show("Invalid phone number", "Message");
+                    txtClientPhone.Focus();
+                    return;
+                }
+                else if (client.validateAddress(txtClientAddress.Text))
+                {
+                    // address was incorrect
+                    MessageBox.Show("Invalid address", "Message");
+                    txtClientAddress.Focus();
+                    return;
+                }               
+                else
+                {
+                    client.UniqueIdentifier = txtClientID.Text;
+                    client.Name = txtClientName.Text;
+                    client.Surname = txtClientSurname.Text;
+                    client.Phone = txtClientPhone.Text;
+                    client.Address = txtClientAddress.Text;
 
-            if (string.IsNullOrWhiteSpace(txtClientName.Text))
-            {
-                MessageBox.Show("Enter Client Name!");
-                txtClientName.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientSurname.Text))
-            {
-                MessageBox.Show("Enter Client Surname!");
-                txtClientSurname.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientPhone.Text))
-            {
-                MessageBox.Show("Enter Client Phone number!");
-                txtClientPhone.Select();
-            }
-            else if (string.IsNullOrWhiteSpace(txtClientAddress.Text))
-            {
-                MessageBox.Show("Enter Client Address!");
-                txtClientAddress.Select();
-            }
-            else if (radiobtnYes.Checked == true)
-            {
-                client.Name = txtClientName.Text;
-                client.Surname = txtClientSurname.Text;
-                client.Phone = txtClientPhone.Text;
-                client.Address = txtClientAddress.Text;
+                    fam.Family_role = cmbFamily_Role.Text;
 
-                //fam.FamilyID = int.Parse(txtNewFamilyId.Text);
-                //fam.Family_role = cmbFamily_Role.Text;
-                client.UniqueIdentifier = client.getRoleCode(fam.Family_role) + txtClientID.Text.Substring(1,8);
+                    client.updateClient(fam.Family_role);
 
-                client.updateClientWithFamily();
+                    MessageBox.Show("Record Updated Successfully!");
+                    clearAllData();
 
+                    Button b = (Button)sender;
+                    Button cancelbtn = btnCancel;
+                    b.Location = cancelbtn.Location;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                
+                MessageBox.Show("Error: " + ex.Message);
             }
+            
         }
 
         private void radiobtnNo_CheckedChanged_1(object sender, EventArgs e)
@@ -366,11 +386,59 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
 
+            clearAllData();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Button thisButton = (Button)sender;
+            Point point = thisButton.Location;
+            btnCancel.Hide();
+            btnSaveClient.Enabled = true;
+
+            
+            Button b = btnClientUpdate;
+            
+            b.Location = point;
+            groupBox7.Enabled = true;
+
+            clearAllData();
+        }
+
+        private void clearAllData()
+        {
+            txtClientID.Clear();
+            txtClientName.Clear();
+            txtClientSurname.Clear();
+            txtClientPhone.Clear();
+            txtClientAddress.Clear();
+
+            txtNewFamilyId.Clear();
+
+            btnClientUpdate.Enabled = false;
+
+            cmbFamily_Role.SelectedIndex = 3;
+            radiobtnYes.Checked = false;
+            radiobtnNo.Checked = false;
+
+
+            dataGridViewClientSummary.DataSource = null;
+            dataGridViewClientSummary.Rows.Clear();
+        }
+
+        private void btnClientPolAdd_Click(object sender, EventArgs e)
+        {
+            Client client = new Client();
+            Family fam = new Family();
+            Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
+
+
+            client.add();
         }
     }
 }
