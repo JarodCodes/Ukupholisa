@@ -54,7 +54,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 else
                 {
                     client.UniqueIdentifier = txtClientID.Text;
-                    if (MessageBox.Show("Are you sure you want to delete client " + client.UniqueIdentifier + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete client " + client.UniqueIdentifier + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
                     {
                         client.delete();
                         MessageBox.Show("Client was deleted");

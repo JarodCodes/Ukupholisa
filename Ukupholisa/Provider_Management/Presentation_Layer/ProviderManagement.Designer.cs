@@ -39,6 +39,7 @@
             this.txtProvSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxProvOperations = new System.Windows.Forms.GroupBox();
+            this.btnProvRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioBtnFalse = new System.Windows.Forms.RadioButton();
             this.radioBtnTrue = new System.Windows.Forms.RadioButton();
@@ -64,6 +65,7 @@
             this.txtPolProvSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxPolOperations = new System.Windows.Forms.GroupBox();
+            this.btnPolRefresh = new System.Windows.Forms.Button();
             this.cmbCoverLevel = new System.Windows.Forms.ComboBox();
             this.txtPolProvID = new System.Windows.Forms.TextBox();
             this.txtPolCost = new System.Windows.Forms.TextBox();
@@ -94,6 +96,7 @@
             this.txtPackProvSearch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBoxPackOps = new System.Windows.Forms.GroupBox();
+            this.btnPackRefresh = new System.Windows.Forms.Button();
             this.txtPackProvID = new System.Windows.Forms.TextBox();
             this.txtPackCost = new System.Windows.Forms.TextBox();
             this.btnPackDelete = new System.Windows.Forms.Button();
@@ -115,6 +118,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridViewCurPackPol = new System.Windows.Forms.DataGridView();
             this.groupBoxPackPolicyOp = new System.Windows.Forms.GroupBox();
+            this.btnPackPolRefresh = new System.Windows.Forms.Button();
             this.btnPackPolRemove = new System.Windows.Forms.Button();
             this.btnPackPolAdd = new System.Windows.Forms.Button();
             this.btnPackPolSearch = new System.Windows.Forms.Button();
@@ -124,10 +128,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewPackPol = new System.Windows.Forms.DataGridView();
-            this.btnProvRefresh = new System.Windows.Forms.Button();
-            this.btnPolRefresh = new System.Windows.Forms.Button();
-            this.btnPackRefresh = new System.Windows.Forms.Button();
-            this.btnPackPolRefresh = new System.Windows.Forms.Button();
             this.groupBoxProvData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProv)).BeginInit();
             this.tabControlProviderManagement.SuspendLayout();
@@ -279,6 +279,16 @@
             this.groupBoxProvOperations.TabStop = false;
             this.groupBoxProvOperations.Text = "Operations";
             // 
+            // btnProvRefresh
+            // 
+            this.btnProvRefresh.Location = new System.Drawing.Point(9, 267);
+            this.btnProvRefresh.Name = "btnProvRefresh";
+            this.btnProvRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnProvRefresh.TabIndex = 21;
+            this.btnProvRefresh.Text = "Refresh";
+            this.btnProvRefresh.UseVisualStyleBackColor = true;
+            this.btnProvRefresh.Click += new System.EventHandler(this.btnProvRefresh_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioBtnFalse);
@@ -376,6 +386,7 @@
             // 
             // txtProvID
             // 
+            this.txtProvID.Enabled = false;
             this.txtProvID.Location = new System.Drawing.Point(90, 42);
             this.txtProvID.Name = "txtProvID";
             this.txtProvID.Size = new System.Drawing.Size(183, 20);
@@ -533,6 +544,16 @@
             this.groupBoxPolOperations.TabStop = false;
             this.groupBoxPolOperations.Text = "Policy Operations";
             // 
+            // btnPolRefresh
+            // 
+            this.btnPolRefresh.Location = new System.Drawing.Point(9, 291);
+            this.btnPolRefresh.Name = "btnPolRefresh";
+            this.btnPolRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnPolRefresh.TabIndex = 22;
+            this.btnPolRefresh.Text = "Refresh";
+            this.btnPolRefresh.UseVisualStyleBackColor = true;
+            this.btnPolRefresh.Click += new System.EventHandler(this.btnPolRefresh_Click);
+            // 
             // cmbCoverLevel
             // 
             this.cmbCoverLevel.FormattingEnabled = true;
@@ -633,6 +654,7 @@
             // 
             // txtPolID
             // 
+            this.txtPolID.Enabled = false;
             this.txtPolID.Location = new System.Drawing.Point(90, 42);
             this.txtPolID.Name = "txtPolID";
             this.txtPolID.Size = new System.Drawing.Size(183, 20);
@@ -826,6 +848,16 @@
             this.groupBoxPackOps.TabStop = false;
             this.groupBoxPackOps.Text = "Package Operations";
             // 
+            // btnPackRefresh
+            // 
+            this.btnPackRefresh.Location = new System.Drawing.Point(9, 291);
+            this.btnPackRefresh.Name = "btnPackRefresh";
+            this.btnPackRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnPackRefresh.TabIndex = 23;
+            this.btnPackRefresh.Text = "Refresh";
+            this.btnPackRefresh.UseVisualStyleBackColor = true;
+            this.btnPackRefresh.Click += new System.EventHandler(this.btnPackRefresh_Click);
+            // 
             // txtPackProvID
             // 
             this.txtPackProvID.Location = new System.Drawing.Point(90, 119);
@@ -906,6 +938,7 @@
             // 
             // txtPackID
             // 
+            this.txtPackID.Enabled = false;
             this.txtPackID.Location = new System.Drawing.Point(90, 42);
             this.txtPackID.Name = "txtPackID";
             this.txtPackID.Size = new System.Drawing.Size(183, 20);
@@ -1025,6 +1058,16 @@
             this.groupBoxPackPolicyOp.TabStop = false;
             this.groupBoxPackPolicyOp.Text = "Package Operations";
             // 
+            // btnPackPolRefresh
+            // 
+            this.btnPackPolRefresh.Location = new System.Drawing.Point(251, 150);
+            this.btnPackPolRefresh.Name = "btnPackPolRefresh";
+            this.btnPackPolRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnPackPolRefresh.TabIndex = 24;
+            this.btnPackPolRefresh.Text = "Refresh";
+            this.btnPackPolRefresh.UseVisualStyleBackColor = true;
+            this.btnPackPolRefresh.Click += new System.EventHandler(this.btnPackPolRefresh_Click);
+            // 
             // btnPackPolRemove
             // 
             this.btnPackPolRemove.Location = new System.Drawing.Point(251, 119);
@@ -1109,46 +1152,6 @@
             this.dataGridViewPackPol.Size = new System.Drawing.Size(357, 212);
             this.dataGridViewPackPol.TabIndex = 0;
             this.dataGridViewPackPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPackPol_CellContentClick);
-            // 
-            // btnProvRefresh
-            // 
-            this.btnProvRefresh.Location = new System.Drawing.Point(9, 267);
-            this.btnProvRefresh.Name = "btnProvRefresh";
-            this.btnProvRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnProvRefresh.TabIndex = 21;
-            this.btnProvRefresh.Text = "Refresh";
-            this.btnProvRefresh.UseVisualStyleBackColor = true;
-            this.btnProvRefresh.Click += new System.EventHandler(this.btnProvRefresh_Click);
-            // 
-            // btnPolRefresh
-            // 
-            this.btnPolRefresh.Location = new System.Drawing.Point(9, 291);
-            this.btnPolRefresh.Name = "btnPolRefresh";
-            this.btnPolRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnPolRefresh.TabIndex = 22;
-            this.btnPolRefresh.Text = "Refresh";
-            this.btnPolRefresh.UseVisualStyleBackColor = true;
-            this.btnPolRefresh.Click += new System.EventHandler(this.btnPolRefresh_Click);
-            // 
-            // btnPackRefresh
-            // 
-            this.btnPackRefresh.Location = new System.Drawing.Point(9, 291);
-            this.btnPackRefresh.Name = "btnPackRefresh";
-            this.btnPackRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnPackRefresh.TabIndex = 23;
-            this.btnPackRefresh.Text = "Refresh";
-            this.btnPackRefresh.UseVisualStyleBackColor = true;
-            this.btnPackRefresh.Click += new System.EventHandler(this.btnPackRefresh_Click);
-            // 
-            // btnPackPolRefresh
-            // 
-            this.btnPackPolRefresh.Location = new System.Drawing.Point(251, 150);
-            this.btnPackPolRefresh.Name = "btnPackPolRefresh";
-            this.btnPackPolRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnPackPolRefresh.TabIndex = 24;
-            this.btnPackPolRefresh.Text = "Refresh";
-            this.btnPackPolRefresh.UseVisualStyleBackColor = true;
-            this.btnPackPolRefresh.Click += new System.EventHandler(this.btnPackPolRefresh_Click);
             // 
             // ProviderManagement
             // 

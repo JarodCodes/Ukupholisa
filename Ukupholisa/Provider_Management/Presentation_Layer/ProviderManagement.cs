@@ -19,6 +19,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         ICRUD policy = new Logic_Layer.Policy();
         ICRUD package = new Logic_Layer.PolicyPackage();
         ICRUD provider = new Logic_Layer.Provider();
+        Validation val = new Validation();
         private void ProviderManagement_Load(object sender, EventArgs e)
         {
             dataGridViewProv.DataSource = provider.populate();
@@ -28,6 +29,8 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             dataGridViewPackPol.DataSource = policy.populate();
             dataGridViewPackage.DataSource = package.populate();
             cmbCoverLevel.SelectedIndex = 0;
+            
+
         }
 
         private void dataGridViewProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -66,13 +69,30 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                     provider.Status = 0;
                 }
 
-                provider.add();
-                MessageBox.Show("Provider was added");
-                dataGridViewProv.DataSource = provider.populate();
+                if (val.validateStrings(txtProvName.Text))
+                {
+                    // Name was incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtProvName.Focus();
+                    return;
+                }
+                else if (val.validateStrings(txtProvLocation.Text))
+                {
+                    // Location was incorrect
+                    MessageBox.Show("Invalid Location!", "Message");
+                    txtProvLocation.Focus();
+                    return;
+                }
+                else
+                {
+                    provider.add();
+                    MessageBox.Show("Provider was added");
+                    dataGridViewProv.DataSource = provider.populate();
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show("Provider was not added");
+                MessageBox.Show("Provider was not added!");
             }
         }
 
@@ -81,9 +101,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             try
             {
                 Logic_Layer.Provider provider = new Logic_Layer.Provider();
-                provider.ProviderId = int.Parse(txtProvID.Text);
-                provider.Name = txtProvName.Text;
-                provider.Location = txtProvLocation.Text;
+                
                 if (radioBtnTrue.Checked)
                 {
                     provider.Status = 1;
@@ -92,12 +110,31 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 {
                     provider.Status = 0;
                 }
-
-                provider.update();
-                dataGridViewProv.DataSource = provider.populate();
-                MessageBox.Show("Provider was updated");
+                if (val.validateStrings(txtProvName.Text))
+                {
+                    // Name was incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtProvName.Focus();
+                    return;
+                }
+                else if (val.validateStrings(txtProvLocation.Text))
+                {
+                    // Location was incorrect
+                    MessageBox.Show("Invalid Location!", "Message");
+                    txtProvLocation.Focus();
+                    return;
+                }
+                else
+                {
+                    provider.ProviderId = int.Parse(txtProvID.Text);
+                    provider.Name = txtProvName.Text;
+                    provider.Location = txtProvLocation.Text;
+                    provider.update();
+                    dataGridViewProv.DataSource = provider.populate();
+                    MessageBox.Show("Provider was updated");
+                }  
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Provider was not updated");
             }
@@ -107,12 +144,21 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.Provider provider = new Logic_Layer.Provider();
-                provider.ProviderId = int.Parse(txtProvID.Text);
-
-                provider.delete();
-                dataGridViewProv.DataSource = provider.populate();
-                MessageBox.Show("Provider was deleted");
+                if (int.TryParse(txtProvID.Text, out int provID))
+                {
+                    Logic_Layer.Provider provider = new Logic_Layer.Provider();
+                    provider.ProviderId = provID;
+                    if (MessageBox.Show("Are you sure you want to delete provider with id " + provider.ProviderId + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        provider.delete();
+                        dataGridViewProv.DataSource = provider.populate();
+                        MessageBox.Show("Provider was deleted");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a provider!", "Error");
+                }
             }
             catch (Exception)
             {
@@ -123,16 +169,26 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         private void btnProvSearch_Click(object sender, EventArgs e)
         {
             Logic_Layer.Provider provider = new Logic_Layer.Provider();
-            provider.ProviderId = int.Parse(txtProvSearch.Text);
-            DataTable dt = provider.search();
-            if (dt.Rows.Count == 0)
+
+            if (string.IsNullOrWhiteSpace(txtProvSearch.Text))
             {
-                MessageBox.Show("No provider found");
+                MessageBox.Show("Please insert a valid provider id!", "Error");
+                txtProvSearch.Select();
             }
             else
             {
-                MessageBox.Show("Provider found");
-                dataGridViewProv.DataSource = dt;
+                provider.ProviderId = int.Parse(txtProvSearch.Text);
+                DataTable dt = provider.search();
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No provider found");
+                }
+                else
+                {
+                    MessageBox.Show("Provider found");
+                    dataGridViewProv.DataSource = dt;
+                }
             }
         }
 
@@ -154,15 +210,25 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.Policy policy = new Logic_Layer.Policy();
-                policy.Name = txtPolName.Text;
-                policy.CoverLevel = cmbCoverLevel.Text;
-                policy.Cost = int.Parse(txtPolCost.Text);
-                policy.ProviderId = int.Parse(txtPolProvID.Text);
+                if (val.validateStrings(txtPolName.Text))
+                {
+                    //Name is incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtProvName.Focus();
+                    return;
+                }
+                else if (int.TryParse(txtPolCost.Text, out int polcost))
+                {
+                    Logic_Layer.Policy policy = new Logic_Layer.Policy();
+                    policy.Name = txtPolName.Text;
+                    policy.CoverLevel = cmbCoverLevel.Text;
+                    policy.Cost = polcost;
+                    policy.ProviderId = int.Parse(txtPolProvID.Text);
 
-                policy.add();
-                dataGridViewPol.DataSource = policy.populate();
-                MessageBox.Show("Policy was added");
+                    policy.add();
+                    dataGridViewPol.DataSource = policy.populate();
+                    MessageBox.Show("Policy was added");
+                }
             }
             catch (Exception )
             {
@@ -195,12 +261,21 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.Policy policy = new Logic_Layer.Policy();
-                policy.PolicyId = int.Parse(txtPolID.Text);
-
-                policy.delete();
-                dataGridViewPol.DataSource = policy.populate();
-                MessageBox.Show("Policy was deleted");
+                if (int.TryParse(txtPolID.Text,out int polID))
+                {
+                    Logic_Layer.Policy policy = new Logic_Layer.Policy();
+                    if (MessageBox.Show("Are you sure you want to delete client " + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        policy.PolicyId = polID;
+                        policy.delete();
+                        dataGridViewPol.DataSource = policy.populate();
+                        MessageBox.Show("Policy was deleted");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a policy!", "Error");
+                }
             }
             catch (Exception)
             {
@@ -210,34 +285,53 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
 
         private void btnPolProvSearch_Click(object sender, EventArgs e)
         {
-            Logic_Layer.Provider provider = new Logic_Layer.Provider();
-            provider.ProviderId = int.Parse(txtPolProvSearch.Text);
-            DataTable dt = provider.search();
-            if (dt.Rows.Count == 0)
+            if (int.TryParse(txtPolProvSearch.Text, out int provID))
             {
-                MessageBox.Show("No provider found");
+                Logic_Layer.Provider provider = new Logic_Layer.Provider();
+                provider.ProviderId = provID;
+                DataTable dt = provider.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No provider found");
+                }
+                else
+                {
+                    MessageBox.Show("Provider found");
+                    dataGridViewPolProv.DataSource = dt;
+                }
             }
             else
             {
-                MessageBox.Show("Provider found");
-                dataGridViewPolProv.DataSource = dt;
+                MessageBox.Show("Please insert a valid provider id!", "Error");
+                txtPolProvSearch.Select();
             }
         }
 
         private void btnPolSearch_Click(object sender, EventArgs e)
         {
-            Logic_Layer.Policy policy = new Logic_Layer.Policy();
-            policy.PolicyId = int.Parse(txtPolSearch.Text);
-            DataTable dt = policy.search();
-            if (dt.Rows.Count == 0)
+            if (int.TryParse(txtPolSearch.Text, out int polSearch))
             {
-                MessageBox.Show("No policy found");
+                Logic_Layer.Policy policy = new Logic_Layer.Policy();
+                policy.PolicyId = polSearch;
+                DataTable dt = policy.search();
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No policy found");
+                }
+                else
+                {
+                    MessageBox.Show("Policy found");
+                    dataGridViewPol.DataSource = dt;
+                }
             }
             else
             {
-                MessageBox.Show("Policy found");
-                dataGridViewPol.DataSource = dt;
+                MessageBox.Show("Please insert a valid policy id!", "Error");
+                txtPolSearch.Select();
             }
+
+
+            
         }
 
         private void dataGridViewPolProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -374,29 +468,49 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         private void btnPackPolSearch_Click(object sender, EventArgs e)
         {
             Logic_Layer.Policy policy = new Logic_Layer.Policy();
-            policy.PolicyId = int.Parse(txtPackPolSearch.Text);
-            DataTable dt = policy.search();
-            if (dt.Rows.Count == 0)
+            if (int.TryParse(txtPackPolSearch.Text, out int packpol))
             {
-                MessageBox.Show("No policy found");
+                policy.PolicyId = packpol;
+                DataTable dt = policy.search();
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No policy found");
+                }
+                else
+                {
+                    MessageBox.Show("Policy found");
+                    dataGridViewPackPol.DataSource = dt;
+                }
             }
             else
             {
-                MessageBox.Show("Policy found");
-                dataGridViewPackPol.DataSource = dt;
+                MessageBox.Show("Please insert a valid policy id!", "Error");
             }
+            
+            
         }
 
         private void btnPackPolAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
-                package.PolicyId = int.Parse(txtPackPolSearch.Text);
-                package.PackageId = int.Parse(txtPackID.Text);
-                package.addPol();
-                dataGridViewCurPackPol.DataSource = package.packPolSearch();
-                MessageBox.Show("Policy was added");
+                if (int.TryParse(txtPackPolSearch.Text, out int packpol))
+                {
+                    Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+                    package.PolicyId = packpol;
+                    package.PackageId = int.Parse(txtPackID.Text);
+                    package.addPol();
+                    dataGridViewCurPackPol.DataSource = package.packPolSearch();
+                    MessageBox.Show("Policy was added");
+                }
+                else
+                {
+                    MessageBox.Show("Please insert a valid policy id!", "Error");
+                }
+
+
+                
             }
             catch (Exception)
             {
