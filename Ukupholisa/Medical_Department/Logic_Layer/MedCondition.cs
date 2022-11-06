@@ -60,18 +60,5 @@ namespace Ukupholisa.Medical_Department.Logic_layer
             DataAccess_Layer.MedicalHandler handler = new DataAccess_Layer.MedicalHandler();
             handler.updateMedCon(this);
         }
-
-        public bool validateStrings(string input)
-        {
-            if (!Regex.Match(input, "^[a-zA-Z]{1,50}$").Success)
-            {
-                // Medical condition name was incorrect
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }

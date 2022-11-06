@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ukupholisa.CallCentre.Logic_Layer
 {
-    public class Client:ICRUD
+    public class Client
     {
         string name, surname, phone, address, uniqueIdentifier;
         int client_Id, family_Id;
@@ -129,6 +129,12 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             {
                 return codeclass + codePart1.ToString() + codePart2.ToString();
             }
+        }
+
+        internal DataTable searchCallLogs()
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            return handler.searchCallLog(uniqueIdentifier);
         }
 
         internal string getRoleCode(string role)

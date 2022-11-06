@@ -70,17 +70,19 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridViewClientSummary = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtNewPolID = new System.Windows.Forms.TextBox();
-            this.btnClientPolAdd = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.txtMedConditionSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.dataGridViewPolicyList = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClientPolAdd = new System.Windows.Forms.Button();
+            this.txtNewPolID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.dbgCallLogs = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.CallReceiver.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -93,6 +95,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPolicyList)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dbgCallLogs)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,6 +106,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabControl1.Controls.Add(this.CallReceiver);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -514,16 +521,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewClientSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientSummary.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewClientSummary.Name = "dataGridViewClientSummary";
-            this.dataGridViewClientSummary.Size = new System.Drawing.Size(531, 385);
+            this.dataGridViewClientSummary.Size = new System.Drawing.Size(531, 414);
             this.dataGridViewClientSummary.TabIndex = 0;
             this.dataGridViewClientSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientSummary_CellContentClick);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.CadetBlue;
-            this.tabPage1.Controls.Add(this.txtNewPolID);
-            this.tabPage1.Controls.Add(this.btnClientPolAdd);
-            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -533,51 +538,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Policy Check";
             // 
-            // txtNewPolID
-            // 
-            this.txtNewPolID.Location = new System.Drawing.Point(256, 495);
-            this.txtNewPolID.Name = "txtNewPolID";
-            this.txtNewPolID.Size = new System.Drawing.Size(100, 20);
-            this.txtNewPolID.TabIndex = 8;
-            // 
-            // btnClientPolAdd
-            // 
-            this.btnClientPolAdd.Location = new System.Drawing.Point(175, 493);
-            this.btnClientPolAdd.Name = "btnClientPolAdd";
-            this.btnClientPolAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnClientPolAdd.TabIndex = 7;
-            this.btnClientPolAdd.Text = "Add Policy";
-            this.btnClientPolAdd.UseVisualStyleBackColor = true;
-            this.btnClientPolAdd.Click += new System.EventHandler(this.btnClientPolAdd_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(592, 486);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(69, 36);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Refresh Database";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.txtMedConditionSearch);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(175, 6);
+            this.groupBox2.Location = new System.Drawing.Point(8, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(486, 130);
+            this.groupBox2.Size = new System.Drawing.Size(394, 130);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search";
+            this.groupBox2.Text = "Search Medical Condition";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(205, 70);
+            this.button6.Location = new System.Drawing.Point(178, 72);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 2;
@@ -587,15 +565,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // txtMedConditionSearch
             // 
-            this.txtMedConditionSearch.Location = new System.Drawing.Point(159, 44);
+            this.txtMedConditionSearch.Location = new System.Drawing.Point(141, 46);
             this.txtMedConditionSearch.Name = "txtMedConditionSearch";
-            this.txtMedConditionSearch.Size = new System.Drawing.Size(252, 20);
+            this.txtMedConditionSearch.Size = new System.Drawing.Size(242, 20);
             this.txtMedConditionSearch.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 47);
+            this.label2.Location = new System.Drawing.Point(24, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 13);
             this.label2.TabIndex = 0;
@@ -603,36 +581,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.dataGridViewPolicyList);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(175, 144);
+            this.groupBox4.Location = new System.Drawing.Point(8, 142);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(486, 336);
+            this.groupBox4.Size = new System.Drawing.Size(823, 380);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Available Policies";
+            this.groupBox4.Text = "Available policies per medical condition";
             this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(423, 300);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(57, 30);
-            this.button7.TabIndex = 2;
-            this.button7.Text = ">";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(6, 300);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(57, 30);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "<";
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // dataGridViewPolicyList
             // 
@@ -642,9 +599,79 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dataGridViewPolicyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPolicyList.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPolicyList.Name = "dataGridViewPolicyList";
-            this.dataGridViewPolicyList.Size = new System.Drawing.Size(474, 277);
+            this.dataGridViewPolicyList.Size = new System.Drawing.Size(811, 355);
             this.dataGridViewPolicyList.TabIndex = 0;
             this.dataGridViewPolicyList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPolicyList_CellContentClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtNewPolID);
+            this.groupBox1.Controls.Add(this.btnClientPolAdd);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(420, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(411, 130);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add Policy";
+            // 
+            // btnClientPolAdd
+            // 
+            this.btnClientPolAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientPolAdd.Location = new System.Drawing.Point(172, 72);
+            this.btnClientPolAdd.Name = "btnClientPolAdd";
+            this.btnClientPolAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnClientPolAdd.TabIndex = 7;
+            this.btnClientPolAdd.Text = "Add Policy";
+            this.btnClientPolAdd.UseVisualStyleBackColor = true;
+            this.btnClientPolAdd.Click += new System.EventHandler(this.btnClientPolAdd_Click);
+            // 
+            // txtNewPolID
+            // 
+            this.txtNewPolID.Location = new System.Drawing.Point(216, 46);
+            this.txtNewPolID.Name = "txtNewPolID";
+            this.txtNewPolID.Size = new System.Drawing.Size(100, 20);
+            this.txtNewPolID.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(102, 49);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Medical Condition";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage3.Controls.Add(this.groupBox8);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(837, 530);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Call Logs";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.dbgCallLogs);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(184, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(488, 516);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Current Client Call History";
+            // 
+            // dbgCallLogs
+            // 
+            this.dbgCallLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dbgCallLogs.Location = new System.Drawing.Point(6, 19);
+            this.dbgCallLogs.Name = "dbgCallLogs";
+            this.dbgCallLogs.Size = new System.Drawing.Size(476, 491);
+            this.dbgCallLogs.TabIndex = 0;
             // 
             // OperatorUI
             // 
@@ -669,11 +696,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientSummary)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPolicyList)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dbgCallLogs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -687,14 +718,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox txtMedConditionSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView dataGridViewPolicyList;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -706,8 +734,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnEndCall;
         private System.Windows.Forms.DataGridView dataGridViewClientSummary;
-        private System.Windows.Forms.Button btnClientPolAdd;
-        private System.Windows.Forms.TextBox txtNewPolID;
         private System.Windows.Forms.Button btnClientUpdate;
         private System.Windows.Forms.Button btnSaveClient;
         private System.Windows.Forms.TextBox txtClientAddress;
@@ -731,5 +757,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtNewPolID;
+        private System.Windows.Forms.Button btnClientPolAdd;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.DataGridView dbgCallLogs;
     }
 }

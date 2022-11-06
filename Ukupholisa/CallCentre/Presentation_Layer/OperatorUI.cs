@@ -15,12 +15,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 {
     public partial class OperatorUI : Form
     {
-        string Unique_id = "";
+        
         System.Timers.Timer t;
         int h, m, s;
 
         Client Client1 = new Client();
-        ICRUD client = new Client();
+        Client client = new Client();
         Family family = new Family();
         ICRUD policy = new Provider_Management.Logic_Layer.Policy();
         ICRUD medical = new Medical_Department.Logic_layer.MedCondition();
@@ -40,6 +40,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             tabControl1.SelectedIndex = 1;
             tabControl1.TabPages.Add(tabPage2);
             tabControl1.TabPages.Add(tabPage1);
+            tabControl1.TabPages.Add(tabPage3);
 
             tabControl1.SelectedIndex = 1;
 
@@ -89,13 +90,14 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
+            tabControl1.TabPages.Remove(tabPage3);
+
             btnEndCall.Enabled = false;
 
             btnClientPolAdd.Enabled = false;
 
             btnClientUpdate.Enabled = false;
             btnCancel.Hide();
-
 
             //timer
             t = new System.Timers.Timer();
@@ -128,9 +130,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Client client = new Client();
             client.UniqueIdentifier = txtClientIDSearch.Text;
             DataTable dt = client.search();
-            DataTable dtPolSearch = client.searchClientPol();
-
-            
+            DataTable dtPolSearch = client.searchClientPol();           
+            DataTable callLogDisplay = client.searchCallLogs();           
 
             if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
             {
@@ -157,7 +158,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     cmbFamily_Role.Text = item.Field<string>("Family_Role");
                     Client1.UniqueIdentifier = item.Field<string>("Client_Code");
                 }
+                //populate the datagrids according the the current client searched.
                 dataGridViewClientSummary.DataSource = dtPolSearch;
+                dbgCallLogs.DataSource = callLogDisplay;
+
 
                 btnCancel.Show();
                 btnSaveClient.Enabled = false;
@@ -179,18 +183,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void button2_Click(object sender, EventArgs e)//refresh button
         {
-            Client c = new Client();
-            DataTable dtPolSearch = c.searchClientPol();
             //need to refresh the database so that the changes may reflect without needing to close and open the program.
-            dataGridViewClientSummary.DataSource = dtPolSearch;
-            dataGridViewClientSummary.Update();
-            dataGridViewClientSummary.Refresh();
+            dataGridViewClientSummary.DataSource = null;
+
         }
         private void button6_Click(object sender, EventArgs e)//Searches the available policies for the medical condition entered.
         {
             Medical_Department.Logic_layer.MedCondition Medical = new Medical_Department.Logic_layer.MedCondition();
 
-            if (Medical.validateStrings(txtMedConditionSearch.Text))
+            if (val.MedvalidateStrings(txtMedConditionSearch.Text))
             {
                 MessageBox.Show("Invalid medical condition name!");
             }
@@ -422,6 +423,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             btnAnswer.Enabled = true;
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
+            tabControl1.TabPages.Remove(tabPage3);
             
             //Set Time
             if (Client1.setImportantCaller(Client1.UniqueIdentifier))//if it was an important/client caller

@@ -19,7 +19,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             InitializeComponent();
         }
-        ICRUD client = new Client();
+        Client client = new Client();
         Family family = new Family();
         ICRUD policy = new Policy();
         private void CleintAndPolicy_Load(object sender, EventArgs e)

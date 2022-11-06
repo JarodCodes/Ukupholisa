@@ -46,5 +46,18 @@ namespace Ukupholisa
                 return false;
             }
         }
+
+        public bool MedvalidateStrings(string input)
+        {
+            if (!Regex.Match(input, "^[a-zA-Z]{1,50}$").Success)
+            {
+                // Medical condition name was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

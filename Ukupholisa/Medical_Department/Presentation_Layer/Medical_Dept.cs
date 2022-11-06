@@ -176,14 +176,15 @@ namespace Ukupholisa.Medical_Department
 
         private void btnMedSearch_Click(object sender, EventArgs e)
         {
+
             Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-            if (!int.TryParse(txtMedSearch.Text, out int medId))
+            if (validation.MedvalidateStrings(txtMedName.Text))
             {
-                MessageBox.Show("Invalid medical ID");
+                MessageBox.Show("Invalid medical condition name!");
             }
             else
             {
-                medcon.MedConID = medId;
+                medcon.Name = txtMedName.Text;
                 DataTable dt = medcon.search();
                 if (dt.Rows.Count == 0)
                 {
@@ -232,7 +233,7 @@ namespace Ukupholisa.Medical_Department
                 rtxtMedDesc.Text = rows.Cells["Condition_Description"].Value.ToString();
                 txtTreatment.Text = rows.Cells["Condition_Treatment"].Value.ToString();
                 txtMedPolicyID.Text = rows.Cells["Policy_Id"].Value.ToString();
-                spinDuration.Value = int.Parse(rows.Cells["Condition_Duration"].Value.ToString());
+                spinDuration.Value = int.Parse(rows.Cells["Treatment_Duration"].Value.ToString());
             }
         }
 

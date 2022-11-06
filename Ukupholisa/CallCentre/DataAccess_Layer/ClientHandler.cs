@@ -110,124 +110,101 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void saveClientFamily(string role, string Name, string Surname, string Phone, string Address, int family_Id)
         {
-            try
+
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("saveClientFamily", connect);
-                    cmd.Parameters.AddWithValue("@Family_Role", role);
-                    cmd.Parameters.AddWithValue("@Client_Name", Name);
-                    cmd.Parameters.AddWithValue("@Client_Surname", Surname);
-                    cmd.Parameters.AddWithValue("@Client_Phone", Phone);
-                    cmd.Parameters.AddWithValue("@Client_Address", Address);
-                    cmd.Parameters.AddWithValue("@Family_Id", family_Id);
+                SqlCommand cmd = new SqlCommand("saveClientFamily", connect);
+                cmd.Parameters.AddWithValue("@Family_Role", role);
+                cmd.Parameters.AddWithValue("@Client_Name", Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", Phone);
+                cmd.Parameters.AddWithValue("@Client_Address", Address);
+                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
 
-                    connect.Open();
+                connect.Open();
 
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+        }
+
+        internal DataTable searchCallLog(string uniqueIdentifier)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                //MessageBox.Show("Error:" + ex.Message);
+                SqlCommand cmd = new SqlCommand("searchCallLog", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Code", uniqueIdentifier);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
             }
         }
 
         public void saveClient(Logic_Layer.Client client, string family)
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("clientSave", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Name", client.Name);
-                    cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
-                    cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
-                    cmd.Parameters.AddWithValue("@Client_Address", client.Address);
-                    //cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
-                    cmd.Parameters.AddWithValue("@Family_Role", family);
-                    cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
+                SqlCommand cmd = new SqlCommand("clientSave", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                //cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                cmd.Parameters.AddWithValue("@Family_Role", family);
+                cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
 
-                    connect.Open();
+                connect.Open();
 
-                    int num = cmd.ExecuteNonQuery();
-                    if (num > 0)
-                    {
-                        
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                
+                cmd.ExecuteNonQuery();
+
             }
         }
 
         internal void saveCallLog(Logic_Layer.Client client)
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
+                SqlCommand cmd = new SqlCommand("saveCallLog", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Code", client.UniqueIdentifier);
+                cmd.Parameters.AddWithValue("@Call_Start", client.Call_start);
+                cmd.Parameters.AddWithValue("@Call_End", client.Call_end);
+
+
+                connect.Open();
+
+                int num = cmd.ExecuteNonQuery();
+                if (num > 0)
                 {
-                    SqlCommand cmd = new SqlCommand("saveCallLog", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Code", client.UniqueIdentifier);
-                    cmd.Parameters.AddWithValue("@Call_Start", client.Call_start);
-                    cmd.Parameters.AddWithValue("@Call_End", client.Call_end);
-
-
-                    connect.Open();
-
-                    int num = cmd.ExecuteNonQuery();
-                    if (num > 0)
-                    {
-                        //MessageBox.Show("Call Ended");
-                    }
+                    //MessageBox.Show("Call Ended");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error:" + ex.Message);
             }
         }
 
         public void saveClientExistingFam(Logic_Layer.Client client, string role, int famID)
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("saveClientExistingFam", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
-                    cmd.Parameters.AddWithValue("@Client_Name", client.Name);
-                    cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
-                    cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
-                    cmd.Parameters.AddWithValue("@Client_Address", client.Address);
-                    cmd.Parameters.AddWithValue("@Family_Id", famID);
-                    cmd.Parameters.AddWithValue("@Family_Role", role);
+                SqlCommand cmd = new SqlCommand("saveClientExistingFam", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
+                cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                cmd.Parameters.AddWithValue("@Family_Id", famID);
+                cmd.Parameters.AddWithValue("@Family_Role", role);
 
-                    connect.Open();
+                connect.Open();
 
-                    int num = cmd.ExecuteNonQuery();
-                    if (num > 0)
-                    {
-                        //MessageBox.Show("Record added successfully!");
-                    }
-                    else
-                    {
-                        //MessageBox.Show("Oops! Something went wrong!");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error:" + ex.Message);
+                cmd.ExecuteNonQuery();
             }
         }
         public void updateClientDetails(Logic_Layer.Client client, string role)
@@ -250,20 +227,13 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void addClientPol(int ClientID, int PolID)
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("clientAddPol", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Id", ClientID);
-                    cmd.Parameters.AddWithValue("@Policy_Id", PolID);
-                    int num = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error:" + ex);
+                SqlCommand cmd = new SqlCommand("clientAddPol", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", ClientID);
+                cmd.Parameters.AddWithValue("@Policy_Id", PolID);
+                int num = cmd.ExecuteNonQuery();
             }
         }
         public DataTable searchFamily(int family_id) 
@@ -286,40 +256,26 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void addFamClient(Logic_Layer.Family family, int client_Id)
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("familyClientAdd", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Id", client_Id);
-                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
-                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                    int num = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error:" + ex);
+                SqlCommand cmd = new SqlCommand("familyClientAdd", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
+                int num = cmd.ExecuteNonQuery();
             }
         }
         public void updateFamily(Logic_Layer.Family family, int client_Id) 
         {
-            try
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    SqlCommand cmd = new SqlCommand("familyClientUpdate", connect);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Client_Id", client_Id);
-                    cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
-                    cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                    int num = cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error:" + ex);
+                SqlCommand cmd = new SqlCommand("familyClientUpdate", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
+                cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
+                int num = cmd.ExecuteNonQuery();
             }
         }
         public void removeFamClient(int client_Id)
