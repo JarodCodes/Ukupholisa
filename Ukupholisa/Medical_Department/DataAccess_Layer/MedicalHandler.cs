@@ -33,7 +33,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
-                cmd.Parameters.AddWithValue("@Condition_Duration", medcon.Duration);
+                cmd.Parameters.AddWithValue("@Treatment_Duration", medcon.Duration);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();
@@ -50,7 +50,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
                 cmd.Parameters.AddWithValue("@Condition_Description", medcon.Description);
                 cmd.Parameters.AddWithValue("@Condition_Treatment", medcon.Treatment);
-                cmd.Parameters.AddWithValue("@Condition_Duration", medcon.Duration);
+                cmd.Parameters.AddWithValue("@Treatment_Duration", medcon.Duration);
                 cmd.Parameters.AddWithValue("@Policy_Id", medcon.PolicyID);
 
                 connect.Open();
@@ -76,6 +76,24 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
                 SqlCommand cmd = new SqlCommand("mcSearch", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Condition_Name", condition_name);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+        public DataTable searchMedConID(int condition_id)
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("mcSearchID", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Condition_Id", condition_id);
 
                 connect.Open();
                 DataTable dt = new DataTable();

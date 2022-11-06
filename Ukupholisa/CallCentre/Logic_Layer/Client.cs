@@ -187,5 +187,21 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.saveCallLog(this);
         }
+
+        internal string searchfamId()
+        {
+
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            
+            DataTable dt = handler.searchfamId(this);
+            string famId = "";
+
+            foreach (DataRow dr in dt.Rows)
+            {           
+                famId =  dr["Family_Id"].ToString();
+            }
+
+            return famId;
+        }
     }
 }

@@ -23,10 +23,17 @@ namespace Ukupholisa
         }
         public bool validateStrings(string input)
         {
-            if (!Regex.Match(input, "^[A-Z][a-zA-Z]*$").Success)
+            if (!Regex.Match(input, @"^[A-Z][a-z]*").Success)
             {
-                // incorrect input
-                return true;
+                if (!Regex.Match(input, @"^([A-Z][a-zA-Z]{2,}\s[A-Z][a-zA-Z]{1,}'?-?[A-Z][a-zA-Z]{2,}\s?([A-Z][a-zA-Z]{1,})?)").Success) // ^[A-Z][a-z]*(\s[A-Z][a-z]*)+$
+                {
+                    // incorrect input
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

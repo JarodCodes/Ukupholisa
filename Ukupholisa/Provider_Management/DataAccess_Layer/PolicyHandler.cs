@@ -140,18 +140,39 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                 } 
         }
 
-        internal void addPolicyToClient(string Policy_Code, string Client_Code)
+        internal DataTable searchIfPolicyExists(int policyID, string clientcode)
         {
-            int recordsInserted = 0;
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("searchIfPolicyExists", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Id", policyID);
+                cmd.Parameters.AddWithValue("@Client_Code", clientcode);
+
+                connect.Open();
+                DataTable dt = new DataTable();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
+            }
+        }
+
+        internal void addPolicyToClient(int Policy_Id, string Client_Code, string Policy_Code)
+        {
+
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("addPolicyToClient", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Code", Policy_Code);
+                cmd.Parameters.AddWithValue("@Policy_Id", Policy_Id);
                 cmd.Parameters.AddWithValue("@Client_Code", Client_Code);
+                cmd.Parameters.AddWithValue("@UniquePolCode", Policy_Code);
 
                 connect.Open();
-                recordsInserted = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -403,7 +424,7 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
             {
                 SqlCommand cmd = new SqlCommand("policyStatusUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Policy_Id", policy.PolicyId);
+                cmd.Parameters.AddWithValue("@Policy_Code", policy.PolCode);
                 cmd.Parameters.AddWithValue("@Client_Code", client_code);
                 cmd.Parameters.AddWithValue("@Policy_Status", policy.Status);
 

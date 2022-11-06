@@ -73,12 +73,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void btnSaveClient_Click(object sender, EventArgs e)
-        {
-            //this does not exist--------IGNORE
+            mainMenu main = new mainMenu();
+            main.Show();
+            Close();
         }
 
         private void OperatorUI_Load(object sender, EventArgs e)
@@ -169,16 +166,11 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 btnClientPolAdd.Enabled = true;
 
                 Button b = btnClientUpdate;
-                Point point = new Point(108, 275);
+                Point point = new Point(108, 309);
                 b.Location = point;
                 txtClientIDSearch.Clear();
  
             }
-        }
-
-        private void btnClientUpdate_Click(object sender, EventArgs e)//Updating the client details
-        {
-            //this does not exist--------IGNORE
         }
 
         private void button2_Click(object sender, EventArgs e)//refresh button
@@ -201,7 +193,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 dataGridViewPolicyList.DataSource = Medical.search();
             }
         }
-
         private void radiobtnYes_CheckedChanged(object sender, EventArgs e)
         {
             if (radiobtnYes.Checked)
@@ -213,32 +204,13 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtNewFamilyId.Enabled = false;
             }
         }
-
-        private void dataGridViewClientSummary_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.RowIndex >= 0)
-            //{
-            //    DataGridViewRow rows = this.dataGridViewClientSummary.Rows[e.RowIndex];
-
-            //    txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
-            //    txtClientName.Text = rows.Cells["Client_Name"].Value.ToString();
-            //    txtClientSurname.Text = rows.Cells["Client_Surname"].Value.ToString();
-            //    txtClientPhone.Text = rows.Cells["Client_Phone"].Value.ToString();
-            //    txtClientAddress.Text = rows.Cells["Client_Address"].Value.ToString();
-
-            //    groupBox7.Enabled = false;
-                
-
-            //}
-        }
-
         private void dataGridViewPolicyList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow rows = this.dataGridViewPolicyList.Rows[e.RowIndex];
 
-                txtNewPolID.Text = rows.Cells["Policy_Code"].Value.ToString();
+                txtNewPolID.Text = rows.Cells["Policy_Id"].Value.ToString();
 
             }
         }
@@ -306,7 +278,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     {
                         client.addClientWithFamily(fam.Family_role, fam.FamilyID);
                         clearAllData();
-                        MessageBox.Show("The Client Code is: " + client.UniqueIdentifier,"Client Code");
+                        MessageBox.Show("The Client Code is: " + client.UniqueIdentifier, "Client Code");
                     }
                 }
             }
@@ -323,13 +295,15 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                                     "Name: " + client.Name + "\n" +
                                     "Surname: " + client.Surname + "\n" +
                                     "Phone: " + client.Phone + "\n" +
-                                    "Address: " + client.Address + "\n" +
-                                    "Family Id: " + fam.FamilyID.ToString() + "\n" +
+                                    "Address: " + client.Address + "\n" +             
                                     "Family Role: " + fam.Family_role + "\n", "Adding Client", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
                 {
                     client.addClientWithoutFamily(fam.Family_role);
+                    //filter DB for the fam ID
+                    
                     clearAllData();
-                    MessageBox.Show("The Client Code is: " + client.UniqueIdentifier, "Client Code");
+                    MessageBox.Show("The Client Code is: " + client.UniqueIdentifier +
+                            "\nThe Family code is: " + client.searchfamId(), "Client Code");
                 }
 
                 
@@ -454,8 +428,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Point point = thisButton.Location;
             btnCancel.Hide();
             btnSaveClient.Enabled = true;
-
-            
+ 
             Button b = btnClientUpdate;
             
             b.Location = point;
@@ -502,20 +475,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             
             Client client = new Client();
             Family fam = new Family();
-            
             Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
-
-
-            if (MessageBox.Show("Are you sure you want to add policy "
-                + txtNewPolID.Text + "to client " + txtClientID.Text + "?"
-                , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+            if (pol.searchIfPolicyExists(int.Parse(txtNewPolID.Text), txtClientID.Text))
             {
-                pol.addPolicyToClient(txtNewPolID.Text, txtClientID.Text);
+                MessageBox.Show("The policy you are trying to add already exists!", "Error", MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to add policy "
+                + txtNewPolID.Text + " to client " + txtClientID.Text + "?"
+                , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+                {
+                    pol.addPolicyToClient(int.Parse(txtNewPolID.Text), txtClientID.Text, pol.generateCode());
+                }
             }
 
-            
-            
 
+
+            
         }
     }
 }

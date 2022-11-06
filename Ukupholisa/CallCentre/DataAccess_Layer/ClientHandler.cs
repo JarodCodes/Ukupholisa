@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using Ukupholisa.CallCentre.Logic_Layer;
 
 namespace Ukupholisa.CallCentre.DataAccess_Layer
 {
@@ -167,6 +168,25 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             }
         }
 
+        internal DataTable searchfamId(Client client)
+        {
+            string query = @"SELECT Family_Id 
+                            FROM Client_Family 
+                            WHERE Client_Id = 
+                            (SELECT Client_Id 
+                            FROM Client 
+                            WHERE Client_Code = '"+ client.UniqueIdentifier+ "')";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            return table;
+
+        }
+
         internal void saveCallLog(Logic_Layer.Client client)
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -254,16 +274,18 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 }
             }
         }
-        public void addFamClient(Logic_Layer.Family family, int client_Id)
+        public void addFamClient(Logic_Layer.Family family, string client_Id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyClientAdd", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Client_Code", client_Id);
                 cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                 cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                int num = cmd.ExecuteNonQuery();
+
+                connect.Open();
+                cmd.ExecuteNonQuery();
             }
         }
         public void updateFamily(Logic_Layer.Family family, int client_Id) 
@@ -275,16 +297,18 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Client_Id", client_Id);
                 cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                 cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
-                int num = cmd.ExecuteNonQuery();
+
+                connect.Open();
+                cmd.ExecuteNonQuery();               
             }
         }
-        public void removeFamClient(int client_Id)
+        public void removeFamClient(string client_Id)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-                SqlCommand cmd = new SqlCommand("famClientRemove", connect);
+                SqlCommand cmd = new SqlCommand("familyClientDelete", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Client_Code", client_Id);
 
                 connect.Open();
                 cmd.ExecuteNonQuery();

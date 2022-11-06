@@ -60,12 +60,12 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.updateFamily(this, client_Id);
         }
-        public void addToFam(int client_Id)
+        public void addToFam(string client_Id)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.addFamClient(this, client_Id);
         }
-        public void removeFromFam(int client_Id)
+        public void removeFromFam(string client_Id)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.removeFamClient(client_Id);
@@ -80,5 +80,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             Provider_Management.DataAccess_Layer.PolicyHandler handler = new Provider_Management.DataAccess_Layer.PolicyHandler();
             handler.removeFamPol(FamilyID);
         }
+
+        
     }
 }

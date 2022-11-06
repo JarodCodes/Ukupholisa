@@ -15,6 +15,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 {
     public partial class CleintAndPolicy : Form
     {
+        
         public CleintAndPolicy()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         Client client = new Client();
         Family family = new Family();
         ICRUD policy = new Policy();
+        Validation val = new Validation();
         private void CleintAndPolicy_Load(object sender, EventArgs e)
         {
             dataGridViewClients.DataSource = family.populate();
@@ -39,26 +41,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 txtClientID.Text = rows.Cells["Client_Code"].Value.ToString();
                 txtFamilyID.Text = rows.Cells["Family_Id"].Value.ToString();
             }
-        }
-
-        private void btnClientUpdate_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    Client client = new Client();
-            //    client.UniqueIdentifier = txtClientID.Text;
-            //    client.Name = txtClientName.Text;
-            //    client.Surname = txtClientSurname.Text;
-            //    client.Phone = txtClientPhone.Text;
-            //    client.Address = txtClientAddress.Text;
-
-            //    client.update();
-            //    MessageBox.Show("Client was updated");
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Client was not updated");
-            //}
         }
 
         private void btnClientDelete_Click(object sender, EventArgs e)
@@ -118,28 +100,29 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 Family family = new Family();
                 Client client = new Client();
-                if (!int.TryParse(txtFamilyID.Text, out int famId))
+
+
+                if (val.validateStrings(txtClientID.Text))
                 {
-                    MessageBox.Show("Invalid family ID");
-                }
-                else if (!int.TryParse(txtFamClientID.Text, out int clientId))
-                {
-                    MessageBox.Show("Invalid cleint ID");
+                    MessageBox.Show("Invalid client ID!");
                 }
                 else
                 {
-                    family.FamilyID = famId;
-                    family.Family_role = cmbFamilyRole.Text;
-                    client.Client_Id = clientId;
+                    if (MessageBox.Show("Are you sure you want to add this client to the family?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        family.FamilyID = int.Parse(txtFamilyID.Text);
+                        family.Family_role = cmbFamilyRole.Text;
+                        client.UniqueIdentifier = txtFamClientID.Text;
 
-                    family.addToFam(client.Client_Id);
-                    dataGridViewFamily.DataSource = family.search();
-                    MessageBox.Show("Client was added to family");
+                        family.addToFam(client.UniqueIdentifier);
+                        dataGridViewFamily.DataSource = family.search();
+                        MessageBox.Show("Client was added to family");
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Client was not added tp family");
+                MessageBox.Show("Client was not added tp family" + ex.Message);
             }
         }
 
@@ -166,7 +149,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 }
                 else if (!int.TryParse(txtFamClientID.Text, out int clientId))
                 {
-                    MessageBox.Show("Invalid cleint ID");
+                    MessageBox.Show("Invalid client ID");
                 }
                 else
                 {
@@ -190,16 +173,20 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             {
                 Family family = new Family();
                 Client client = new Client();
-                if (!int.TryParse(txtFamClientID.Text, out int clientId))
+                
+                if (val.validateStrings(txtClientID.Text))
                 {
-                    MessageBox.Show("Invalid client ID");
+                    MessageBox.Show("Invalid client ID!");
                 }
                 else 
                 {
-                    client.Client_Id = clientId;
-                    family.removeFromFam(client.Client_Id);
-                    MessageBox.Show("Client was removed from family");
-                    dataGridViewFamily.DataSource = family.search();
+                    if (MessageBox.Show("Are you sure you want to remove this client from the family?", "Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        client.UniqueIdentifier = txtFamClientID.Text;
+                        family.removeFromFam(client.UniqueIdentifier);
+                        MessageBox.Show("Client was removed from family");
+                        dataGridViewFamily.DataSource = family.search();
+                    }
                 }
             }
             catch (Exception)
@@ -360,7 +347,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
                 if (policy.checkStatus((DataTable)dataGridViewClientPol.DataSource, policy.Status))
                 {
-                    policy.PolicyId = int.Parse(txtClientPolSearch.Text);
+                    policy.PolCode = txtClientPolSearch.Text;
                     Client client = new Client();
                     client.UniqueIdentifier = txtClientID.Text;
                     
@@ -368,14 +355,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     dataGridViewClientPol.DataSource = policy.clientPolSearch(client.UniqueIdentifier);
                     MessageBox.Show("Policy status was updated!");
                 }
-                else 
-                {
-                    MessageBox.Show("Policy status was not updated!");
-                }
-            }
-            catch (Exception)
+             }
+            catch (Exception ex)
             {
-                MessageBox.Show("Policy status was not updated!");
+                MessageBox.Show("Policy status was not updated!" + ex.Message);
             }
         }
 

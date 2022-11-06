@@ -422,9 +422,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 dataGridViewCurPackPol.DataSource = package.packPolSearch();
                 MessageBox.Show("Policy was removed");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Policy was not removed");
+                MessageBox.Show("Policy was not removed" + ex.Message);
             }
         }
 

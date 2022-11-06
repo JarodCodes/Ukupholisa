@@ -55,6 +55,12 @@ namespace Ukupholisa.Medical_Department.Logic_layer
             return handler.searchMedCon(Name);
         }
 
+        public DataTable searchMedID()
+        {
+            DataAccess_Layer.MedicalHandler handler = new DataAccess_Layer.MedicalHandler();
+            return handler.searchMedConID(MedConID);
+        }
+
         public void update()
         {
             DataAccess_Layer.MedicalHandler handler = new DataAccess_Layer.MedicalHandler();

@@ -54,7 +54,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         public void update()
         {
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
-            handler.addProvider(this);
+            handler.updateProvider(this);
         }
         public DataTable getProviderInfo() 
         {

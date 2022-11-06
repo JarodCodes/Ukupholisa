@@ -100,9 +100,9 @@ namespace Ukupholisa.Medical_Department
                     MessageBox.Show("Condition was added");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Condition was not added");
+                MessageBox.Show("Condition was not added" + ex.Message);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Ukupholisa.Medical_Department
             try
             {
                 Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-                if (!int.TryParse(txtMedPolicyID.Text, out int medId))
+                if (!int.TryParse(txtMedID.Text, out int medId))
                 {
                     MessageBox.Show("Invalid medical ID");
                 }
@@ -162,10 +162,14 @@ namespace Ukupholisa.Medical_Department
                 }
                 else 
                 {
-                    medcon.MedConID = int.Parse(txtMedID.Text);
-                    medcon.delete();
-                    dataGridViewMedCon.DataSource = medcon.populate();
-                    MessageBox.Show("Condition was deleted");
+                    if (MessageBox.Show("Are you sure you want to delete the medical condition "+
+                        txtMedName.Text +"?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        medcon.MedConID = int.Parse(txtMedID.Text);
+                        medcon.delete();
+                        dataGridViewMedCon.DataSource = medcon.populate();
+                        MessageBox.Show("Condition was deleted");
+                    }    
                 }
             }
             catch (Exception)
@@ -178,14 +182,14 @@ namespace Ukupholisa.Medical_Department
         {
 
             Logic_layer.MedCondition medcon = new Logic_layer.MedCondition();
-            if (validation.MedvalidateStrings(txtMedName.Text))
+            if (!int.TryParse(txtMedSearch.Text , out int medID))
             {
-                MessageBox.Show("Invalid medical condition name!");
+                MessageBox.Show("Invalid medical condition ID!");
             }
             else
             {
-                medcon.Name = txtMedName.Text;
-                DataTable dt = medcon.search();
+                medcon.MedConID = medID;
+                DataTable dt = medcon.searchMedID();
                 if (dt.Rows.Count == 0)
                 {
                     MessageBox.Show("No condition found");

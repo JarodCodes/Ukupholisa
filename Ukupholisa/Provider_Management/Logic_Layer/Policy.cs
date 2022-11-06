@@ -15,6 +15,8 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         int policyId;
         int cost;
         int providerId;
+        string polCode;
+
 
         public string Name { get => name; set => name = value; }
         public string CoverLevel { get => coverLevel; set => coverLevel = value; }
@@ -22,6 +24,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         public int PolicyId { get => policyId; set => policyId = value; }
         public int Cost { get => cost; set => cost = value; }
         public int ProviderId { get => providerId; set => providerId = value; }
+        public string PolCode { get => polCode; set => polCode = value; }
 
         public Policy(string name, string coverLevel, string status, int policyId, int cost, int providerId)
         {
@@ -136,10 +139,27 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             return String.Format("{0}{1}{2}{3}", year, coverCode, importance, digits);
         }
 
-        internal void addPolicyToClient(string policycode, string clientcode)
+        internal void addPolicyToClient(int policyID, string clientcode, string polcode)
         {
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
-            handler.addPolicyToClient(policycode, clientcode);
+            handler.addPolicyToClient(policyID, clientcode, polcode);
+        }
+
+        internal bool searchIfPolicyExists(int policyID, string clientcode)
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            DataTable dt = handler.searchIfPolicyExists(policyID, clientcode);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (int.Parse(dr["Total"].ToString()) >1)
+                {
+                    return false;
+                }
+                
+            }
+
+            return true;
         }
     }
 }
