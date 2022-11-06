@@ -109,6 +109,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Provider_Management\Presentation_Layer\ProviderManagement.resx">
       <DependentUpon>ProviderManagement.cs</DependentUpon>
@@ -126,6 +127,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\AnswerCall_final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EndCall_final.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

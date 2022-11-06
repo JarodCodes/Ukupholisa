@@ -29,15 +29,12 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperatorUI));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CallReceiver = new System.Windows.Forms.TabPage();
             this.lblTimer = new System.Windows.Forms.Label();
-            this.btnEndCall = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnAnswer = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnClientUpdate = new System.Windows.Forms.Button();
@@ -81,6 +78,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.dbgCallLogs = new System.Windows.Forms.DataGridView();
+            this.btnEndCall = new System.Windows.Forms.Button();
+            this.btnAnswer = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.CallReceiver.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -138,16 +137,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.lblTimer.TabIndex = 5;
             this.lblTimer.Text = "00:00:00";
             // 
-            // btnEndCall
-            // 
-            this.btnEndCall.Image = ((System.Drawing.Image)(resources.GetObject("btnEndCall.Image")));
-            this.btnEndCall.Location = new System.Drawing.Point(732, 464);
-            this.btnEndCall.Name = "btnEndCall";
-            this.btnEndCall.Size = new System.Drawing.Size(97, 58);
-            this.btnEndCall.TabIndex = 4;
-            this.btnEndCall.UseVisualStyleBackColor = true;
-            this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -171,23 +160,13 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(3, 464);
+            this.btnExit.Location = new System.Drawing.Point(6, 471);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(97, 51);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnAnswer
-            // 
-            this.btnAnswer.Image = ((System.Drawing.Image)(resources.GetObject("btnAnswer.Image")));
-            this.btnAnswer.Location = new System.Drawing.Point(629, 464);
-            this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(97, 58);
-            this.btnAnswer.TabIndex = 0;
-            this.btnAnswer.UseVisualStyleBackColor = true;
-            this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
             // 
             // tabPage2
             // 
@@ -645,10 +624,31 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.dbgCallLogs.Size = new System.Drawing.Size(476, 491);
             this.dbgCallLogs.TabIndex = 0;
             // 
+            // btnEndCall
+            // 
+            this.btnEndCall.Image = global::Ukupholisa.Properties.Resources.EndCall_final;
+            this.btnEndCall.Location = new System.Drawing.Point(732, 464);
+            this.btnEndCall.Name = "btnEndCall";
+            this.btnEndCall.Size = new System.Drawing.Size(97, 58);
+            this.btnEndCall.TabIndex = 4;
+            this.btnEndCall.UseVisualStyleBackColor = true;
+            this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
+            // 
+            // btnAnswer
+            // 
+            this.btnAnswer.Image = global::Ukupholisa.Properties.Resources.AnswerCall_final;
+            this.btnAnswer.Location = new System.Drawing.Point(629, 464);
+            this.btnAnswer.Name = "btnAnswer";
+            this.btnAnswer.Size = new System.Drawing.Size(97, 58);
+            this.btnAnswer.TabIndex = 0;
+            this.btnAnswer.UseVisualStyleBackColor = true;
+            this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
+            // 
             // OperatorUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(845, 556);
             this.Controls.Add(this.tabControl1);
             this.Name = "OperatorUI";

@@ -29,7 +29,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             dataGridViewPackPol.DataSource = policy.populate();
             dataGridViewPackage.DataSource = package.populate();
             cmbCoverLevel.SelectedIndex = 0;
-            
+
 
         }
 
@@ -46,7 +46,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 {
                     radioBtnTrue.Checked = true;
                 }
-                else 
+                else
                 {
                     radioBtnFalse.Checked = true;
                 }
@@ -64,7 +64,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 {
                     provider.Status = 1;
                 }
-                else 
+                else
                 {
                     provider.Status = 0;
                 }
@@ -101,7 +101,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             try
             {
                 Logic_Layer.Provider provider = new Logic_Layer.Provider();
-                
+
                 if (radioBtnTrue.Checked)
                 {
                     provider.Status = 1;
@@ -132,7 +132,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                     provider.update();
                     dataGridViewProv.DataSource = provider.populate();
                     MessageBox.Show("Provider was updated");
-                }  
+                }
             }
             catch (Exception)
             {
@@ -229,8 +229,13 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                     dataGridViewPol.DataSource = policy.populate();
                     MessageBox.Show("Policy was added");
                 }
+                else
+                {
+                    MessageBox.Show("Incorrect cost inserted!");
+                    txtPolCost.Select();
+                }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Policy was not added");
             }
@@ -240,18 +245,33 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.Policy policy = new Logic_Layer.Policy();
-                policy.PolicyId = int.Parse(txtPolID.Text);
-                policy.Name = txtPolName.Text;
-                policy.CoverLevel = cmbCoverLevel.Text;
-                policy.Cost = int.Parse(txtPolCost.Text);
-                policy.ProviderId = int.Parse(txtPolProvID.Text);
+                if (val.validateStrings(txtPolName.Text))
+                {
+                    //Name is incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtProvName.Focus();
+                    return;
+                }
+                else if (int.TryParse(txtPolCost.Text, out int polcost))
+                {
+                    Logic_Layer.Policy policy = new Logic_Layer.Policy();
+                    policy.PolicyId = int.Parse(txtPolID.Text);
+                    policy.Name = txtPolName.Text;
+                    policy.CoverLevel = cmbCoverLevel.Text;
+                    policy.Cost = polcost;
+                    policy.ProviderId = int.Parse(txtPolProvID.Text);
 
-                policy.update();
-                dataGridViewPol.DataSource = policy.populate();
-                MessageBox.Show("Policy was updated");
+                    policy.update();
+                    dataGridViewPol.DataSource = policy.populate();
+                    MessageBox.Show("Policy was updated");
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect cost inserted!");
+                    txtPolCost.Select();
+                }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Policy was not updated");
             }
@@ -261,10 +281,10 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                if (int.TryParse(txtPolID.Text,out int polID))
+                if (int.TryParse(txtPolID.Text, out int polID))
                 {
                     Logic_Layer.Policy policy = new Logic_Layer.Policy();
-                    if (MessageBox.Show("Are you sure you want to delete client " + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    if (MessageBox.Show("Are you sure you want to delete policy " + txtPolID.Text + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
                     {
                         policy.PolicyId = polID;
                         policy.delete();
@@ -331,7 +351,7 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             }
 
 
-            
+
         }
 
         private void dataGridViewPolProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -371,16 +391,32 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
-                package.Name = txtPackName.Text;
-                package.Cost = int.Parse(txtPackCost.Text);
-                package.ProviderId = int.Parse(txtPackProvID.Text);
+                if (val.validateStrings(txtPackName.Text))
+                {
+                    //Name is incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtPackName.Focus();
+                    return;
+                }
+                else if (int.TryParse(txtPackCost.Text, out int packcost))
+                {
+                    Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+                    package.Name = txtPackName.Text;
+                    package.Cost = packcost;
+                    package.ProviderId = int.Parse(txtPackProvID.Text);
 
-                package.add();
-                dataGridViewPackage.DataSource = package.populate();
-                MessageBox.Show("Package was created, remember to add policies on the next screen!");
+                    package.add();
+                    dataGridViewPackage.DataSource = package.populate();
+                    MessageBox.Show("Package was created, remember to add policies on the next screen!");
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect cost inserted!");
+                    txtPackCost.Select();
+                }
+
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Package was not created");
             }
@@ -390,17 +426,32 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
-                package.PackageId = int.Parse(txtPackID.Text);
-                package.Name = txtPackName.Text;
-                package.Cost = int.Parse(txtPackCost.Text);
-                package.ProviderId = int.Parse(txtPackProvID.Text);
+                if (val.validateStrings(txtPackName.Text))
+                {
+                    //Name is incorrect
+                    MessageBox.Show("Invalid Name!", "Message");
+                    txtPackName.Focus();
+                    return;
+                }
+                else if (int.TryParse(txtPackCost.Text, out int packcost))
+                {
+                    Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+                    package.PackageId = int.Parse(txtPackID.Text);
+                    package.Name = txtPackName.Text;
+                    package.Cost = packcost;
+                    package.ProviderId = int.Parse(txtPackProvID.Text);
 
-                package.update();
-                dataGridViewPackage.DataSource = package.populate();
-                MessageBox.Show("Package was updated");
+                    package.update();
+                    dataGridViewPackage.DataSource = package.populate();
+                    MessageBox.Show("Package was updated");
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect cost inserted!");
+                    txtPackCost.Select();
+                }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Package was not updated");
             }
@@ -410,14 +461,27 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
-                package.PackageId = int.Parse(txtPackID.Text);
+                if (int.TryParse(txtPackID.Text, out int packId))
+                {
+                    Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+                    if (MessageBox.Show("Are you sure you want to delete package " + txtPackID.Text + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        package.PackageId = packId;
+                        package.delete();
+                        dataGridViewPackage.DataSource = package.populate();
+                        MessageBox.Show("Package was deleted");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a package!", "Error");
+                    txtPackID.Select();
+                }
 
-                package.delete();
-                dataGridViewPackage.DataSource = package.populate();
-                MessageBox.Show("Package was deleted");
+
+
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Package was not deleted");
             }
@@ -487,8 +551,8 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             {
                 MessageBox.Show("Please insert a valid policy id!", "Error");
             }
-            
-            
+
+
         }
 
         private void btnPackPolAdd_Click(object sender, EventArgs e)
@@ -508,9 +572,6 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                 {
                     MessageBox.Show("Please insert a valid policy id!", "Error");
                 }
-
-
-                
             }
             catch (Exception)
             {
@@ -529,12 +590,23 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
         {
             try
             {
-                Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
-                package.PolicyId = int.Parse(txtPackPolSearch.Text);
-                package.PackageId = int.Parse(txtPackID.Text);
-                package.removePol();
-                dataGridViewCurPackPol.DataSource = package.packPolSearch();
-                MessageBox.Show("Policy was removed");
+                if (int.TryParse(txtPackPolSearch.Text, out int packsearchId))
+                {
+                    Logic_Layer.PolicyPackage package = new Logic_Layer.PolicyPackage();
+                    if (MessageBox.Show("Are you sure you want to delete policy " + txtPackPolSearch.Text + "?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        package.PolicyId = packsearchId;
+                        package.PackageId = int.Parse(txtPackID.Text);
+                        package.removePol();
+                        dataGridViewCurPackPol.DataSource = package.packPolSearch();
+                        MessageBox.Show("Policy was removed");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a policy!", "Error");
+                    txtPackPolSearch.Select();
+                } 
             }
             catch (Exception ex)
             {
@@ -565,6 +637,13 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
             package.PackageId = int.Parse(txtPackID.Text);
             dataGridViewCurPackPol.DataSource = package.packPolSearch();
             dataGridViewPackPol.DataSource = policy.populate();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            mainMenu main = new mainMenu();
+            main.Show();
+            Close();
         }
     }
 }

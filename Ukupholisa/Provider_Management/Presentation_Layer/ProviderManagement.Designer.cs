@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBoxProvData = new System.Windows.Forms.GroupBox();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
             this.dataGridViewProv = new System.Windows.Forms.DataGridView();
             this.tabControlProviderManagement = new System.Windows.Forms.TabControl();
             this.tabPageProvider = new System.Windows.Forms.TabPage();
@@ -54,8 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPagePolicy = new System.Windows.Forms.TabPage();
             this.groupBoxProvider = new System.Windows.Forms.GroupBox();
-            this.btnPolProvNext = new System.Windows.Forms.Button();
-            this.btnPolProvPrev = new System.Windows.Forms.Button();
             this.dataGridViewPolProv = new System.Windows.Forms.DataGridView();
             this.groupBoxPolSearch = new System.Windows.Forms.GroupBox();
             this.btnPolSearch = new System.Windows.Forms.Button();
@@ -80,13 +76,9 @@
             this.txtPolID = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBoxPolicyData = new System.Windows.Forms.GroupBox();
-            this.btnPolNext = new System.Windows.Forms.Button();
-            this.btnPolPrev = new System.Windows.Forms.Button();
             this.dataGridViewPol = new System.Windows.Forms.DataGridView();
             this.tabPagePackage = new System.Windows.Forms.TabPage();
             this.groupBoxPackageProv = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridViewPackProv = new System.Windows.Forms.DataGridView();
             this.groupBoxPackSearch = new System.Windows.Forms.GroupBox();
             this.btnPackSearch = new System.Windows.Forms.Button();
@@ -109,13 +101,9 @@
             this.txtPackID = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBoxPackage = new System.Windows.Forms.GroupBox();
-            this.btnPackNext = new System.Windows.Forms.Button();
-            this.btnPackPrev = new System.Windows.Forms.Button();
             this.dataGridViewPackage = new System.Windows.Forms.DataGridView();
             this.tabPagePackagePol = new System.Windows.Forms.TabPage();
             this.groupBoxPackCurPol = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.dataGridViewCurPackPol = new System.Windows.Forms.DataGridView();
             this.groupBoxPackPolicyOp = new System.Windows.Forms.GroupBox();
             this.btnPackPolRefresh = new System.Windows.Forms.Button();
@@ -125,9 +113,8 @@
             this.txtPackPolSearch = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBoxPackPol = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewPackPol = new System.Windows.Forms.DataGridView();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBoxProvData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProv)).BeginInit();
             this.tabControlProviderManagement.SuspendLayout();
@@ -159,40 +146,20 @@
             // 
             // groupBoxProvData
             // 
-            this.groupBoxProvData.Controls.Add(this.btnNext);
-            this.groupBoxProvData.Controls.Add(this.btnPrev);
             this.groupBoxProvData.Controls.Add(this.dataGridViewProv);
             this.groupBoxProvData.Location = new System.Drawing.Point(6, 6);
             this.groupBoxProvData.Name = "groupBoxProvData";
-            this.groupBoxProvData.Size = new System.Drawing.Size(490, 454);
+            this.groupBoxProvData.Size = new System.Drawing.Size(490, 439);
             this.groupBoxProvData.TabIndex = 6;
             this.groupBoxProvData.TabStop = false;
             this.groupBoxProvData.Text = "Providers";
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(409, 426);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.Location = new System.Drawing.Point(6, 426);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPrev.TabIndex = 2;
-            this.btnPrev.Text = "<";
-            this.btnPrev.UseVisualStyleBackColor = true;
             // 
             // dataGridViewProv
             // 
             this.dataGridViewProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProv.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewProv.Name = "dataGridViewProv";
-            this.dataGridViewProv.Size = new System.Drawing.Size(478, 401);
+            this.dataGridViewProv.Size = new System.Drawing.Size(478, 414);
             this.dataGridViewProv.TabIndex = 0;
             this.dataGridViewProv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProv_CellContentClick);
             // 
@@ -210,6 +177,8 @@
             // 
             // tabPageProvider
             // 
+            this.tabPageProvider.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPageProvider.Controls.Add(this.btnExit);
             this.tabPageProvider.Controls.Add(this.groupBoxProvSearch);
             this.tabPageProvider.Controls.Add(this.groupBoxProvOperations);
             this.tabPageProvider.Controls.Add(this.groupBoxProvData);
@@ -219,7 +188,6 @@
             this.tabPageProvider.Size = new System.Drawing.Size(791, 482);
             this.tabPageProvider.TabIndex = 0;
             this.tabPageProvider.Text = "Provider";
-            this.tabPageProvider.UseVisualStyleBackColor = true;
             // 
             // groupBoxProvSearch
             // 
@@ -228,14 +196,14 @@
             this.groupBoxProvSearch.Controls.Add(this.label6);
             this.groupBoxProvSearch.Location = new System.Drawing.Point(502, 347);
             this.groupBoxProvSearch.Name = "groupBoxProvSearch";
-            this.groupBoxProvSearch.Size = new System.Drawing.Size(279, 113);
+            this.groupBoxProvSearch.Size = new System.Drawing.Size(279, 98);
             this.groupBoxProvSearch.TabIndex = 9;
             this.groupBoxProvSearch.TabStop = false;
             this.groupBoxProvSearch.Text = "Search";
             // 
             // btnProvSearch
             // 
-            this.btnProvSearch.Location = new System.Drawing.Point(9, 75);
+            this.btnProvSearch.Location = new System.Drawing.Point(9, 69);
             this.btnProvSearch.Name = "btnProvSearch";
             this.btnProvSearch.Size = new System.Drawing.Size(264, 23);
             this.btnProvSearch.TabIndex = 19;
@@ -403,6 +371,7 @@
             // 
             // tabPagePolicy
             // 
+            this.tabPagePolicy.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPagePolicy.Controls.Add(this.groupBoxProvider);
             this.tabPagePolicy.Controls.Add(this.groupBoxPolSearch);
             this.tabPagePolicy.Controls.Add(this.groupBoxPolOperations);
@@ -413,12 +382,9 @@
             this.tabPagePolicy.Size = new System.Drawing.Size(791, 482);
             this.tabPagePolicy.TabIndex = 1;
             this.tabPagePolicy.Text = "Policy";
-            this.tabPagePolicy.UseVisualStyleBackColor = true;
             // 
             // groupBoxProvider
             // 
-            this.groupBoxProvider.Controls.Add(this.btnPolProvNext);
-            this.groupBoxProvider.Controls.Add(this.btnPolProvPrev);
             this.groupBoxProvider.Controls.Add(this.dataGridViewPolProv);
             this.groupBoxProvider.Location = new System.Drawing.Point(7, 243);
             this.groupBoxProvider.Name = "groupBoxProvider";
@@ -427,30 +393,12 @@
             this.groupBoxProvider.TabStop = false;
             this.groupBoxProvider.Text = "Providers";
             // 
-            // btnPolProvNext
-            // 
-            this.btnPolProvNext.Location = new System.Drawing.Point(409, 197);
-            this.btnPolProvNext.Name = "btnPolProvNext";
-            this.btnPolProvNext.Size = new System.Drawing.Size(75, 23);
-            this.btnPolProvNext.TabIndex = 3;
-            this.btnPolProvNext.Text = ">";
-            this.btnPolProvNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPolProvPrev
-            // 
-            this.btnPolProvPrev.Location = new System.Drawing.Point(6, 197);
-            this.btnPolProvPrev.Name = "btnPolProvPrev";
-            this.btnPolProvPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPolProvPrev.TabIndex = 2;
-            this.btnPolProvPrev.Text = "<";
-            this.btnPolProvPrev.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewPolProv
             // 
             this.dataGridViewPolProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPolProv.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPolProv.Name = "dataGridViewPolProv";
-            this.dataGridViewPolProv.Size = new System.Drawing.Size(478, 173);
+            this.dataGridViewPolProv.Size = new System.Drawing.Size(478, 208);
             this.dataGridViewPolProv.TabIndex = 0;
             this.dataGridViewPolProv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPolProv_CellContentClick);
             // 
@@ -671,8 +619,6 @@
             // 
             // groupBoxPolicyData
             // 
-            this.groupBoxPolicyData.Controls.Add(this.btnPolNext);
-            this.groupBoxPolicyData.Controls.Add(this.btnPolPrev);
             this.groupBoxPolicyData.Controls.Add(this.dataGridViewPol);
             this.groupBoxPolicyData.Location = new System.Drawing.Point(7, 4);
             this.groupBoxPolicyData.Name = "groupBoxPolicyData";
@@ -681,35 +627,18 @@
             this.groupBoxPolicyData.TabStop = false;
             this.groupBoxPolicyData.Text = "Policies";
             // 
-            // btnPolNext
-            // 
-            this.btnPolNext.Location = new System.Drawing.Point(409, 197);
-            this.btnPolNext.Name = "btnPolNext";
-            this.btnPolNext.Size = new System.Drawing.Size(75, 23);
-            this.btnPolNext.TabIndex = 3;
-            this.btnPolNext.Text = ">";
-            this.btnPolNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPolPrev
-            // 
-            this.btnPolPrev.Location = new System.Drawing.Point(6, 197);
-            this.btnPolPrev.Name = "btnPolPrev";
-            this.btnPolPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPolPrev.TabIndex = 2;
-            this.btnPolPrev.Text = "<";
-            this.btnPolPrev.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewPol
             // 
             this.dataGridViewPol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPol.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPol.Name = "dataGridViewPol";
-            this.dataGridViewPol.Size = new System.Drawing.Size(478, 173);
+            this.dataGridViewPol.Size = new System.Drawing.Size(478, 208);
             this.dataGridViewPol.TabIndex = 0;
             this.dataGridViewPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPol_CellContentClick);
             // 
             // tabPagePackage
             // 
+            this.tabPagePackage.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPagePackage.Controls.Add(this.groupBoxPackageProv);
             this.tabPagePackage.Controls.Add(this.groupBoxPackSearch);
             this.tabPagePackage.Controls.Add(this.groupBoxPackOps);
@@ -719,12 +648,9 @@
             this.tabPagePackage.Size = new System.Drawing.Size(791, 482);
             this.tabPagePackage.TabIndex = 2;
             this.tabPagePackage.Text = "Package";
-            this.tabPagePackage.UseVisualStyleBackColor = true;
             // 
             // groupBoxPackageProv
             // 
-            this.groupBoxPackageProv.Controls.Add(this.button1);
-            this.groupBoxPackageProv.Controls.Add(this.button2);
             this.groupBoxPackageProv.Controls.Add(this.dataGridViewPackProv);
             this.groupBoxPackageProv.Location = new System.Drawing.Point(7, 244);
             this.groupBoxPackageProv.Name = "groupBoxPackageProv";
@@ -733,30 +659,12 @@
             this.groupBoxPackageProv.TabStop = false;
             this.groupBoxPackageProv.Text = "Providers";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(409, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 197);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewPackProv
             // 
             this.dataGridViewPackProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPackProv.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPackProv.Name = "dataGridViewPackProv";
-            this.dataGridViewPackProv.Size = new System.Drawing.Size(478, 173);
+            this.dataGridViewPackProv.Size = new System.Drawing.Size(478, 199);
             this.dataGridViewPackProv.TabIndex = 0;
             this.dataGridViewPackProv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPackProv_CellContentClick);
             // 
@@ -956,8 +864,6 @@
             // 
             // groupBoxPackage
             // 
-            this.groupBoxPackage.Controls.Add(this.btnPackNext);
-            this.groupBoxPackage.Controls.Add(this.btnPackPrev);
             this.groupBoxPackage.Controls.Add(this.dataGridViewPackage);
             this.groupBoxPackage.Location = new System.Drawing.Point(7, 5);
             this.groupBoxPackage.Name = "groupBoxPackage";
@@ -966,35 +872,18 @@
             this.groupBoxPackage.TabStop = false;
             this.groupBoxPackage.Text = "Packages";
             // 
-            // btnPackNext
-            // 
-            this.btnPackNext.Location = new System.Drawing.Point(409, 197);
-            this.btnPackNext.Name = "btnPackNext";
-            this.btnPackNext.Size = new System.Drawing.Size(75, 23);
-            this.btnPackNext.TabIndex = 3;
-            this.btnPackNext.Text = ">";
-            this.btnPackNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPackPrev
-            // 
-            this.btnPackPrev.Location = new System.Drawing.Point(6, 197);
-            this.btnPackPrev.Name = "btnPackPrev";
-            this.btnPackPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPackPrev.TabIndex = 2;
-            this.btnPackPrev.Text = "<";
-            this.btnPackPrev.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewPackage
             // 
             this.dataGridViewPackage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPackage.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPackage.Name = "dataGridViewPackage";
-            this.dataGridViewPackage.Size = new System.Drawing.Size(478, 173);
+            this.dataGridViewPackage.Size = new System.Drawing.Size(478, 208);
             this.dataGridViewPackage.TabIndex = 0;
             this.dataGridViewPackage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPackage_CellContentClick);
             // 
             // tabPagePackagePol
             // 
+            this.tabPagePackagePol.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPagePackagePol.Controls.Add(this.groupBoxPackCurPol);
             this.tabPagePackagePol.Controls.Add(this.groupBoxPackPolicyOp);
             this.tabPagePackagePol.Controls.Add(this.groupBoxPackPol);
@@ -1003,12 +892,9 @@
             this.tabPagePackagePol.Size = new System.Drawing.Size(791, 482);
             this.tabPagePackagePol.TabIndex = 3;
             this.tabPagePackagePol.Text = "Package Policies";
-            this.tabPagePackagePol.UseVisualStyleBackColor = true;
             // 
             // groupBoxPackCurPol
             // 
-            this.groupBoxPackCurPol.Controls.Add(this.button5);
-            this.groupBoxPackCurPol.Controls.Add(this.button6);
             this.groupBoxPackCurPol.Controls.Add(this.dataGridViewCurPackPol);
             this.groupBoxPackCurPol.Location = new System.Drawing.Point(406, 211);
             this.groupBoxPackCurPol.Name = "groupBoxPackCurPol";
@@ -1017,30 +903,12 @@
             this.groupBoxPackCurPol.TabStop = false;
             this.groupBoxPackCurPol.Text = "Current Policies";
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(288, 237);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = ">";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(6, 237);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "<";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewCurPackPol
             // 
             this.dataGridViewCurPackPol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCurPackPol.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewCurPackPol.Name = "dataGridViewCurPackPol";
-            this.dataGridViewCurPackPol.Size = new System.Drawing.Size(357, 212);
+            this.dataGridViewCurPackPol.Size = new System.Drawing.Size(357, 241);
             this.dataGridViewCurPackPol.TabIndex = 0;
             // 
             // groupBoxPackPolicyOp
@@ -1116,8 +984,6 @@
             // 
             // groupBoxPackPol
             // 
-            this.groupBoxPackPol.Controls.Add(this.button3);
-            this.groupBoxPackPol.Controls.Add(this.button4);
             this.groupBoxPackPol.Controls.Add(this.dataGridViewPackPol);
             this.groupBoxPackPol.Location = new System.Drawing.Point(6, 211);
             this.groupBoxPackPol.Name = "groupBoxPackPol";
@@ -1126,37 +992,30 @@
             this.groupBoxPackPol.TabStop = false;
             this.groupBoxPackPol.Text = "Policies";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(288, 237);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 237);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "<";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewPackPol
             // 
             this.dataGridViewPackPol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPackPol.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPackPol.Name = "dataGridViewPackPol";
-            this.dataGridViewPackPol.Size = new System.Drawing.Size(357, 212);
+            this.dataGridViewPackPol.Size = new System.Drawing.Size(357, 241);
             this.dataGridViewPackPol.TabIndex = 0;
             this.dataGridViewPackPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPackPol_CellContentClick);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(6, 451);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(484, 23);
+            this.btnExit.TabIndex = 21;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ProviderManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(805, 513);
             this.Controls.Add(this.tabControlProviderManagement);
             this.Name = "ProviderManagement";
@@ -1203,8 +1062,6 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBoxProvData;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.DataGridView dataGridViewProv;
         private System.Windows.Forms.TabControl tabControlProviderManagement;
         private System.Windows.Forms.TabPage tabPageProvider;
@@ -1228,8 +1085,6 @@
         private System.Windows.Forms.RadioButton radioBtnFalse;
         private System.Windows.Forms.RadioButton radioBtnTrue;
         private System.Windows.Forms.GroupBox groupBoxProvider;
-        private System.Windows.Forms.Button btnPolProvNext;
-        private System.Windows.Forms.Button btnPolProvPrev;
         private System.Windows.Forms.DataGridView dataGridViewPolProv;
         private System.Windows.Forms.GroupBox groupBoxPolSearch;
         private System.Windows.Forms.Button btnPolSearch;
@@ -1252,13 +1107,9 @@
         private System.Windows.Forms.TextBox txtPolID;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBoxPolicyData;
-        private System.Windows.Forms.Button btnPolNext;
-        private System.Windows.Forms.Button btnPolPrev;
         private System.Windows.Forms.DataGridView dataGridViewPol;
         private System.Windows.Forms.ComboBox cmbCoverLevel;
         private System.Windows.Forms.GroupBox groupBoxPackageProv;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridViewPackProv;
         private System.Windows.Forms.GroupBox groupBoxPackSearch;
         private System.Windows.Forms.Button btnPackSearch;
@@ -1280,13 +1131,9 @@
         private System.Windows.Forms.TextBox txtPackID;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBoxPackage;
-        private System.Windows.Forms.Button btnPackNext;
-        private System.Windows.Forms.Button btnPackPrev;
         private System.Windows.Forms.DataGridView dataGridViewPackage;
         private System.Windows.Forms.TabPage tabPagePackagePol;
         private System.Windows.Forms.GroupBox groupBoxPackPol;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridViewPackPol;
         private System.Windows.Forms.GroupBox groupBoxPackPolicyOp;
         private System.Windows.Forms.Button btnPackPolAdd;
@@ -1295,12 +1142,11 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnPackPolRemove;
         private System.Windows.Forms.GroupBox groupBoxPackCurPol;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridViewCurPackPol;
         private System.Windows.Forms.Button btnProvRefresh;
         private System.Windows.Forms.Button btnPolRefresh;
         private System.Windows.Forms.Button btnPackRefresh;
         private System.Windows.Forms.Button btnPackPolRefresh;
+        private System.Windows.Forms.Button btnExit;
     }
 }

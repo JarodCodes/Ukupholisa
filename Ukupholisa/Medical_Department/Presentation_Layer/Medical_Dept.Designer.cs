@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConditions = new System.Windows.Forms.TabPage();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBoxMedPolicies = new System.Windows.Forms.GroupBox();
             this.dataGridViewMedPolicies = new System.Windows.Forms.DataGridView();
             this.groupBoxMedSearch = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,6 @@
             this.dataGridViewMedCon = new System.Windows.Forms.DataGridView();
             this.tabPageTreatments = new System.Windows.Forms.TabPage();
             this.treeViewTreatments = new System.Windows.Forms.TreeView();
-            this.btnExit = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageConditions.SuspendLayout();
             this.groupBoxMedPolicies.SuspendLayout();
@@ -85,6 +85,7 @@
             // 
             // tabPageConditions
             // 
+            this.tabPageConditions.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPageConditions.Controls.Add(this.btnExit);
             this.tabPageConditions.Controls.Add(this.groupBoxMedPolicies);
             this.tabPageConditions.Controls.Add(this.groupBoxMedSearch);
@@ -96,7 +97,16 @@
             this.tabPageConditions.Size = new System.Drawing.Size(788, 476);
             this.tabPageConditions.TabIndex = 0;
             this.tabPageConditions.Text = "Conditions";
-            this.tabPageConditions.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(8, 437);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(491, 23);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // groupBoxMedPolicies
             // 
@@ -388,25 +398,17 @@
             // 
             // treeViewTreatments
             // 
+            this.treeViewTreatments.BackColor = System.Drawing.Color.CadetBlue;
             this.treeViewTreatments.Location = new System.Drawing.Point(8, 6);
             this.treeViewTreatments.Name = "treeViewTreatments";
             this.treeViewTreatments.Size = new System.Drawing.Size(777, 467);
             this.treeViewTreatments.TabIndex = 0;
             // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(8, 437);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(491, 23);
-            this.btnExit.TabIndex = 10;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // Medical_Dept
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(795, 500);
             this.Controls.Add(this.tabControl1);
             this.Name = "Medical_Dept";

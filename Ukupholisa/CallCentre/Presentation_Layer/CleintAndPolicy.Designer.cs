@@ -103,6 +103,7 @@
             // 
             // tabPageFamPol
             // 
+            this.tabPageFamPol.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPageFamPol.Controls.Add(this.groupBoxFamCurPol);
             this.tabPageFamPol.Controls.Add(this.groupBoxClientFamPol);
             this.tabPageFamPol.Controls.Add(this.groupBoxFamPol);
@@ -111,7 +112,6 @@
             this.tabPageFamPol.Size = new System.Drawing.Size(809, 482);
             this.tabPageFamPol.TabIndex = 3;
             this.tabPageFamPol.Text = "Family Policies";
-            this.tabPageFamPol.UseVisualStyleBackColor = true;
             // 
             // groupBoxFamCurPol
             // 
@@ -224,6 +224,7 @@
             // 
             // tabPageFamily
             // 
+            this.tabPageFamily.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPageFamily.Controls.Add(this.groupBoxFamOperations);
             this.tabPageFamily.Controls.Add(this.groupBoxFamilyData);
             this.tabPageFamily.Location = new System.Drawing.Point(4, 22);
@@ -232,7 +233,6 @@
             this.tabPageFamily.Size = new System.Drawing.Size(809, 482);
             this.tabPageFamily.TabIndex = 1;
             this.tabPageFamily.Text = "Family";
-            this.tabPageFamily.UseVisualStyleBackColor = true;
             // 
             // groupBoxFamOperations
             // 
@@ -350,6 +350,7 @@
             // 
             // tabPageClients
             // 
+            this.tabPageClients.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPageClients.Controls.Add(this.btnExit);
             this.tabPageClients.Controls.Add(this.groupBoxClientSearch);
             this.tabPageClients.Controls.Add(this.groupBoxClientOperations);
@@ -360,7 +361,6 @@
             this.tabPageClients.Size = new System.Drawing.Size(809, 482);
             this.tabPageClients.TabIndex = 0;
             this.tabPageClients.Text = "Clients";
-            this.tabPageClients.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -514,6 +514,7 @@
             // 
             // tabPageClientPolicy
             // 
+            this.tabPageClientPolicy.BackColor = System.Drawing.Color.CadetBlue;
             this.tabPageClientPolicy.Controls.Add(this.groupBox1);
             this.tabPageClientPolicy.Controls.Add(this.groupBox2);
             this.tabPageClientPolicy.Location = new System.Drawing.Point(4, 22);
@@ -521,7 +522,6 @@
             this.tabPageClientPolicy.Size = new System.Drawing.Size(809, 482);
             this.tabPageClientPolicy.TabIndex = 4;
             this.tabPageClientPolicy.Text = "Client Policy";
-            this.tabPageClientPolicy.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -609,7 +609,7 @@
             this.dataGridViewClientPol.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientPol.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewClientPol.Name = "dataGridViewClientPol";
-            this.dataGridViewClientPol.Size = new System.Drawing.Size(795, 212);
+            this.dataGridViewClientPol.Size = new System.Drawing.Size(795, 241);
             this.dataGridViewClientPol.TabIndex = 0;
             this.dataGridViewClientPol.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientPol_CellContentClick);
             // 
@@ -617,6 +617,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(843, 513);
             this.Controls.Add(this.tabControlClientManagement);
             this.Name = "CleintAndPolicy";
