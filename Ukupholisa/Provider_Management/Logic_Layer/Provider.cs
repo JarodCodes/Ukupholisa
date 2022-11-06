@@ -71,10 +71,5 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
             return handler.retrieveTreatmentInfoProgress(ProviderId);
         }
-
-        public bool validateStrings(string input)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

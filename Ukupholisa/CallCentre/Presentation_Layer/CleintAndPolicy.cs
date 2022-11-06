@@ -20,7 +20,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             InitializeComponent();
         }
-        Client client = new Client();
         Family family = new Family();
         ICRUD policy = new Policy();
         Validation val = new Validation();
@@ -128,6 +127,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void dataGridViewFamily_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //sets text boxes to table values
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow rows = this.dataGridViewFamily.Rows[e.RowIndex];
@@ -223,6 +223,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void txtFamilyID_TextChanged(object sender, EventArgs e)
         {
+            //supplies following forms with information
             Family family = new Family();
             Policy policy = new Policy();
             family.FamilyID = int.Parse(txtFamilyID.Text);

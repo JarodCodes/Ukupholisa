@@ -18,12 +18,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         {
 
         }
-
-        public void add()
-        {
-
-        }
-
         public Client(int clientID)
         {
             this.client_Id = clientID;
@@ -47,11 +41,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public string UniqueIdentifier { get => uniqueIdentifier; set => uniqueIdentifier = value; }
         public DateTime Call_start { get => call_start; set => call_start = value; }
         public DateTime Call_end { get => call_end; set => call_end = value; }
-
-        public bool ifClientExists()
-        {
-            return false;
-        }
 
         public void addClientWithFamily(string role, int famID)
         {
@@ -91,12 +80,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             return handler.searchClientPolicies(uniqueIdentifier);
         }
 
-        public void update()
-        {
-            //DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
-            //handler.updateClientDetails(this, family_role);
-        }
-
         public void updateClient(string role)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
@@ -105,6 +88,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
         internal string getUniqueCode(string codeclass)
         {
+            //generates unqiue client code
             int codePart1 = 0;
             int codePart2 = 0;
 
@@ -139,6 +123,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
         internal string getRoleCode(string role)
         {
+            //generates a role code based on the clients family role
             if (role == "MOTHER")
             {
                 return "J";
@@ -157,21 +142,9 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             }
         }
 
-        internal bool validateFamilyId(string familyId)
-        {
-            if (!Regex.Match(familyId, @"^[0-9]{4,10}$").Success)
-            {
-                // phone number was incorrect
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         internal bool setImportantCaller(string uniqueID)
         {
+            //sets the call as important enough to log
             if (string.IsNullOrWhiteSpace(uniqueID))
             {
                 return false;

@@ -14,6 +14,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
 
         public DataTable PopulateMedCon()
         {
+            //gives a list of medical conditions
             string query = @"SELECT * FROM Medical_Condition";
 
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
@@ -24,10 +25,11 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
 
             return table;
         }
-        public void addMedCon(Logic_layer.MedCondition medcon)//wil net seker maak oor die...
+        public void addMedCon(Logic_layer.MedCondition medcon)
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
+                //adds a medical condition
                 SqlCommand cmd = new SqlCommand("mcAdd", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Condition_Name", medcon.Name);
@@ -42,6 +44,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         }
         public void updateMedCon(Logic_layer.MedCondition medcon)
         {
+            //updates a medical condition
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcUpdate", connect);
@@ -59,6 +62,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         }
         public void deleteMedCon(int conID)
         {
+            //deletes a medical condition
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcDelete", connect);
@@ -71,6 +75,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         }
         public DataTable searchMedCon(string condition_name)
         {
+            //searches a medical condition as well as relating policy details (its a fancy display)
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcSearch", connect);
@@ -89,6 +94,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         }
         public DataTable searchMedConID(int condition_id)
         {
+            //searches a medical condition
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcSearchID", connect);
@@ -107,6 +113,7 @@ namespace Ukupholisa.Medical_Department.DataAccess_Layer
         }
         public DataTable searchMedPol(int conID)
         {
+            //searches a policy related to the medical condition
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("mcPolSearch", connect);

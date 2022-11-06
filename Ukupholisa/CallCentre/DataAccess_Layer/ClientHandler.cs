@@ -13,21 +13,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
     internal class ClientHandler
     {
         string con = "Server=(local); Initial Catalog=Ukupholisa_Healthcare; Integrated Security= SSPI";
-        public SqlConnection Connect()
-        {
-            SqlConnection sqlCon = new SqlConnection(con);
-
-            try
-            {
-                sqlCon.Open();
-
-            }
-            catch (Exception)
-            {
-
-            }
-            return sqlCon;
-        }
 
         public DataTable PopulateClient()
         {
@@ -42,12 +27,10 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
             return table;
         }
-        //public DataTable searchClient(string uniqueID)
-        //{ 
-        //    return 
-        //}
+
         public DataTable populateClientFam() 
         {
+            //display clients and their family details
             string query = @"SELECT c.Client_Code,c.Client_Name, c.Client_Surname, c.Client_Phone,c.Client_Address , cf.Family_Id, cf.Family_Role
                             FROM Client c 
                             INNER JOIN Client_Family cf ON cf.Client_Id = c.Client_Id";
@@ -63,6 +46,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
         public DataTable searchClientPolicies(string uniqueID)
         {
+            //Searches policies connected to client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientPolSearch", connect);
@@ -81,6 +65,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public DataTable searchClient(string uniqueID)
         {
+            //searches a client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientSearch", connect);
@@ -99,6 +84,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void deleteClient(string client_code)
         {
+            //deletes a client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientDelete", connect);
@@ -109,27 +95,10 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.ExecuteNonQuery();    
             }
         }
-        public void saveClientFamily(string role, string Name, string Surname, string Phone, string Address, int family_Id)
-        {
-
-            using (SqlConnection connect = new SqlConnection(con))
-            {
-                SqlCommand cmd = new SqlCommand("saveClientFamily", connect);
-                cmd.Parameters.AddWithValue("@Family_Role", role);
-                cmd.Parameters.AddWithValue("@Client_Name", Name);
-                cmd.Parameters.AddWithValue("@Client_Surname", Surname);
-                cmd.Parameters.AddWithValue("@Client_Phone", Phone);
-                cmd.Parameters.AddWithValue("@Client_Address", Address);
-                cmd.Parameters.AddWithValue("@Family_Id", family_Id);
-
-                connect.Open();
-
-                cmd.ExecuteNonQuery();
-            }
-        }
 
         internal DataTable searchCallLog(string uniqueIdentifier)
         {
+            //provides call logs related to the client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("searchCallLog", connect);
@@ -149,6 +118,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
         public void saveClient(Logic_Layer.Client client, string family)
         {
+            //saves a new client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientSave", connect);
@@ -157,7 +127,6 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Phone", client.Phone);
                 cmd.Parameters.AddWithValue("@Client_Address", client.Address);
-                //cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                 cmd.Parameters.AddWithValue("@Family_Role", family);
                 cmd.Parameters.AddWithValue("@Client_UniqueId", client.UniqueIdentifier);
 
@@ -170,6 +139,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
         internal DataTable searchfamId(Client client)
         {
+            //searched a family ID related to the newly created client
             string query = @"SELECT Family_Id 
                             FROM Client_Family 
                             WHERE Client_Id = 
@@ -189,6 +159,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
 
         internal void saveCallLog(Logic_Layer.Client client)
         {
+            //saves a new call log
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("saveCallLog", connect);
@@ -201,15 +172,12 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 connect.Open();
 
                 int num = cmd.ExecuteNonQuery();
-                if (num > 0)
-                {
-                    //MessageBox.Show("Call Ended");
-                }
             }
         }
 
         public void saveClientExistingFam(Logic_Layer.Client client, string role, int famID)
         {
+            //saves a new client to an existing family
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("saveClientExistingFam", connect);
@@ -229,6 +197,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void updateClientDetails(Logic_Layer.Client client, string role)
         {
+            //update the clients details
             using (SqlConnection connect = new SqlConnection(con)) 
             {
                 SqlCommand cmd = new SqlCommand("clientUpdate", connect);
@@ -247,6 +216,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void addClientPol(int ClientID, int PolID)
         {
+            //add a policy to a client
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("clientAddPol", connect);
@@ -258,6 +228,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public DataTable searchFamily(int family_id) 
         {
+            //List of family members
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("famSearch", connect);
@@ -276,6 +247,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void addFamClient(Logic_Layer.Family family, string client_Id)
         {
+            //adds a client to a family
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyClientAdd", connect);
@@ -290,6 +262,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void updateFamily(Logic_Layer.Family family, int client_Id) 
         {
+            //updates the clients family role
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyClientUpdate", connect);
@@ -304,6 +277,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void removeFamClient(string client_Id)
         {
+            //remove client from family
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyClientDelete", connect);
@@ -316,6 +290,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
         }
         public void deleteFam(int family_Id)
         {
+            //deletes an entire family
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyDelete", connect);

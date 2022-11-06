@@ -86,6 +86,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
         }
         public bool checkStatus(DataTable dt, string status) 
         {
+            //checks if there is alreadya policy in progress or not
             if (status == "In Progress")
             {
                 foreach (DataRow item in dt.Rows)
@@ -99,12 +100,9 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             return true;
         }
 
-        public bool validateStrings(string input)
-        {
-            throw new NotImplementedException();
-        }
         public string generateCode() 
         {
+            //generates a unique policy code
             DateTime time = DateTime.Now;
             string year = time.Year.ToString();
             string coverCode="";

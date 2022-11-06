@@ -51,28 +51,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             t.Start();
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
+            //back to main menu
             mainMenu main = new mainMenu();
             main.Show();
             Close();
@@ -251,7 +232,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             }
             else if (radiobtnYes.Checked.Equals(true))
             {
-                if (client.validateFamilyId(txtNewFamilyId.Text))
+                if (val.validateFamilyId(txtNewFamilyId.Text))
                 {
                     // address was incorrect
                     MessageBox.Show("Invalid Family Id", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -417,11 +398,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             clearAllData();
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Button thisButton = (Button)sender;
@@ -488,11 +464,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 {
                     pol.addPolicyToClient(int.Parse(txtNewPolID.Text), txtClientID.Text, pol.generateCode());
                 }
-            }
-
-
-
-            
+            } 
         }
     }
 }

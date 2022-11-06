@@ -111,7 +111,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(845, 556);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // CallReceiver
             // 
@@ -565,7 +564,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Medical Condition";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button6
             // 
@@ -604,7 +602,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Available policies per medical condition";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // dataGridViewPolicyList
             // 

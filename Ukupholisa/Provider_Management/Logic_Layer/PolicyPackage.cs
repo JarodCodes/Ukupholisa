@@ -77,9 +77,5 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             return handler.populateCurPackPolicy(PackageId);
         }
 
-        public bool validateStrings(string input)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

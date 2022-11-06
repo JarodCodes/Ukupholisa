@@ -34,10 +34,6 @@ namespace Ukupholisa.CallCentre.Logic_Layer
 
         internal string Family_role { get => family_role; set => family_role = value; }
 
-        public void add()
-        {
-            throw new NotImplementedException();
-        }
         public DataTable populate()
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();

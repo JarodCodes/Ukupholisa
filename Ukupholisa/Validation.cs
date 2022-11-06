@@ -40,7 +40,18 @@ namespace Ukupholisa
                 return false;
             }
         }
-
+        internal bool validateFamilyId(string familyId)
+        {
+            if (!Regex.Match(familyId, @"^[0-9]{4,10}$").Success)
+            {
+                // phone number was incorrect
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool validatePhone(string phone)
         {
             if (!Regex.Match(phone, @"^[0]{1}[0-9]{9}$").Success)

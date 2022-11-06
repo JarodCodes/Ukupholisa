@@ -30,6 +30,7 @@ namespace Ukupholisa.Medical_Department
             TreeNode progressNode = new TreeNode();
             foreach (DataRow dr in provider.getProviderInfo().Rows)
             {
+                //populate main tree nodes as well as creating pending and in progress sub nodes
                 treeNode = treeViewTreatments.Nodes.Add(dr["Provider_Name"].ToString());
                 pendingNode = treeNode.Nodes.Add("Pending");
                 PopulateTreeViewChildPending(Convert.ToInt32(dr["Provider_Id"].ToString()), pendingNode);
@@ -39,6 +40,7 @@ namespace Ukupholisa.Medical_Department
         }
         private void PopulateTreeViewChildPending(int parentId, TreeNode ParentNode)
         {
+            //populate pending sub nodes
             provider.ProviderId = parentId;
             TreeNode childnode = new TreeNode();
             foreach (DataRow dr in provider.getCurrentTreatmentsPending().Rows)
@@ -53,6 +55,7 @@ namespace Ukupholisa.Medical_Department
         }
         private void PopulateTreeViewChildProgress(int parentId, TreeNode ParentNode)
         {
+            //populate in progress sub nodes
             provider.ProviderId = parentId;
             TreeNode childnode = new TreeNode();
             foreach (DataRow dr in provider.getCurrentTreatmentsProgress().Rows)
