@@ -32,6 +32,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperatorUI));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.CallReceiver = new System.Windows.Forms.TabPage();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.btnEndCall = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -110,6 +111,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // CallReceiver
             // 
             this.CallReceiver.BackColor = System.Drawing.Color.CadetBlue;
+            this.CallReceiver.Controls.Add(this.lblTimer);
             this.CallReceiver.Controls.Add(this.btnEndCall);
             this.CallReceiver.Controls.Add(this.label10);
             this.CallReceiver.Controls.Add(this.label1);
@@ -121,6 +123,16 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.CallReceiver.Size = new System.Drawing.Size(837, 530);
             this.CallReceiver.TabIndex = 0;
             this.CallReceiver.Text = "Call Receiver";
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(398, 478);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(96, 26);
+            this.lblTimer.TabIndex = 5;
+            this.lblTimer.Text = "00:00:00";
             // 
             // btnEndCall
             // 
@@ -136,7 +148,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(338, 478);
+            this.label10.Location = new System.Drawing.Point(258, 478);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(144, 26);
             this.label10.TabIndex = 3;
@@ -155,9 +167,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(3, 472);
+            this.btnExit.Location = new System.Drawing.Point(3, 464);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(97, 43);
+            this.btnExit.Size = new System.Drawing.Size(97, 51);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -642,6 +654,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             this.Controls.Add(this.tabControl1);
             this.Name = "OperatorUI";
             this.Text = "OperatorUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OperatorUI_FormClosing);
             this.Load += new System.EventHandler(this.OperatorUI_Load);
             this.tabControl1.ResumeLayout(false);
             this.CallReceiver.ResumeLayout(false);
@@ -717,5 +730,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblTimer;
     }
 }

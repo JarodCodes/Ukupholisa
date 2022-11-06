@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Ukupholisa.CallCentre.DataAccess_Layer
 {
@@ -125,20 +125,13 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     connect.Open();
 
                     cmd.ExecuteNonQuery();
-
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message);
+                //MessageBox.Show("Error:" + ex.Message);
             }
         }
-
-        public void ifClientExist(Logic_Layer.Client client)
-        {
-            
-        }
-
 
         public void saveClient(Logic_Layer.Client client, string family)
         {
@@ -161,11 +154,39 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     int num = cmd.ExecuteNonQuery();
                     if (num > 0)
                     {
-                        MessageBox.Show("Record added successfully!");
+                        
                     }
                     else
                     {
-                        MessageBox.Show("Oops! Something went wrong!");
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        internal void saveCallLog(Logic_Layer.Client client)
+        {
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    SqlCommand cmd = new SqlCommand("saveCallLog", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Client_Code", client.UniqueIdentifier);
+                    cmd.Parameters.AddWithValue("@Call_Start", client.Call_start);
+                    cmd.Parameters.AddWithValue("@Call_End", client.Call_end);
+
+
+                    connect.Open();
+
+                    int num = cmd.ExecuteNonQuery();
+                    if (num > 0)
+                    {
+                        //MessageBox.Show("Call Ended");
                     }
                 }
             }
@@ -174,7 +195,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 MessageBox.Show("Error:" + ex.Message);
             }
         }
-        
+
         public void saveClientExistingFam(Logic_Layer.Client client, string role, int famID)
         {
             try
@@ -196,47 +217,19 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                     int num = cmd.ExecuteNonQuery();
                     if (num > 0)
                     {
-                        MessageBox.Show("Record added successfully!");
+                        //MessageBox.Show("Record added successfully!");
                     }
                     else
                     {
-                        MessageBox.Show("Oops! Something went wrong!");
+                        //MessageBox.Show("Oops! Something went wrong!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message);
+                //MessageBox.Show("Error:" + ex.Message);
             }
         }
-        //Searching whether a medical condition exists
-        //public DataTable searchMedicalCondition(int condition_id)
-        //{
-        //    using (SqlConnection connect = new SqlConnection(con))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("medicalConditionSearch", connect);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@Condition_Id", condition_id);
-
-        //        connect.Open();
-        //        DataTable dt = new DataTable();
-
-        //        using (SqlDataReader dr = cmd.ExecuteReader())
-        //        {
-        //            dt.Load(dr);
-        //            if (dt.Rows.Count == 0)
-        //            {
-        //                MessageBox.Show("Condition was not found!");
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Condition found!");
-        //            }
-        //            return dt;
-        //        }
-        //    }
-        //}
-
         public void updateClientDetails(Logic_Layer.Client client, string role)
         {
             using (SqlConnection connect = new SqlConnection(con)) 
@@ -270,7 +263,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex);
+                //MessageBox.Show("Error:" + ex);
             }
         }
         public DataTable searchFamily(int family_id) 
@@ -307,7 +300,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex);
+                //MessageBox.Show("Error:" + ex);
             }
         }
         public void updateFamily(Logic_Layer.Family family, int client_Id) 
@@ -326,7 +319,7 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex);
+                //MessageBox.Show("Error:" + ex);
             }
         }
         public void removeFamClient(int client_Id)

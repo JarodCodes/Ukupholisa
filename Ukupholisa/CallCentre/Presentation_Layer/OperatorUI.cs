@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Ukupholisa.CallCentre.Logic_Layer;
 
@@ -14,11 +15,16 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 {
     public partial class OperatorUI : Form
     {
+        string Unique_id = "";
+        System.Timers.Timer t;
+        int h, m, s;
+
+        Client Client1 = new Client();
         ICRUD client = new Client();
         Family family = new Family();
         ICRUD policy = new Provider_Management.Logic_Layer.Policy();
         ICRUD medical = new Medical_Department.Logic_layer.MedCondition();
-
+        Validation val = new Validation();
 
         public OperatorUI()
         {
@@ -27,6 +33,10 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
+            DateTime now = DateTime.Now;
+
+            Client1.Call_start = now;
+
             tabControl1.SelectedIndex = 1;
             tabControl1.TabPages.Add(tabPage2);
             tabControl1.TabPages.Add(tabPage1);
@@ -35,6 +45,9 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
             btnAnswer.Enabled = false;
             btnEndCall.Enabled = true;
+
+            //timer start
+            t.Start();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,9 +82,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void OperatorUI_Load(object sender, EventArgs e)
         {
+            //basic form functionalities
             radiobtnYes.Checked = true;
-            dataGridViewPolicyList.DataSource = policy.populate();
-            //dataGridViewClientSummary.DataSource = client.populate();
             txtClientID.Enabled = false;
             cmbFamily_Role.SelectedIndex = 3;
 
@@ -83,6 +95,32 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
             btnClientUpdate.Enabled = false;
             btnCancel.Hide();
+
+
+            //timer
+            t = new System.Timers.Timer();
+            t.Interval = 1000;
+            t.Elapsed += OnTimeEvent;
+        }
+
+        private void OnTimeEvent(object sender, ElapsedEventArgs e)
+        {
+            
+            Invoke(new Action(() =>
+            {
+                s++;
+                if (s.Equals(60))
+                {
+                    s = 0;
+                    m += 1;
+                }
+                if (m.Equals(60))
+                {
+                    m = 0;
+                    h += 1;
+                }
+                lblTimer.Text = String.Format("{0}:{1}:{2}", h.ToString().PadLeft(2,'0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+            }));
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
@@ -92,6 +130,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             DataTable dt = client.search();
             DataTable dtPolSearch = client.searchClientPol();
 
+            
 
             if (string.IsNullOrWhiteSpace(txtClientIDSearch.Text))
             {
@@ -116,6 +155,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                     txtClientAddress.Text = item.Field<string>("Client_Address");
                     txtNewFamilyId.Text = item.Field<int>("Family_Id").ToString();
                     cmbFamily_Role.Text = item.Field<string>("Family_Role");
+                    Client1.UniqueIdentifier = item.Field<string>("Client_Code");
                 }
                 dataGridViewClientSummary.DataSource = dtPolSearch;
 
@@ -128,6 +168,7 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Point point = new Point(108, 275);
                 b.Location = point;
                 txtClientIDSearch.Clear();
+ 
             }
         }
 
@@ -138,22 +179,18 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void button2_Click(object sender, EventArgs e)//refresh button
         {
+            Client c = new Client();
+            DataTable dtPolSearch = c.searchClientPol();
             //need to refresh the database so that the changes may reflect without needing to close and open the program.
-            dataGridViewClientSummary.DataSource = client.populate();
+            dataGridViewClientSummary.DataSource = dtPolSearch;
             dataGridViewClientSummary.Update();
             dataGridViewClientSummary.Refresh();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //IGNORE THIS
-        }
-
         private void button6_Click(object sender, EventArgs e)//Searches the available policies for the medical condition entered.
         {
             Medical_Department.Logic_layer.MedCondition Medical = new Medical_Department.Logic_layer.MedCondition();
 
-            if (medical.validateStrings(txtMedConditionSearch.Text))
+            if (Medical.validateStrings(txtMedConditionSearch.Text))
             {
                 MessageBox.Show("Invalid medical condition name!");
             }
@@ -162,11 +199,6 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 Medical.Name = txtMedConditionSearch.Text;
                 dataGridViewPolicyList.DataSource = Medical.search();
             }
-        }
-
-        private void radiobtnNo_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void radiobtnYes_CheckedChanged(object sender, EventArgs e)
@@ -215,28 +247,29 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Client client = new Client();
             Family fam = new Family();
 
-            if(client.validateStrings(txtClientName.Text))
+
+            if(val.validateStrings(txtClientName.Text))
             {
                 // Name was incorrect
                 MessageBox.Show("Invalid First Name", "Message");
                 txtClientName.Focus();
                 return;
             }
-            else if(client.validateStrings(txtClientSurname.Text))
+            else if(val.validateStrings(txtClientSurname.Text))
             {
                 // Surname was incorrect
                 MessageBox.Show("Invalid Last Name", "Message");
                 txtClientSurname.Focus();
                 return;
             }
-            else if (client.validatePhone(txtClientPhone.Text))
+            else if (val.validatePhone(txtClientPhone.Text))
             {
                 // phone was incorrect
                 MessageBox.Show("Invalid phone number", "Message");
                 txtClientPhone.Focus();
                 return;
             }
-            else if (client.validateAddress(txtClientAddress.Text))
+            else if (val.validateAddress(txtClientAddress.Text))
             {
                 // address was incorrect
                 MessageBox.Show("Invalid address", "Message");
@@ -304,32 +337,34 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         //update a client's details
         private void btnClientUpdate_Click_1(object sender, EventArgs e)
         {
+            
+
             try
             {
                 Client client = new Client();
                 Family fam = new Family();
-                if (client.validateStrings(txtClientName.Text))
+                if (val.validateStrings(txtClientName.Text))
                 {
                     // Name was incorrect
                     MessageBox.Show("Invalid First Name", "Message");
                     txtClientName.Focus();
                     return;
                 }
-                else if (client.validateStrings(txtClientSurname.Text))
+                else if (val.validateStrings(txtClientSurname.Text))
                 {
                     // Surname was incorrect
                     MessageBox.Show("Invalid Last Name", "Message");
                     txtClientSurname.Focus();
                     return;
                 }
-                else if (client.validatePhone(txtClientPhone.Text))
+                else if (val.validatePhone(txtClientPhone.Text))
                 {
                     // phone was incorrect
                     MessageBox.Show("Invalid phone number", "Message");
                     txtClientPhone.Focus();
                     return;
                 }
-                else if (client.validateAddress(txtClientAddress.Text))
+                else if (val.validateAddress(txtClientAddress.Text))
                 {
                     // address was incorrect
                     MessageBox.Show("Invalid address", "Message");
@@ -381,11 +416,28 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnEndCall_Click(object sender, EventArgs e)
         {
+            //resetting the operator page
+
             btnEndCall.Enabled = false;
             btnAnswer.Enabled = true;
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
+            
+            //Set Time
+            if (Client1.setImportantCaller(Client1.UniqueIdentifier))//if it was an important/client caller
+            {
+                DateTime now = DateTime.Now;
+                Client1.Call_end = now;
+                Client1.saveCallLog(Client1.Call_start, Client1.Call_end, Client1.UniqueIdentifier);
+            }
+            //Timer stop/reset
+            s = 0;
+            m = 0;
+            h = 0;
+            t.Stop();
+            lblTimer.Text = "00:00:00";
 
+            //clears all the text boxes
             clearAllData();
         }
 
@@ -408,6 +460,17 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             groupBox7.Enabled = true;
 
             clearAllData();
+        }
+
+        private void OperatorUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Timer stop
+            s = 0;
+            m = 0;
+            h = 0;
+            t.Stop();
+            lblTimer.Text = "00:00:00";
+            Application.DoEvents();
         }
 
         private void clearAllData()
@@ -433,12 +496,24 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
 
         private void btnClientPolAdd_Click(object sender, EventArgs e)
         {
+
+            
             Client client = new Client();
             Family fam = new Family();
+            
             Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
 
 
-            client.add();
+            if (MessageBox.Show("Are you sure you want to add policy "
+                + txtNewPolID.Text + "to client " + txtClientID.Text + "?"
+                , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+            {
+                pol.addPolicyToClient(txtNewPolID.Text, txtClientID.Text);
+            }
+
+            
+            
+
         }
     }
 }

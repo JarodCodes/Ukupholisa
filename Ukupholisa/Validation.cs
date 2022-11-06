@@ -25,7 +25,7 @@ namespace Ukupholisa
         {
             if (!Regex.Match(input, "^[A-Z][a-zA-Z]*$").Success)
             {
-                // first name was incorrect
+                // incorrect input
                 return true;
             }
             else

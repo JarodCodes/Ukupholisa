@@ -135,5 +135,11 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
             string digits = random.Next(100000, 999999).ToString();
             return String.Format("{0}{1}{2}{3}", year, coverCode, importance, digits);
         }
+
+        internal void addPolicyToClient(string policycode, string clientcode)
+        {
+            DataAccess_Layer.PolicyHandler handler = new DataAccess_Layer.PolicyHandler();
+            handler.addPolicyToClient(policycode, clientcode);
+        }
     }
 }

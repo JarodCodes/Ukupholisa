@@ -12,6 +12,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
     {
         string name, surname, phone, address, uniqueIdentifier;
         int client_Id, family_Id;
+        DateTime call_start, call_end;
 
         public Client()
         {
@@ -44,6 +45,8 @@ namespace Ukupholisa.CallCentre.Logic_Layer
         public int Client_Id { get => client_Id; set => client_Id = value; }
         public int Family_Id { get => family_Id; set => family_Id = value; }
         public string UniqueIdentifier { get => uniqueIdentifier; set => uniqueIdentifier = value; }
+        public DateTime Call_start { get => call_start; set => call_start = value; }
+        public DateTime Call_end { get => call_end; set => call_end = value; }
 
         public bool ifClientExists()
         {
@@ -159,6 +162,24 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             {
                 return false;
             }
+        }
+
+        internal bool setImportantCaller(string uniqueID)
+        {
+            if (string.IsNullOrWhiteSpace(uniqueID))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        internal void saveCallLog(DateTime call_start, DateTime call_end, string uniqueIdentifier)
+        {
+            DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
+            handler.saveCallLog(this);
         }
     }
 }

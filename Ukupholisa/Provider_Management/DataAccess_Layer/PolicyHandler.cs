@@ -139,6 +139,22 @@ namespace Ukupholisa.Provider_Management.DataAccess_Layer
                     cmd.ExecuteNonQuery();
                 } 
         }
+
+        internal void addPolicyToClient(string Policy_Code, string Client_Code)
+        {
+            int recordsInserted = 0;
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlCommand cmd = new SqlCommand("addPolicyToClient", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Policy_Code", Policy_Code);
+                cmd.Parameters.AddWithValue("@Client_Code", Client_Code);
+
+                connect.Open();
+                recordsInserted = cmd.ExecuteNonQuery();
+            }
+        }
+
         public DataTable searchPolicy(int polID)
         {
             using (SqlConnection connect = new SqlConnection(con))
