@@ -256,5 +256,12 @@ namespace Ukupholisa.Medical_Department
             dataGridViewMedCon.DataSource = medcon.populate();
             dataGridViewMedPolicies.DataSource = policy.populate();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            mainMenu main = new mainMenu();
+            main.Show();
+            Close();
+        }
     }
 }

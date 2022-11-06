@@ -206,10 +206,13 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 }
                 else 
                 {
-                    family.FamilyID = famId;
-                    family.delete();
-                    dataGridViewFamily.DataSource = family.search();
-                    MessageBox.Show("Family was deleted");
+                    if (MessageBox.Show("Are you sure you want to delete the entire family?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning).Equals(DialogResult.Yes))
+                    {
+                        family.FamilyID = famId;
+                        family.delete();
+                        dataGridViewFamily.DataSource = family.search();
+                        MessageBox.Show("Family was deleted");
+                    }
                 }
             }
             catch (Exception)
@@ -381,9 +384,18 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         private void btnFamPolRefresh_Click(object sender, EventArgs e)
         {
             Policy policy = new Policy();
+            Family family = new Family();
             policy.PolicyId = int.Parse(txtFamPolSearch.Text);
+            family.FamilyID = int.Parse(txtFamilyID.Text);
             dataGridViewCurFamPol.DataSource = policy.famPolSearch(family.FamilyID);
             dataGridViewPolicies.DataSource = policy.populate();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            mainMenu main = new mainMenu();
+            main.Show();
+            Close();
         }
     }
 }

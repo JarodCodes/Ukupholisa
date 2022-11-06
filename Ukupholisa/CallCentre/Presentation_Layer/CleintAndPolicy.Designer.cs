@@ -30,8 +30,6 @@
         {
             this.tabPageFamPol = new System.Windows.Forms.TabPage();
             this.groupBoxFamCurPol = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.dataGridViewCurFamPol = new System.Windows.Forms.DataGridView();
             this.groupBoxClientFamPol = new System.Windows.Forms.GroupBox();
             this.btnFamPolRefresh = new System.Windows.Forms.Button();
@@ -41,14 +39,10 @@
             this.txtFamPolSearch = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBoxFamPol = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewPolicies = new System.Windows.Forms.DataGridView();
             this.tabPageFamily = new System.Windows.Forms.TabPage();
             this.groupBoxFamOperations = new System.Windows.Forms.GroupBox();
             this.btnFamRemove = new System.Windows.Forms.Button();
-            this.txtFamSurname = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.cmbFamilyRole = new System.Windows.Forms.ComboBox();
             this.btnFamDelete = new System.Windows.Forms.Button();
             this.btnFamUpdate = new System.Windows.Forms.Button();
@@ -57,10 +51,9 @@
             this.txtFamClientID = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBoxFamilyData = new System.Windows.Forms.GroupBox();
-            this.btnPolNext = new System.Windows.Forms.Button();
-            this.btnPolPrev = new System.Windows.Forms.Button();
             this.dataGridViewFamily = new System.Windows.Forms.DataGridView();
             this.tabPageClients = new System.Windows.Forms.TabPage();
+            this.btnExit = new System.Windows.Forms.Button();
             this.groupBoxClientSearch = new System.Windows.Forms.GroupBox();
             this.btnClientSearch = new System.Windows.Forms.Button();
             this.txtClientSearch = new System.Windows.Forms.TextBox();
@@ -73,8 +66,6 @@
             this.txtClientID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxClientData = new System.Windows.Forms.GroupBox();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.tabControlClientManagement = new System.Windows.Forms.TabControl();
             this.tabPageClientPolicy = new System.Windows.Forms.TabPage();
@@ -86,8 +77,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnUpdateStatus = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.dataGridViewClientPol = new System.Windows.Forms.DataGridView();
             this.tabPageFamPol.SuspendLayout();
             this.groupBoxFamCurPol.SuspendLayout();
@@ -126,8 +115,6 @@
             // 
             // groupBoxFamCurPol
             // 
-            this.groupBoxFamCurPol.Controls.Add(this.button5);
-            this.groupBoxFamCurPol.Controls.Add(this.button6);
             this.groupBoxFamCurPol.Controls.Add(this.dataGridViewCurFamPol);
             this.groupBoxFamCurPol.Location = new System.Drawing.Point(406, 211);
             this.groupBoxFamCurPol.Name = "groupBoxFamCurPol";
@@ -135,24 +122,6 @@
             this.groupBoxFamCurPol.TabIndex = 8;
             this.groupBoxFamCurPol.TabStop = false;
             this.groupBoxFamCurPol.Text = "Current Policies";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(288, 237);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = ">";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(6, 237);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "<";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // dataGridViewCurFamPol
             // 
@@ -236,8 +205,6 @@
             // 
             // groupBoxFamPol
             // 
-            this.groupBoxFamPol.Controls.Add(this.button3);
-            this.groupBoxFamPol.Controls.Add(this.button4);
             this.groupBoxFamPol.Controls.Add(this.dataGridViewPolicies);
             this.groupBoxFamPol.Location = new System.Drawing.Point(6, 211);
             this.groupBoxFamPol.Name = "groupBoxFamPol";
@@ -245,24 +212,6 @@
             this.groupBoxFamPol.TabIndex = 7;
             this.groupBoxFamPol.TabStop = false;
             this.groupBoxFamPol.Text = "Policies";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(288, 237);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 237);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "<";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // dataGridViewPolicies
             // 
@@ -288,8 +237,6 @@
             // groupBoxFamOperations
             // 
             this.groupBoxFamOperations.Controls.Add(this.btnFamRemove);
-            this.groupBoxFamOperations.Controls.Add(this.txtFamSurname);
-            this.groupBoxFamOperations.Controls.Add(this.label7);
             this.groupBoxFamOperations.Controls.Add(this.cmbFamilyRole);
             this.groupBoxFamOperations.Controls.Add(this.btnFamDelete);
             this.groupBoxFamOperations.Controls.Add(this.btnFamUpdate);
@@ -314,22 +261,6 @@
             this.btnFamRemove.UseVisualStyleBackColor = true;
             this.btnFamRemove.Click += new System.EventHandler(this.btnFamRemove_Click);
             // 
-            // txtFamSurname
-            // 
-            this.txtFamSurname.Location = new System.Drawing.Point(90, 85);
-            this.txtFamSurname.Name = "txtFamSurname";
-            this.txtFamSurname.Size = new System.Drawing.Size(183, 20);
-            this.txtFamSurname.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 88);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Surname";
-            // 
             // cmbFamilyRole
             // 
             this.cmbFamilyRole.FormattingEnabled = true;
@@ -349,7 +280,7 @@
             this.btnFamDelete.Name = "btnFamDelete";
             this.btnFamDelete.Size = new System.Drawing.Size(264, 23);
             this.btnFamDelete.TabIndex = 18;
-            this.btnFamDelete.Text = "Delete";
+            this.btnFamDelete.Text = "Delete Family";
             this.btnFamDelete.UseVisualStyleBackColor = true;
             this.btnFamDelete.Click += new System.EventHandler(this.btnFamDelete_Click);
             // 
@@ -400,8 +331,6 @@
             // 
             // groupBoxFamilyData
             // 
-            this.groupBoxFamilyData.Controls.Add(this.btnPolNext);
-            this.groupBoxFamilyData.Controls.Add(this.btnPolPrev);
             this.groupBoxFamilyData.Controls.Add(this.dataGridViewFamily);
             this.groupBoxFamilyData.Location = new System.Drawing.Point(7, 4);
             this.groupBoxFamilyData.Name = "groupBoxFamilyData";
@@ -409,24 +338,6 @@
             this.groupBoxFamilyData.TabIndex = 6;
             this.groupBoxFamilyData.TabStop = false;
             this.groupBoxFamilyData.Text = "Family Members";
-            // 
-            // btnPolNext
-            // 
-            this.btnPolNext.Location = new System.Drawing.Point(409, 434);
-            this.btnPolNext.Name = "btnPolNext";
-            this.btnPolNext.Size = new System.Drawing.Size(75, 23);
-            this.btnPolNext.TabIndex = 3;
-            this.btnPolNext.Text = ">";
-            this.btnPolNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPolPrev
-            // 
-            this.btnPolPrev.Location = new System.Drawing.Point(6, 434);
-            this.btnPolPrev.Name = "btnPolPrev";
-            this.btnPolPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPolPrev.TabIndex = 2;
-            this.btnPolPrev.Text = "<";
-            this.btnPolPrev.UseVisualStyleBackColor = true;
             // 
             // dataGridViewFamily
             // 
@@ -439,6 +350,7 @@
             // 
             // tabPageClients
             // 
+            this.tabPageClients.Controls.Add(this.btnExit);
             this.tabPageClients.Controls.Add(this.groupBoxClientSearch);
             this.tabPageClients.Controls.Add(this.groupBoxClientOperations);
             this.tabPageClients.Controls.Add(this.groupBoxClientData);
@@ -450,6 +362,16 @@
             this.tabPageClients.Text = "Clients";
             this.tabPageClients.UseVisualStyleBackColor = true;
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(6, 439);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(490, 23);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // groupBoxClientSearch
             // 
             this.groupBoxClientSearch.Controls.Add(this.btnClientSearch);
@@ -457,7 +379,7 @@
             this.groupBoxClientSearch.Controls.Add(this.label6);
             this.groupBoxClientSearch.Location = new System.Drawing.Point(502, 347);
             this.groupBoxClientSearch.Name = "groupBoxClientSearch";
-            this.groupBoxClientSearch.Size = new System.Drawing.Size(301, 113);
+            this.groupBoxClientSearch.Size = new System.Drawing.Size(301, 115);
             this.groupBoxClientSearch.TabIndex = 9;
             this.groupBoxClientSearch.TabStop = false;
             this.groupBoxClientSearch.Text = "Search";
@@ -515,6 +437,7 @@
             // 
             // txtFamilyID
             // 
+            this.txtFamilyID.Enabled = false;
             this.txtFamilyID.Location = new System.Drawing.Point(112, 70);
             this.txtFamilyID.Name = "txtFamilyID";
             this.txtFamilyID.Size = new System.Drawing.Size(183, 20);
@@ -542,6 +465,7 @@
             // 
             // txtClientID
             // 
+            this.txtClientID.Enabled = false;
             this.txtClientID.Location = new System.Drawing.Point(112, 42);
             this.txtClientID.Name = "txtClientID";
             this.txtClientID.Size = new System.Drawing.Size(183, 20);
@@ -559,33 +483,13 @@
             // 
             // groupBoxClientData
             // 
-            this.groupBoxClientData.Controls.Add(this.btnNext);
-            this.groupBoxClientData.Controls.Add(this.btnPrev);
             this.groupBoxClientData.Controls.Add(this.dataGridViewClients);
             this.groupBoxClientData.Location = new System.Drawing.Point(6, 6);
             this.groupBoxClientData.Name = "groupBoxClientData";
-            this.groupBoxClientData.Size = new System.Drawing.Size(490, 454);
+            this.groupBoxClientData.Size = new System.Drawing.Size(490, 427);
             this.groupBoxClientData.TabIndex = 6;
             this.groupBoxClientData.TabStop = false;
             this.groupBoxClientData.Text = "Clients";
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(409, 426);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.Location = new System.Drawing.Point(6, 426);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPrev.TabIndex = 2;
-            this.btnPrev.Text = "<";
-            this.btnPrev.UseVisualStyleBackColor = true;
             // 
             // dataGridViewClients
             // 
@@ -665,6 +569,7 @@
             // 
             // txtClientPolSearch
             // 
+            this.txtClientPolSearch.Enabled = false;
             this.txtClientPolSearch.Location = new System.Drawing.Point(62, 23);
             this.txtClientPolSearch.Name = "txtClientPolSearch";
             this.txtClientPolSearch.Size = new System.Drawing.Size(275, 20);
@@ -691,8 +596,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.dataGridViewClientPol);
             this.groupBox2.Location = new System.Drawing.Point(-1, 211);
             this.groupBox2.Name = "groupBox2";
@@ -700,24 +603,6 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Policies";
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(726, 237);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 3;
-            this.button8.Text = ">";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(6, 237);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "<";
-            this.button9.UseVisualStyleBackColor = true;
             // 
             // dataGridViewClientPol
             // 
@@ -771,8 +656,6 @@
 
         private System.Windows.Forms.TabPage tabPageFamPol;
         private System.Windows.Forms.GroupBox groupBoxFamCurPol;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridViewCurFamPol;
         private System.Windows.Forms.GroupBox groupBoxClientFamPol;
         private System.Windows.Forms.Button btnFamPolRemove;
@@ -781,14 +664,10 @@
         private System.Windows.Forms.TextBox txtFamPolSearch;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBoxFamPol;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridViewPolicies;
         private System.Windows.Forms.TabPage tabPageFamily;
         private System.Windows.Forms.GroupBox groupBoxFamOperations;
         private System.Windows.Forms.Button btnFamRemove;
-        private System.Windows.Forms.TextBox txtFamSurname;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbFamilyRole;
         private System.Windows.Forms.Button btnFamDelete;
         private System.Windows.Forms.Button btnFamUpdate;
@@ -797,8 +676,6 @@
         private System.Windows.Forms.TextBox txtFamClientID;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBoxFamilyData;
-        private System.Windows.Forms.Button btnPolNext;
-        private System.Windows.Forms.Button btnPolPrev;
         private System.Windows.Forms.DataGridView dataGridViewFamily;
         private System.Windows.Forms.TabPage tabPageClients;
         private System.Windows.Forms.GroupBox groupBoxClientSearch;
@@ -812,15 +689,11 @@
         private System.Windows.Forms.TextBox txtClientID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBoxClientData;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.DataGridView dataGridViewClients;
         private System.Windows.Forms.TabControl tabControlClientManagement;
         private System.Windows.Forms.TabPage tabPageClientPolicy;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.DataGridView dataGridViewClientPol;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cmbClientPolStatus;
@@ -830,5 +703,6 @@
         private System.Windows.Forms.TextBox txtClientPolSearch;
         private System.Windows.Forms.Button btnClientRefresh;
         private System.Windows.Forms.Button btnFamPolRefresh;
+        private System.Windows.Forms.Button btnExit;
     }
 }

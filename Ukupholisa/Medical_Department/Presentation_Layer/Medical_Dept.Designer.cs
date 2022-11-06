@@ -31,8 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConditions = new System.Windows.Forms.TabPage();
             this.groupBoxMedPolicies = new System.Windows.Forms.GroupBox();
-            this.btnMedPolicyNext = new System.Windows.Forms.Button();
-            this.btnMedPolicyPrev = new System.Windows.Forms.Button();
             this.dataGridViewMedPolicies = new System.Windows.Forms.DataGridView();
             this.groupBoxMedSearch = new System.Windows.Forms.GroupBox();
             this.btnMedPolicySearch = new System.Windows.Forms.Button();
@@ -42,6 +40,7 @@
             this.txtMedSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxMedOperations = new System.Windows.Forms.GroupBox();
+            this.btnMedConRefresh = new System.Windows.Forms.Button();
             this.spinDuration = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.txtMedPolicyID = new System.Windows.Forms.TextBox();
@@ -58,12 +57,10 @@
             this.txtMedID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxMedData = new System.Windows.Forms.GroupBox();
-            this.btnMedNext = new System.Windows.Forms.Button();
-            this.btnMedPrev = new System.Windows.Forms.Button();
             this.dataGridViewMedCon = new System.Windows.Forms.DataGridView();
             this.tabPageTreatments = new System.Windows.Forms.TabPage();
             this.treeViewTreatments = new System.Windows.Forms.TreeView();
-            this.btnMedConRefresh = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageConditions.SuspendLayout();
             this.groupBoxMedPolicies.SuspendLayout();
@@ -88,6 +85,7 @@
             // 
             // tabPageConditions
             // 
+            this.tabPageConditions.Controls.Add(this.btnExit);
             this.tabPageConditions.Controls.Add(this.groupBoxMedPolicies);
             this.tabPageConditions.Controls.Add(this.groupBoxMedSearch);
             this.tabPageConditions.Controls.Add(this.groupBoxMedOperations);
@@ -102,33 +100,13 @@
             // 
             // groupBoxMedPolicies
             // 
-            this.groupBoxMedPolicies.Controls.Add(this.btnMedPolicyNext);
-            this.groupBoxMedPolicies.Controls.Add(this.btnMedPolicyPrev);
             this.groupBoxMedPolicies.Controls.Add(this.dataGridViewMedPolicies);
-            this.groupBoxMedPolicies.Location = new System.Drawing.Point(8, 245);
+            this.groupBoxMedPolicies.Location = new System.Drawing.Point(8, 216);
             this.groupBoxMedPolicies.Name = "groupBoxMedPolicies";
-            this.groupBoxMedPolicies.Size = new System.Drawing.Size(491, 233);
+            this.groupBoxMedPolicies.Size = new System.Drawing.Size(491, 215);
             this.groupBoxMedPolicies.TabIndex = 7;
             this.groupBoxMedPolicies.TabStop = false;
             this.groupBoxMedPolicies.Text = "Policies";
-            // 
-            // btnMedPolicyNext
-            // 
-            this.btnMedPolicyNext.Location = new System.Drawing.Point(409, 197);
-            this.btnMedPolicyNext.Name = "btnMedPolicyNext";
-            this.btnMedPolicyNext.Size = new System.Drawing.Size(75, 23);
-            this.btnMedPolicyNext.TabIndex = 3;
-            this.btnMedPolicyNext.Text = ">";
-            this.btnMedPolicyNext.UseVisualStyleBackColor = true;
-            // 
-            // btnMedPolicyPrev
-            // 
-            this.btnMedPolicyPrev.Location = new System.Drawing.Point(6, 197);
-            this.btnMedPolicyPrev.Name = "btnMedPolicyPrev";
-            this.btnMedPolicyPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnMedPolicyPrev.TabIndex = 2;
-            this.btnMedPolicyPrev.Text = "<";
-            this.btnMedPolicyPrev.UseVisualStyleBackColor = true;
             // 
             // dataGridViewMedPolicies
             // 
@@ -230,6 +208,16 @@
             this.groupBoxMedOperations.TabIndex = 8;
             this.groupBoxMedOperations.TabStop = false;
             this.groupBoxMedOperations.Text = "Condition Operations";
+            // 
+            // btnMedConRefresh
+            // 
+            this.btnMedConRefresh.Location = new System.Drawing.Point(9, 291);
+            this.btnMedConRefresh.Name = "btnMedConRefresh";
+            this.btnMedConRefresh.Size = new System.Drawing.Size(264, 23);
+            this.btnMedConRefresh.TabIndex = 23;
+            this.btnMedConRefresh.Text = "Refresh";
+            this.btnMedConRefresh.UseVisualStyleBackColor = true;
+            this.btnMedConRefresh.Click += new System.EventHandler(this.btnMedConRefresh_Click);
             // 
             // spinDuration
             // 
@@ -370,33 +358,13 @@
             // 
             // groupBoxMedData
             // 
-            this.groupBoxMedData.Controls.Add(this.btnMedNext);
-            this.groupBoxMedData.Controls.Add(this.btnMedPrev);
             this.groupBoxMedData.Controls.Add(this.dataGridViewMedCon);
             this.groupBoxMedData.Location = new System.Drawing.Point(8, 6);
             this.groupBoxMedData.Name = "groupBoxMedData";
-            this.groupBoxMedData.Size = new System.Drawing.Size(491, 233);
+            this.groupBoxMedData.Size = new System.Drawing.Size(491, 204);
             this.groupBoxMedData.TabIndex = 6;
             this.groupBoxMedData.TabStop = false;
             this.groupBoxMedData.Text = "Medical Conditions";
-            // 
-            // btnMedNext
-            // 
-            this.btnMedNext.Location = new System.Drawing.Point(409, 197);
-            this.btnMedNext.Name = "btnMedNext";
-            this.btnMedNext.Size = new System.Drawing.Size(75, 23);
-            this.btnMedNext.TabIndex = 3;
-            this.btnMedNext.Text = ">";
-            this.btnMedNext.UseVisualStyleBackColor = true;
-            // 
-            // btnMedPrev
-            // 
-            this.btnMedPrev.Location = new System.Drawing.Point(6, 197);
-            this.btnMedPrev.Name = "btnMedPrev";
-            this.btnMedPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnMedPrev.TabIndex = 2;
-            this.btnMedPrev.Text = "<";
-            this.btnMedPrev.UseVisualStyleBackColor = true;
             // 
             // dataGridViewMedCon
             // 
@@ -425,15 +393,15 @@
             this.treeViewTreatments.Size = new System.Drawing.Size(777, 467);
             this.treeViewTreatments.TabIndex = 0;
             // 
-            // btnMedConRefresh
+            // btnExit
             // 
-            this.btnMedConRefresh.Location = new System.Drawing.Point(9, 291);
-            this.btnMedConRefresh.Name = "btnMedConRefresh";
-            this.btnMedConRefresh.Size = new System.Drawing.Size(264, 23);
-            this.btnMedConRefresh.TabIndex = 23;
-            this.btnMedConRefresh.Text = "Refresh";
-            this.btnMedConRefresh.UseVisualStyleBackColor = true;
-            this.btnMedConRefresh.Click += new System.EventHandler(this.btnMedConRefresh_Click);
+            this.btnExit.Location = new System.Drawing.Point(8, 437);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(491, 23);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // Medical_Dept
             // 
@@ -465,8 +433,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageConditions;
         private System.Windows.Forms.GroupBox groupBoxMedPolicies;
-        private System.Windows.Forms.Button btnMedPolicyNext;
-        private System.Windows.Forms.Button btnMedPolicyPrev;
         private System.Windows.Forms.DataGridView dataGridViewMedPolicies;
         private System.Windows.Forms.GroupBox groupBoxMedSearch;
         private System.Windows.Forms.Button btnMedPolicySearch;
@@ -492,11 +458,10 @@
         private System.Windows.Forms.TextBox txtMedID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBoxMedData;
-        private System.Windows.Forms.Button btnMedNext;
-        private System.Windows.Forms.Button btnMedPrev;
         private System.Windows.Forms.DataGridView dataGridViewMedCon;
         private System.Windows.Forms.TabPage tabPageTreatments;
         private System.Windows.Forms.TreeView treeViewTreatments;
         private System.Windows.Forms.Button btnMedConRefresh;
+        private System.Windows.Forms.Button btnExit;
     }
 }
