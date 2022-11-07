@@ -297,9 +297,9 @@ namespace Ukupholisa.Provider_Management.Presentation_Layer
                     MessageBox.Show("Please select a policy!", "Error");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Policy was not deleted");
+                MessageBox.Show("Policy was not deleted" + ex.Message);
             }
         }
 

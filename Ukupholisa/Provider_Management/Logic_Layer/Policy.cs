@@ -150,7 +150,7 @@ namespace Ukupholisa.Provider_Management.Logic_Layer
 
             foreach (DataRow dr in dt.Rows)
             {
-                if (int.Parse(dr["Total"].ToString()) >1)
+                if (int.Parse(dr["Total"].ToString()) >0)
                 {
                     return false;
                 }

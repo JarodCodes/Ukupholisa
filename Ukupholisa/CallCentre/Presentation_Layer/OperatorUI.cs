@@ -454,16 +454,16 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
             Provider_Management.Logic_Layer.Policy pol = new Provider_Management.Logic_Layer.Policy();
             if (pol.searchIfPolicyExists(int.Parse(txtNewPolID.Text), txtClientID.Text))
             {
-                MessageBox.Show("The policy you are trying to add already exists!", "Error", MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
-            }
-            else
-            {
                 if (MessageBox.Show("Are you sure you want to add policy "
                 + txtNewPolID.Text + " to client " + txtClientID.Text + "?"
                 , "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
                 {
                     pol.addPolicyToClient(int.Parse(txtNewPolID.Text), txtClientID.Text, pol.generateCode());
                 }
+            }
+            else
+            {
+                MessageBox.Show("The policy you are trying to add already exists!", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             } 
         }
     }

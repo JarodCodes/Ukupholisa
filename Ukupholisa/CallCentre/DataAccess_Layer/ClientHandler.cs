@@ -260,14 +260,14 @@ namespace Ukupholisa.CallCentre.DataAccess_Layer
                 cmd.ExecuteNonQuery();
             }
         }
-        public void updateFamily(Logic_Layer.Family family, int client_Id) 
+        public void updateFamily(Logic_Layer.Family family, string client_Id) 
         {
             //updates the clients family role
             using (SqlConnection connect = new SqlConnection(con))
             {
                 SqlCommand cmd = new SqlCommand("familyClientUpdate", connect);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Client_Id", client_Id);
+                cmd.Parameters.AddWithValue("@Client_Code", client_Id);
                 cmd.Parameters.AddWithValue("@Family_Id", family.FamilyID);
                 cmd.Parameters.AddWithValue("@Family_Role", family.Family_role);
 

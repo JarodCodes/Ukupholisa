@@ -51,7 +51,7 @@ namespace Ukupholisa.CallCentre.Logic_Layer
             return handler.searchFamily(FamilyID);
         }
 
-        public void update(int client_Id)
+        public void update(string client_Id)
         {
             DataAccess_Layer.ClientHandler handler = new DataAccess_Layer.ClientHandler();
             handler.updateFamily(this, client_Id);

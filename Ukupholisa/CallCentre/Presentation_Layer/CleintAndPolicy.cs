@@ -104,6 +104,8 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
                 if (val.validateStrings(txtClientID.Text))
                 {
                     MessageBox.Show("Invalid client ID!");
+                    txtClientID.Select();
+                    return;
                 }
                 else
                 {
@@ -141,22 +143,27 @@ namespace Ukupholisa.CallCentre.Presentation_Layer
         {
             try
             {
+                
+
                 Family family = new Family();
                 Client client = new Client();
-                if (!int.TryParse(txtFamilyID.Text, out int famId))
+
+                if (val.validateStrings(txtClientID.Text))
+                {
+                    MessageBox.Show("Invalid client ID!");
+                    txtClientID.Select();
+                    return;
+                }
+                else if(!int.TryParse(txtFamilyID.Text, out int famId))
                 {
                     MessageBox.Show("Invalid family ID");
-                }
-                else if (!int.TryParse(txtFamClientID.Text, out int clientId))
-                {
-                    MessageBox.Show("Invalid client ID");
                 }
                 else
                 {
                     family.FamilyID = famId;
                     family.Family_role = cmbFamilyRole.Text;
-                    client.Client_Id = clientId;
-                    family.update(client.Client_Id);
+                    client.UniqueIdentifier = txtClientID.Text;
+                    family.update(client.UniqueIdentifier);
                     dataGridViewFamily.DataSource = family.search();
                     MessageBox.Show("Client was successfully updated!");
                 }
